@@ -43,7 +43,6 @@
 	<?php $this->load->view('template/navbar');?>
 	<div>
         <div id="header">
-            <h2 style="margin: 0px 0px 40px 90px; padding: 10px;"> Selamat datang, <?php echo $this->session->userdata('session_nama');?> </h2>
             <h2 style="margin: 0px 0px 40px 90px; padding: 10px;"> Selamat datanggggg, <?php echo $this->session->userdata('session_nama');?> </h2>
             <p style="margin: 0px 0px 40px 100px;"> Anda masuk sebagai pasien 
             <br> Semoga hari anda menyenangkan </p>
