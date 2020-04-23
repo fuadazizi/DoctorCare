@@ -49,7 +49,7 @@ class C_Pasien extends CI_Controller
 		//back to controller C_Pasien }
 	}
 
-	public function V_hapus($id)
+	public function V_hapus()
 	{
 		$data['jadwaltemu'] = $this->M_Pasien->getAllJadwalTemu();
 		$this->load->view('Pasien/V_hapus', $data);
@@ -60,7 +60,7 @@ class C_Pasien extends CI_Controller
 		//back to controller C_Pasien
 	}
 
-	public function V_ubah($id)
+	public function V_ubah()
 	{
 		$id = $this->session->userdata['session_username'];
 		$data['judul'] = 'Form Ubah Jadwal Temu';
