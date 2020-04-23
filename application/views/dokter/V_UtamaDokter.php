@@ -45,7 +45,7 @@
 	?>
 	<div>
 		<div id="header">
-			<h2 style="margin: 0px 0px 40px 90px; padding: 10px;"> Selamat datang, <?php echo $this->session->userdata('session_username');?></h2>
+			<h2 style="margin: 0px 0px 40px 90px; padding: 10px;"> Selamat datang, <?php echo $this->session->userdata('session_nama');?></h2>
 			<p style="margin: 0px 0px 40px 100px;"> Anda masuk sebagai dokter 
 			<br> Semoga hari anda menyenangkan </p>
 		</div>
@@ -59,7 +59,7 @@
 				</div>
 			</div> </a>
 
-			<a href="<?= site_url('C_Dokter/V_ubah/'); ?>"> <div class="card bg-dark text-black" id="pict">
+			<a href="<?= site_url('C_Dokter/ViewData/'); ?>"> <div class="card bg-dark text-black" id="pict">
 				<img src="<?= base_url(); ?>/assets/pic/doctor-edit.jpg" class="card-img" alt="..." >
 				<div class="card-img-overlay">
 					<h4 class="card-title"> Edit jadwal kosong </h4>
