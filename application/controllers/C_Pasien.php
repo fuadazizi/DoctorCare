@@ -31,8 +31,8 @@ class C_Pasien extends CI_Controller
 	{
 		$data['judul'] = 'Form Tambah Jadwal Temu';
 		//from library form_validation, set rules for Usernama_Pasien, Username_Dokter, email = required
-		$this->form_validation->set_rules('Username_Pasien','warning','required');
-		$this->form_validation->set_rules('Username_Dokter','warning','required');
+		$this->form_validation->set_rules('Username Pasien','warning','required');
+		$this->form_validation->set_rules('Username Dokter','warning','required');
 		$this->form_validation->set_rules('jam','warning','required');
 		//conditon in form_validation, if user input form = false, then load page "tambah" again
 		if ($this->form_validation->run() == false){
@@ -49,7 +49,7 @@ class C_Pasien extends CI_Controller
 		//back to controller C_Pasien }
 	}
 
-	public function V_hapus()
+	public function V_hapus($id)
 	{
 		$data['jadwaltemu'] = $this->M_Pasien->getAllJadwalTemu();
 		$this->load->view('Pasien/V_hapus', $data);
@@ -60,7 +60,7 @@ class C_Pasien extends CI_Controller
 		//back to controller C_Pasien
 	}
 
-	public function V_ubah()
+	public function V_ubah($id)
 	{
 		$id = $this->session->userdata['session_username'];
 		$data['judul'] = 'Form Ubah Jadwal Temu';
