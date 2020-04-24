@@ -30,13 +30,11 @@ class C_Pasien extends CI_Controller
 	
 	public function V_tambah()
 	{
-		$data['judul'] = 'Form Tambah Jadwal Temu';
-		$data['jadwalkosong'] = $this->M_Dokter->getAllJadwalKosong();
 		//from library form_validation, set rules for Usernama_Pasien, Username_Dokter, email = required
 		$this->form_validation->set_rules('Penyakit','warning','required');
 		//conditon in form_validation, if user input form = false, then load page "tambah" again
 		if ($this->form_validation->run() == false){
-			$this->load->view('pasien/V_tambah', $data);
+			$this->load->view('pasien/V_tambah');
 		}else{
 			$this->M_Pasien->tambahJadwalTemu();
 			$this->session->set_flashdata('flash','added success');
@@ -83,5 +81,27 @@ class C_Pasien extends CI_Controller
 		//call method "ubahDataPasien" in M_Pasien
 		//use flashdata to to show alert "data changed successfully"
 		//back to controller C_Pasien }
+	}
+	public function getData(){
+		include 'connect.php';
+		$id=$this->session->userdata('session_nama');
+    	$queryResult = mysqli_query($connect,"SELECT idjadwal, Username_Dokter, nama, jam, tanggal from jadwal_kosong join dokter on jadwal_kosong.Username_Dokter = dokter.username");
+		$result 	 = array();
+		while($fethData=$queryResult->fetch_assoc()){
+			$result[]=$fethData;
+		}
+		echo json_encode($result);
+	}
+
+	public function fetchData(){
+		include 'connect.php';
+
+		$idjadwal =$_POST["idjadwal"];
+		$result = array();
+		$queryResult = mysqli_query($connect,"SELECT idjadwal, Username_Dokter, nama, jam, tanggal from jadwal_kosong join dokter on jadwal_kosong.Username_Dokter = dokter.username WHERE idjadwal=".$idjadwal);
+		$fetchData = $queryResult->fetch_assoc();
+
+		$result=$fetchData;
+		echo json_encode($result);
 	}
 }

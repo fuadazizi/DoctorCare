@@ -20,8 +20,9 @@ class M_Pasien extends CI_model
 		$uname_dokter = substr($temp, $i+1,strlen($temp)-2)*/
 		$data = [
 			"Username_Pasien" => $this->session->userdata('session_nama'),
-			"Nama_Dokter" => $this->input->post('Nama_Dokter', true),
-			"Jadwal_Kosong" => $this->input->post('Jadwal_Kosong', true),
+			"Username_Dokter" => $this->input->post('username', true),
+			"jam" => $this->input->post('jam', true),
+			"Tanggal" => $this->input->post('Tanggal', true),
 			"Penyakit" => $this->input->post('Penyakit', true),
 		];
 
@@ -44,7 +45,7 @@ class M_Pasien extends CI_model
 	public function ubahJadwalTemu($id)
 	{
 		$data = [
-			"Username_Pasien" => $this->input->post('Username_Pasien', true),
+			"Username_Pasien" => $this->session->userdata('session_name'),
 			"Username_Dokter" => $this->input->post('Username_Dokter', true),
 			"jam" => $this->input->post('jam', true),
 			"Tanggal" => $this->input->post('Tanggal', true),

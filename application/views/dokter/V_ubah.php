@@ -14,7 +14,6 @@
     <title> Ubah Jadwal Temu</title>
 </head>
 <body>
-    <?php $this->load->view('template/navbar'); ?>
     <div class="container" style="margin-top: 140px; margin-bottom: 70px;">
         <div class="row mt-3">
             <div class="col md-6">
@@ -97,7 +96,6 @@
                                     url : "http://localhost/doctorcare/index.php/C_Dokter/updateData",
                                     success: function(result){
                                         var resultObj = JSON.parse(result);
-
                                         $("[name='idjadwal']").val(resultObj.idjadwal);
                                         $("[name='jam']").val(resultObj.jam);
                                         $("[name='Tanggal']").val(resultObj.Tanggal);
@@ -134,6 +132,7 @@
         </div> 
     </div> 
     <?php 
+        $this->load->view('template/navbar');
         $this->load->view('template/back');
         $this->load->view('template/footer'); ?>
 </body>

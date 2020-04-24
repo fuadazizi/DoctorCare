@@ -30,10 +30,10 @@
 			<tr>
 				<th width="200px">Nama</th>
 				<th><?php echo $doc->nama;?></th>
-				 	<td width="100px">
-						<button class="btn btn-warning" onclick="edit_dokter(<?php echo $doc->nama; ?>)"><i class="glyphicon glyphicon-pencil"></i></button>
-						<button class="btn btn-danger"><i class="glyphicon glyphicon-remove"></i></button>
-					</td>
+			 	<td width="100px">
+					<button class="btn btn-warning" onclick="edit_dokter(<?php echo $doc->nama; ?>)"><i class="glyphicon glyphicon-pencil"></i></button>
+					<button class="btn btn-danger"><i class="glyphicon glyphicon-remove"></i></button>
+				</td>
 			</tr>
 
 			<tr>
@@ -102,12 +102,12 @@
 			</tr>
 
 		</table>
- 	<?php 
+	</div>
+	<?php 
  		$this->load->view('template/navbar');
 		$this->load->view('template/back');
 		$this->load->view('template/footer');
 	?>
-	</div>
 	
 
 
@@ -198,7 +198,7 @@
 		      			<div class="form-group">
 		      				<label class="control-label col-md-3">Nama</label>
 		      				<div class="col-md-9">
-		      					<input type="text" name="nama" placeholder="Nama Lengkap" class="form-control">
+		      					<input type="text" name="nama" placeholder="Nama Lengkap" class="form-control" value="<?= $this->session->userdata('session_name'); ?>">
 		      				</div>
 		      			</div>
 		      		</div>     

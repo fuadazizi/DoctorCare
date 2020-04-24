@@ -15,11 +15,11 @@
     <title> Ubah Jadwal Temu</title>
 </head>
 <body>
-    <div class="container">
+    <div class="container" style="margin-top: 140px; margin-bottom: 70px;">
         <div class="row mt-3">
             <div class="col md-6">
                 <div class="card">
-                    <div class="card-header text-center">
+                    <div class="card-header text-center" >
                         Form Ubah Jadwal Temu
                     </div>
                     <div class="card-body">
@@ -58,6 +58,7 @@
         </div>
     </div> 
     <?php 
+        $this->load->view('template/navbar');
         $this->load->view('template/back'); 
         $this->load->view('template/footer');?>
 </body>
