@@ -8,8 +8,13 @@ class M_Dokter extends CI_model
 	{
 		//use query builder to get data table "jadwal_kosong"
 		return $this->db->get('jadwal_kosong')->result_array();
-
 	}
+
+	public function getJadwalKosongByUsername() {
+		$username = $this->session->userdata('session_username');
+		return $this->db->from('jadwal_kosong')->where('Username_Dokter',$username)->get()->result_array();
+	}
+
 	public function tambahJadwalKosong()
 	{
 		$data = [

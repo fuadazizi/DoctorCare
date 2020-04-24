@@ -2,24 +2,25 @@ table{
 	width: 100%;
 }
 
+nav {
+	width: 100%;
+}
+
 .card,.btn-sm{
 	margin-bottom: 5%;
 }
 
-.footer{
-	position: static;
+footer {
+	position: relative;
+	left: 0px;
+	bottom: 10px;
 	width: 100%;
-	height: 60px;
-	line-height: 60px;
-	background-color: #f5f5f5;
-	text-align: center;
-	margin-top: 12%;
 }
 
 body{
 	font-family: Calibri;
 	/*background-color: #caceba;*/
-	background: url(assets/pic/background/BgUtama1.jpg) no-repeat center;
+	background: url('http://localhost/doctorcare/assets/pic/background/BgUtama1.jpg') no-repeat center;
 }
 
 #Fixednavbar{		/*fixed navbar yang ada di atas*/
@@ -48,14 +49,14 @@ body{
 
 .body{
 	min-height: 100vh;
-	background: url(assets/pic/background/bg2.jpg) no-repeat center;
+	background: url('http://localhost/doctorcare/assets/pic/background/bg2.jpg') no-repeat center;
 }
 #LoginForm{
 	position: absolute;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%,-50%);
-	background: url(assets/pic/background/bg1.jpg) no-repeat center;
+	background: url('http://localhost/doctorcare/assets/pic/background/bg1.jpg') no-repeat center;
 	box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
 	border-radius: 5px;
 	padding: 30px;

@@ -50,6 +50,8 @@
 			<br> Semoga hari anda menyenangkan </p>
 		</div>
 
+		<?php $this->load->view('template/slider'); ?>
+
 		<div class="card-deck" id="group">
 			<a href="<?= site_url('C_Dokter/V_Tambah/'); ?>"> <div class="card bg-dark text-black" id="pict">
 				<img src="<?= base_url(); ?>/assets/pic/doctor-buat.jpg" class="card-img" alt="..." >
@@ -84,6 +86,5 @@
 			</div> </a>
 		</div>
 	</div>
-	<?php $this->load->view('template/slider'); ?>
 </body>
 </html>

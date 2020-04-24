@@ -77,7 +77,7 @@ class C_Dokter extends CI_Controller
 
 	public function V_lihatJadwalKosong()
 	{
-		$data['jadwal_kosong'] = $this->M_Dokter->getAllJadwalKosong();
+		$data['jadwal_kosong'] = $this->M_Dokter->getJadwalKosongByUsername();
 		$this->load->view('Dokter/V_lihatJadwalKosong', $data);
 	}
 	
