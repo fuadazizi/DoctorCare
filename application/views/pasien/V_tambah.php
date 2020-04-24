@@ -39,7 +39,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="nim">Pilih Dokter</label>
-                                <select class= "form-control" id="jadwal" name="jadwal">
+                                <select class= "form-control" id="Nama_Dokter" name="Nama_Dokter">
                                     <?php 
                                         foreach ($jadwalkosong as $data) { ?>
                                             <option name = "<?=$data['idjadwal']?>">
@@ -52,7 +52,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="jadwal">Jadwal kosong tersedia </label> <br>
-                                <select class= "form-control" id="jadwal" name="jadwal">
+                                <select class= "form-control" id="Jadwal_Kosong" name="Jadwal_Kosong">
                                     <?php 
                                         foreach ($jadwalkosong as $data) { ?>
                                             <option name = "<?=$data['idjadwal']?>">
