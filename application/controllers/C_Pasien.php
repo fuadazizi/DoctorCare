@@ -68,7 +68,7 @@ class C_Pasien extends CI_Controller
 		if ($this->form_validation->run() == false){
 			$this->load->view('Pasien/V_ubah');
 		}else{
-			$this->M_Pasien->ubahJadwalTemu($id);
+			$this->M_Pasien->ubahJadwalTemu();
 			$this->session->set_flashdata('flash','data changed successfully');
 			$this->V_LihatJadwalTemu();
 			//$this->index();

@@ -49,7 +49,7 @@ class C_Dokter extends CI_Controller
 	public function doUpdateData(){
 		include 'connect.php';
 
-		$result['message']=" ";
+		$result['message']="tes";
 
 		$idjadwal=$_POST["idjadwal"];
 		$jam=$_POST['jam'];

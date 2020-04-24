@@ -12,6 +12,8 @@
 
     <link rel="stylesheet" href="<?= base_url(); ?>/assets/css/style.css">
 
+    <script src= "https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"> </script> 
+
     <title> Ubah Jadwal Temu</title>
 </head>
 <body>
@@ -38,6 +40,7 @@
 
                                 </tbody>
                             </table>
+                            <input type="hidden" name="id" id="id">
                             <div class="form-group">
                                 <label for="nama">Username_Pasien</label>
                                 <input type="text" class="form-control" id="Username_Pasien" name="Username_Pasien" disabled value= "<?php echo $this->session->userdata('session_username');?>">
@@ -45,7 +48,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="text">Username_Dokter</label>
-                                <input type="text" class="form-control" id="Username_Dokter" name="Username_Dokter">
+                                <input type="text" class="form-control" id="Username_Dokter" name="Username_Dokter" disabled>
                                 <small class="form-text text-danger"><?= form_error('Username_Dokter') ?>.</small>
                             </div>
                             <div class="form-group">

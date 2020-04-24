@@ -33,17 +33,22 @@ class M_Pasien extends CI_model
 		$this->db->where('id',$id);
 	}
 
-	public function ubahJadwalTemu($id)
+	public function ubahJadwalTemu()
 	{
 		$data = [
-			"Username_Pasien" => $this->session->userdata('session_username'),
-			"Username_Dokter" => $this->input->post('Username_Dokter', true),
+			"id" => $this->input->post('id',true),
 			"jam" => $this->input->post('jam', true),
 			"Tanggal" => $this->input->post('Tanggal', true),
 			"Penyakit" => $this->input->post('Penyakit', true),
 		];
 		//use query builder class to update data jadwaltemu based on id
-		$this->db->where('id',$id);
+		/*$query = "UPDATE jadwaltemu SET 
+									jam = '$data['jam']',
+									Tanggal = '$data['Tanggal']',
+									Penyakit = '$data['Penyakit']',
+				  WHERE id = $data['id']";	
+		return $this->db->query($query)->result_array();*/
+		$this->db->where('id','55');
 		$this->db->update('jadwaltemu',$data);
 	}
 	public function cariJadwalTemu()
