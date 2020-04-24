@@ -266,9 +266,5 @@
         	</div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal  --> 
-    <?php 
-    	$this->load->view('template/back'); 
-    	$this->load->view('template/footer'); 
-    ?>
 </body>
 </html>
