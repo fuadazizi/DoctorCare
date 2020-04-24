@@ -72,6 +72,7 @@ class login extends CI_controller {
             } 
         }
     }
+
     function logout(){
         $this->session->sess_destroy();
         $url=base_url('');
