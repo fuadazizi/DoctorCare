@@ -11,15 +11,15 @@ class M_Dokter extends CI_model
 		return $this->db->query($query)->result_array();
 	}
 
-	public function getJadwalKosongByUsername() {
-		$username = $this->session->userdata('session_username');
+	public function getJadwalKosongByNama() {
+		$username = $this->session->userdata('session_nama');
 		return $this->db->from('jadwal_kosong')->where('Username_Dokter',$username)->get()->result_array();
 	}
 
 	public function tambahJadwalKosong()
 	{
 		$data = [
-			"Username_Dokter" => $this->session->userdata('session_username'),
+			"Username_Dokter" => $this->session->userdata('session_nama'),
 			"jam" => $this->input->post('jam', true),
 			"Tanggal" => $this->input->post('Tanggal', true),
 		];

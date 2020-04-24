@@ -30,8 +30,8 @@
                     <div class="card-body">
                         <form action="" method="post">
                             <div class="form-group">
-                                <label for="nim">Username Dokter</label>
-                                <input type="text" class="form-control" id="Username_Dokter" name="Username_Dokter" disabled value="<?php echo $this->session->userdata('session_username');?>">
+                                <label for="nim">Nama Dokter</label>
+                                <input type="text" class="form-control" id="Username_Dokter" name="Username_Dokter" disabled value="<?php echo $this->session->userdata('session_nama');?>">
                                 <small class="form-text text-danger"><?= form_error('Username_Dokter') ?>.</small>
                             </div>
                             <div class="form-group">

@@ -38,15 +38,18 @@
                         </table>
                         <h2>Ubah Data</h2>
                         <table>
+                             <tr>
+                                <td><input type="text" name="idjadwal" hidden=""></td>
+                            </tr>
                             <tr>
                                 <td>Jam</td>
                                 <td>:</td>
-                                <td><input type="text" name="jam"></td>
+                                <td><input type="time" class="form-control" id="jam" name="jam"></td>
                             </tr>
                             <tr>
                                 <td>Tanggal</td>
                                 <td>:</td>
-                                <td><input type="text" name="Tanggal"></td>
+                                <td><input type="date" class="form-control" id="Tanggal"name="Tanggal"></td>
                             </tr>
                             <tr>
                                 <td></td>
@@ -65,30 +68,37 @@
                         crossorigin="anonymous"></script>
 
                         <script type="text/javascript">
+                            loadData();
                             function uj(){
+                                var idjadwal = $("[name=idjadwal]").val();
                                 var jam = $("[name='jam']").val();
-                                var Tanggal = $("[name='Tanggal']").val();
-
+                                var Tangga = $("[name='Tanggal']").val();
+                                console.log(Tangga); 
                                 $.ajax({
                                     type : "POST",
-                                    data : "jam="+jam+"Tanggal="+Tanggal,
-                                    url : "http://localhost/doctorcare/index.php/C_Dokter/getData"
+                                    data : "idjadwal="+idjadwal+"&jam="+jam+"&Tangga="+Tangga,
+                                    url : "http://localhost/doctorcare/index.php/C_Dokter/doUpdateData",
+                                    success: function(result){
+                                        var resultObj = JSON.parse(result);
+                                        $("#error").html(resultObj.message);
+
+                                        loadData();
+                                    }
                                 });
                              }
 
                             
-                            $(document).on("click",".submit",function(){
+                            $(document).on("click",".select",function(){
                                 var idjadwal=$(this).attr("id");
                                 
                                 $.ajax({
-                                    type : "GET",
-                                    data : "",
-                                    url : "http://localhost/doctorcare/index.php/C_Dokter/getData",
+                                    type : "POST",
+                                    data : "idjadwal="+idjadwal,
+                                    url : "http://localhost/doctorcare/index.php/C_Dokter/updateData",
                                     success: function(result){
                                         var resultObj = JSON.parse(result);
 
                                         $("[name='idjadwal']").val(resultObj.idjadwal);
-                                        $("[name='Username_Dokter']").val(resultObj.Username_Dokter);
                                         $("[name='jam']").val(resultObj.jam);
                                         $("[name='Tanggal']").val(resultObj.Tanggal);
                                     }
@@ -96,7 +106,10 @@
                             });
                             
 
-                            $.ajax({
+                            function loadData(){
+                                var dataHandler = $("#here");
+                                dataHandler.html("");
+                                $.ajax({
                                 type : "GET",
                                 data : "",
                                 url : "http://localhost/doctorcare/index.php/C_Dokter/getData",
@@ -107,12 +120,13 @@
                                     $.each(resultObj,function(key,val){
 
                                         var newRow= $("<tr>");
-                                        newRow.html("<td>"+val.Username_Dokter+"</td><td>"+val.jam+"</td><td>"+val.Tanggal+"</td><td><button class='submit' id='"+val.idjadwal+"'>Select</button></td>");
+                                        newRow.html("<td>"+val.Username_Dokter+"</td><td>"+val.jam+"</td><td>"+val.Tanggal+"</td><td><button class='select' id='"+val.idjadwal+"'>Select</button></td>");
 
                                         dataHandler.append(newRow);
                                     })
                                 }
-                            });
+                                });
+                            }
                         </script>
                     </div>
                 </div>
