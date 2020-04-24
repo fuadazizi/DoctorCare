@@ -31,8 +31,9 @@
 
 		#group{
 			position: relative;
-			margin: auto;
-			width: 90%;
+            top: 150px;
+            margin: auto;
+            width: 90%;
 		}
 
 	</style>
@@ -86,5 +87,6 @@
             </div> </a>
         </div>
     </div>
+    <?php $this->load->view('template/footer') ?>
 </body>
 </html>

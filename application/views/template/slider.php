@@ -17,7 +17,7 @@
     <div class="carousel-item active" id="item">
       <img class="d-block w-100" src="https://platform24.com.au/wp-content/uploads/2018/01/Platform-24-IT-Solutions-Banner-1300x150.png" alt="First slide">
       <div class="carousel-caption d-none d-md-block">
-      <h5> Belalalalalalalalala </h5>
+      <h5> Dokter </h5>
       <p> Dokter adalah seseorang yang sangat sakti. Dengan ilmu dia bisa membantu menyelamatkan orang, tentunya dengan seizin Allah SWT. Tapi sebagai dokter tidaklah mudah, karena mereka berurusan dengan nyawa. Salah sedikit saja, mereka bisa membahayakan nyawa orang lain</p>
   </div>
     </div>

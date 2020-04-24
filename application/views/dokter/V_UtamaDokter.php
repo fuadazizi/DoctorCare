@@ -70,7 +70,7 @@
 			</div> </a>
 
 			<a href="<?= site_url('C_Dokter/V_LihatJadwalKosong/'); ?>"> <div class="card bg-dark text-black" id="pict">
-				<img src="<?= base_url(); ?>/assets/pic/doctor-delete.jpg" class="card-img" alt="..." >
+				<img src="<?= base_url(); ?>/assets/pic/doctor-lihat.jpeg" class="card-img" alt="..." >
 				<div class="card-img-overlay">
 					<h4 class="card-title">Lihat jadwal kosong </h4>
 					<p class="card-text" id="desc"> Melihat jadwal kosong yang telah anda buat </p>

@@ -16,6 +16,8 @@
 <body>
     <?php $this->load->view('template/navbar'); ?>
     <div class="container" style="position: relative; top: 130px;">
+    <h1 class="text-center" style="margin: 10px;"> Hapus Jadwal </h1>
+    <div class="container"  style="margin-top: 100px; margin-bottom: 40px;">
         <div class="row mt-3">
             <div class="col md-6">
                 <div class="card">
@@ -52,11 +54,11 @@
                         crossorigin="anonymous"></script>
 
                         <script type="text/javascript">
-                            loadData();
-                            
+                            loadData();    
+
                             $(document).on("click",".hapus",function(){
                                 var idjadwal=$(this).attr("id");
-                                
+
                                 $.ajax({
                                     type : "POST",
                                     data : "idjadwal="+idjadwal,
@@ -66,8 +68,8 @@
                                         $("#error").html(resultObj.message);
                                         loadData();
                                     }
-                                });    
-                            });
+                                }); 
+                           
                             
 
                             function loadData(){
