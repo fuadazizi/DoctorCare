@@ -45,7 +45,7 @@
 
         <div style="position: relative; top: 89px;"> 
         <?php 
-            $data['person'] = "dokter";
+            $data['person'] = "pasien";
             $this->load->view('template/welcomebar',$data);
             $this->load->view('template/slider'); 
             $this->load->view('template/navbar');

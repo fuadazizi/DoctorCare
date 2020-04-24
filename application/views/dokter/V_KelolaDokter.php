@@ -28,7 +28,7 @@
 			?>
 
 			<tr>
-				<th width="300px">Nama</th>
+				<th width="200px">Nama</th>
 				<th><?php echo $doc->nama;?></th>
 				 	<td width="100px">
 						<button class="btn btn-warning" onclick="edit_dokter(<?php echo $doc->nama; ?>)"><i class="glyphicon glyphicon-pencil"></i></button>
@@ -102,12 +102,13 @@
 			</tr>
 
 		</table>
- 
-	</div>
-	<?php 
+ 	<?php 
+ 		$this->load->view('template/navbar');
 		$this->load->view('template/back');
 		$this->load->view('template/footer');
 	?>
+	</div>
+	
 
 
 
@@ -260,8 +261,5 @@
         	</div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal  --> 
-	<?php 
-		$this->load->view('template/back');
-	?>
 </body>
 </html>
