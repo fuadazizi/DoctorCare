@@ -1,6 +1,6 @@
 <style type="text/css">
 	footer{
-		position: fixed;
+		position: relative;
 	   	bottom:0;
 	   	width:100%;
 	   	background: grey;
