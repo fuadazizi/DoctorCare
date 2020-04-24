@@ -12,8 +12,6 @@
 
     <link rel="stylesheet" href="<?= base_url(); ?>/assets/css/style.css">
 
-    <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>/assets/css/style.css">
-
     <title>Tambah Jadwal Temu</title>
 
     <script src= "https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"> 
@@ -60,7 +58,7 @@
                                 <input type="time" class="form-control" id="jam" name="jam">
                             </div>
                             <div class="form-group">
-                                <label for="nama"> Tanggal </label>
+                                <label for="text"> Tanggal </label>
                                 <input type="date" class="form-control" id="Tanggal" name="Tanggal">
                             </div>
 
@@ -113,7 +111,7 @@
             $.ajax({
                 type : "POST",
                 data : "idjadwal="+idjadwal,
-                url : "http://localhost/doctorcare/index.php/C_Pasien/fetchData",
+                url : "http://localhost/doctorcare/index.php/C_Pasien/fetchJadwalKosong",
                 success: function(result){
                     var resultObj = JSON.parse(result);
                     $("[name='idjadwal']").val(resultObj.idjadwal);
@@ -132,7 +130,7 @@
             $.ajax({
             type : "GET",
             data : "",
-            url : "http://localhost/doctorcare/index.php/C_Pasien/getData",
+            url : "http://localhost/doctorcare/index.php/C_Pasien/getJadwalKosong",
             success: function(result){
                 var resultObj = JSON.parse(result);
                 var dataHandler = $("#here");

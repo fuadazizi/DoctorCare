@@ -24,25 +24,38 @@
                     </div>
                     <div class="card-body">
                         <form action="" method="post">
-                            <input type="hidden" name="id" value="<?= $jadwaltemu['id'] ?>">
+                            <table class="table">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th>Nama Dokter</th>
+                                        <th>Jam</th>
+                                        <th>Tanggal</th>
+                                        <th>Penyakit</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody id="here">
+
+                                </tbody>
+                            </table>
                             <div class="form-group">
                                 <label for="nama">Username_Pasien</label>
-                                <input type="text" class="form-control" id="Username_Pasien" name="Username_Pasien">
+                                <input type="text" class="form-control" id="Username_Pasien" name="Username_Pasien" disabled value= "<?php echo $this->session->userdata('session_username');?>">
                                 <small class="form-text text-danger"><?= form_error('Username_Pasien') ?>.</small>
                             </div>
                             <div class="form-group">
-                                <label for="nim">Username_Dokter</label>
+                                <label for="text">Username_Dokter</label>
                                 <input type="text" class="form-control" id="Username_Dokter" name="Username_Dokter">
                                 <small class="form-text text-danger"><?= form_error('Username_Dokter') ?>.</small>
                             </div>
                             <div class="form-group">
                                 <label for="text">Jam</label>
-                                <input type="text" class="form-control" id="jam" name="jam">
+                                <input type="time" class="form-control" id="jam" name="jam">
                                 <small class="form-text text-danger"><?= form_error('jam') ?>.</small>
                             </div>
                             <div class="form-group">
                                 <label for="text">Tanggal</label>
-                                <input type="text" class="form-control" id="Tanggal" name="Tanggal">
+                                <input type="date" class="form-control" id="Tanggal" name="Tanggal">
                                 <small class="form-text text-danger"><?= form_error('Tanggal') ?>.</small>
                             </div>
                             <div class="form-group">
@@ -57,6 +70,56 @@
             </div>
         </div>
     </div> 
+
+    <script
+        src="https://code.jquery.com/jquery-3.5.0.min.js"
+        integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ="
+        crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        loadData();
+        
+        $(document).on("click",".select",function(){
+            var id=$(this).attr("id");
+            
+            $.ajax({
+                type : "POST",
+                data : "id="+id,
+                url : "http://localhost/doctorcare/index.php/C_Pasien/fetchJadwalTemu",
+                success: function(result){
+                    var resultObj = JSON.parse(result);
+                    $("[name='id']").val(resultObj.id);
+                    $("[name='Username_Pasien']").val(resultObj.Username_Pasien);
+                    $("[name='Username_Dokter']").val(resultObj.Username_Dokter);
+                    $("[name='jam']").val(resultObj.jam);
+                    $("[name='Tanggal']").val(resultObj.Tanggal);
+                    $("[name='Penyakit']").val(resultObj.Penyakit);
+                }
+            });    
+        });
+        
+
+        function loadData(){
+            var dataHandler = $("#here");
+            dataHandler.html("");
+            $.ajax({
+            type : "GET",
+            data : "",
+            url : "http://localhost/doctorcare/index.php/C_Pasien/getJadwalTemu",
+            success: function(result){
+                var resultObj = JSON.parse(result);
+                var dataHandler = $("#here");
+
+                $.each(resultObj,function(key,val){
+
+                    var newRow= $("<tr>");
+                    newRow.html("<td>"+val.nama+"</td><td>"+val.jam+"</td><td>"+val.Tanggal+"</td><td>"+val.Penyakit+"</td><td><button class='select' type = 'button' id='"+val.id+"'>Select</button></td>");
+                    dataHandler.append(newRow);
+                })
+            }
+            });
+        }
+    </script>
+
     <?php 
         $this->load->view('template/navbar');
         $this->load->view('template/back'); 

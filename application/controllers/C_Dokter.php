@@ -23,25 +23,10 @@ class C_Dokter extends CI_Controller
 		$this->load->view('template/footer');
 	}
 
-	public function deleteData(){
-		include 'connect.php';
-
-		$result['message']=" ";
-		$idjadwal =$_POST["idjadwal"];
-		$result = array();
-		$queryResult = mysqli_query($connect,"DELETE FROM jadwal_kosong WHERE idjadwal=".$idjadwal);
-		if($queryResult){
-				$result["message"]="Data Berhasil Di Hapus!";
-			}else{
-				$result["message"]="Data Gagal Di Hapus!";
-			}
-		echo json_encode($result);
-	}
-
 	public function getData(){
 		include 'connect.php';
-		$id=$this->session->userdata('session_nama');
-    	$queryResult = mysqli_query($connect,"SELECT * FROM jadwal_kosong WHERE Username_Dokter='$id'");
+		$id=$this->session->userdata('session_username');
+    	$queryResult = mysqli_query($connect,"SELECT * FROM jadwal_kosong join dokter on (dokter.username = jadwal_kosong.Username_Dokter) WHERE Username_Dokter='$id'");
 		$result 	 = array();
 		while($fethData=$queryResult->fetch_assoc()){
 			$result[]=$fethData;
@@ -68,15 +53,14 @@ class C_Dokter extends CI_Controller
 
 		$idjadwal=$_POST["idjadwal"];
 		$jam=$_POST['jam'];
-		$Tangga=$_POST['Tangga'];
+		$Tanggal=$_POST['Tanggal'];
 
 		if($jam==""){
 			$result["mesagge"]="Jam must be filled!";
 		}else if($Tanggal=""){
 			$result["message"]="Tanggal must be filled!";
 		}else{
-
-			$queryResult=mysqli_query($connect,"UPDATE `jadwal_kosong` SET `jam` = '$jam', `Tanggal` = '$Tangga' WHERE `jadwal_kosong`.`idjadwal` = '$idjadwal';");
+			$queryResult=mysqli_query($connect,"UPDATE jadwal_kosong SET jam='".$jam."',Tanggal='".$Tanggal."' WHERE idjadwal=".$idjadwal);
 			if($queryResult){
 				$result["message"]="SUCCESS!";
 			}else{
@@ -92,7 +76,7 @@ class C_Dokter extends CI_Controller
 
 	public function V_lihatJadwalKosong()
 	{
-		$data['jadwal_kosong'] = $this->M_Dokter->getJadwalKosongByNama();
+		$data['jadwal_kosong'] = $this->M_Dokter->getJadwalKosongByUsername();
 		$this->load->view('Dokter/V_lihatJadwalKosong', $data);
 	}
 	

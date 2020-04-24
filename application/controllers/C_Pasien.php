@@ -60,17 +60,13 @@ class C_Pasien extends CI_Controller
 
 	public function V_ubah()
 	{
-		$id = $this->session->userdata['session_username'];
-		$data['judul'] = 'Form Ubah Jadwal Temu';
-		$data['jadwaltemu'] = $this->M_Pasien->getJadwalTemuById($id);
 		//from library form_validation, set rules for Username_Pasien, Usernama_Dokter, jam = required
 		$this->form_validation->set_rules('Username Pasien','warning','required');
 		$this->form_validation->set_rules('Username Dokter','warning','required');
 		$this->form_validation->set_rules('jam','warning','required');
 		//conditon in form_validation, if user input form = false, then load page "ubah" again
 		if ($this->form_validation->run() == false){
-			$this->load->view('template/navbar', $data);
-			$this->load->view('Pasien/V_ubah', $data);
+			$this->load->view('Pasien/V_ubah');
 		}else{
 			$this->M_Pasien->ubahJadwalTemu($id);
 			$this->session->set_flashdata('flash','data changed successfully');
@@ -82,7 +78,7 @@ class C_Pasien extends CI_Controller
 		//use flashdata to to show alert "data changed successfully"
 		//back to controller C_Pasien }
 	}
-	public function getData(){
+	public function getJadwalKosong(){
 		include 'connect.php';
 		$id=$this->session->userdata('session_nama');
     	$queryResult = mysqli_query($connect,"SELECT idjadwal, Username_Dokter, nama, jam, tanggal from jadwal_kosong join dokter on jadwal_kosong.Username_Dokter = dokter.username");
@@ -93,12 +89,34 @@ class C_Pasien extends CI_Controller
 		echo json_encode($result);
 	}
 
-	public function fetchData(){
+	public function fetchJadwalKosong(){
 		include 'connect.php';
 
 		$idjadwal =$_POST["idjadwal"];
 		$result = array();
 		$queryResult = mysqli_query($connect,"SELECT idjadwal, Username_Dokter, nama, jam, tanggal from jadwal_kosong join dokter on jadwal_kosong.Username_Dokter = dokter.username WHERE idjadwal=".$idjadwal);
+		$fetchData = $queryResult->fetch_assoc();
+
+		$result=$fetchData;
+		echo json_encode($result);
+	}
+
+	public function getJadwalTemu() {
+		include 'connect.php';
+    	$queryResult = mysqli_query($connect,"SELECT * FROM jadwaltemu join dokter on dokter.username = jadwaltemu.Username_Dokter");
+		$result 	 = array();
+		while($fethData=$queryResult->fetch_assoc()){
+			$result[]=$fethData;
+		}
+		echo json_encode($result);
+	}
+
+	public function fetchJadwalTemu(){
+		include 'connect.php';
+
+		$id =$_POST["id"];
+		$result = array();
+		$queryResult = mysqli_query($connect,"SELECT * FROM jadwaltemu join dokter on dokter.username = jadwaltemu.Username_Dokter WHERE id=".$id);
 		$fetchData = $queryResult->fetch_assoc();
 
 		$result=$fetchData;
