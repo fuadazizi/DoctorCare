@@ -37,7 +37,7 @@
                     </div>
                 </div>
             <?php } else { ?>
-
+        <h1 class="text-center" style="margin: 10px;"> Lihat Jadwal Kosong </h1>
         <table class="table mt-5">
             <thead class="thead-dark">
                 <tr>

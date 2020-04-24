@@ -15,7 +15,7 @@
 </head>
 <body>
     <?php $this->load->view('template/navbar'); ?>
-    <div class="container" style="position: relative; top: 130px;">
+    <div class="container" style="margin-top: 140px; margin-bottom: 70px;">
         <div class="row mt-3">
             <div class="col md-6">
                 <div class="card">

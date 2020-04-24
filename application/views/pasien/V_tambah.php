@@ -33,39 +33,35 @@
                     <div class="card-body">
                         <form action="" method="post">
                             <div class="form-group">
-                                <label for="nama">Username_Pasien</label>
+                                <label for="nama">Username Pasien</label>
                                 <input type="text" class="form-control" id="Username_Pasien" name="Username_Pasien" disabled value= "<?php echo $this->session->userdata('session_username');?>">
                                 <small class="form-text text-danger"><?= form_error('Username_Pasien') ?>.</small>
                             </div>
-
                             <div class="form-group">
-                                <label for="jadwal">Jadwal kosong tersedia</label>
-                                <select id="jadwal" name="jadwal"> asdasdsa
+                                <label for="nim">Pilih Dokter</label>
+                                <select class= "form-control" id="jadwal" name="jadwal">
                                     <?php 
                                         foreach ($jadwalkosong as $data) { ?>
-                                            <option value = "<?=$data['idjadwal']?>">
-                                            <?= $data['nama']."-".$data['Tanggal']."-".$data['jam']; ?>
+                                            <option name = "<?=$data['idjadwal']?>">
+                                            <?= $data['Username_Dokter']; ?>
+                                            </option>
+                                        <?php } ?>
+                                    ?>
+                                </select>
+                                <small class="form-text text-danger"><?= form_error('Username_Dokter') ?>.</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="jadwal">Jadwal kosong tersedia </label> <br>
+                                <select class= "form-control" id="jadwal" name="jadwal">
+                                    <?php 
+                                        foreach ($jadwalkosong as $data) { ?>
+                                            <option name = "<?=$data['idjadwal']?>">
+                                            <?= $data['tanggal']." pukul ".$data['jam']. " oleh dr. ".$data['nama'];  ?>
                                             </option>
                                         <?php } ?>
                                     ?>
                                 </select>
                                 <small class="form-text text-danger"><?= form_error('jadwal') ?>.</small>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="nim">Username_Dokter</label>
-                                <input type="text" class="form-control" id="Username_Dokter" name="Username_Dokter"disabled value= "<?php echo $this->session->userdata('session_username');?>">
-                                <small class="form-text text-danger"><?= form_error('Username_Dokter') ?>.</small>
-                            </div>
-                            <div class="form-group">
-                                <label for="text"> Waktu </label>
-                                <input type="text" class="form-control" id="jam" name="jam">
-                                <small class="form-text text-danger"><?= form_error('jam') ?>.</small>
-                            </div>
-                            <div class="form-group">
-                                <label for="text">Tanggal</label>
-                                <input type="text" class="form-control" id="Tanggal" name="Tanggal">
-                                <small class="form-text text-danger"><?= form_error('Tanggal') ?>.</small>
                             </div>
                             <div class="form-group">
                                 <label for="text">Penyakit</label>

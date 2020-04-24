@@ -15,8 +15,8 @@
 </head>
 <body>
     <?php $this->load->view('template/navbar'); ?>
-    <h1 class="text-center" style="margin: 10px;"> Lihat Jadwal Kosong </h1>
-    <div class="container" >
+    <h1 class="text-center" style="margin: 10px;"> Hapus Jadwal </h1>
+    <div class="container"  style="margin-top: 100px; margin-bottom: 40px;">
         <div class="row mt-3">
             <div class="col md-6">
                 <div class="card">
@@ -65,7 +65,6 @@
 
                             loadData();
                            
-
                             function hj(){
                                 var idjadwal = $("[name='idjadwal']").val();
                                 var jam = $("[name='jam']").val();

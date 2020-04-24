@@ -260,6 +260,8 @@
         	</div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal  --> 
-	<?php $this->load->view('template/back') ?>
+	<?php 
+		$this->load->view('template/back');
+	?>
 </body>
 </html>
