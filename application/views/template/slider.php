@@ -7,10 +7,11 @@
   h2{
     color:black;
     margin: 20px auto;
+    width: 90%;
   }
 </style>
 
-<h2> Artikel Hangat </h4>
+<h2> Feeds </h2>
 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active" id="item">

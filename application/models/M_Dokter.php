@@ -18,7 +18,7 @@ class M_Dokter extends CI_model
 	public function tambahJadwalKosong()
 	{
 		$data = [
-			"Username_Dokter" => $this->session->userdata('session_nama'),
+			"Username_Dokter" => $this->session->userdata('session_username'),
 			"jam" => $this->input->post('jam', true),
 			"Tanggal" => $this->input->post('Tanggal', true),
 		];

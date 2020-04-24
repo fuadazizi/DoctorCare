@@ -31,6 +31,7 @@
 
 		#group{
 			position: relative;
+			top: 150px;
 			margin: auto;
 			width: 90%;
 		}
@@ -39,18 +40,17 @@
 
 	<title> Selamat Datang di Doctor Care </title>
 </head>
-<body >
-	<?php 
-		$this->load->view('template/navbar');
-	?>
-	<div>
-		<div id="header">
-			<h2 style="margin: 0px 0px 40px 90px; padding: 10px;"> Selamat datang, <?php echo $this->session->userdata('session_nama');?></h2>
-			<p style="margin: 0px 0px 40px 100px;"> Anda masuk sebagai dokter 
-			<br> Semoga hari anda menyenangkan </p>
+<body>
+	<div style="height: 120vh;">
+		
+		<div style="position: relative; top: 89px;"> 
+		<?php 
+			$data['person'] = "dokter";
+			$this->load->view('template/welcomebar',$data);
+			$this->load->view('template/slider'); 
+			$this->load->view('template/navbar');
+		?>
 		</div>
-
-		<?php $this->load->view('template/slider'); ?>
 
 		<div class="card-deck" id="group">
 			<a href="<?= site_url('C_Dokter/V_Tambah/'); ?>"> <div class="card bg-dark text-black" id="pict">
@@ -86,5 +86,6 @@
 			</div> </a>
 		</div>
 	</div>
+	<?php $this->load->view('template/footer'); ?>
 </body>
 </html>

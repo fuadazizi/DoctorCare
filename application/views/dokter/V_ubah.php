@@ -14,18 +14,19 @@
     <title> Ubah Jadwal Temu</title>
 </head>
 <body>
-    <div class="container">
+    <?php $this->load->view('template/navbar'); ?>
+    <div class="container" style="position: relative; top: 130px;">
         <div class="row mt-3">
             <div class="col md-6">
                 <div class="card">
-                    <div class="card-header text-center">
+                    <div class="card-header text-center" > 
                         Form Ubah Jadwal Temu
                     </div>
                     <div class="card-body">
                         <table>
                             <thead>
                                 <tr>
-                                    <th>Nama Dokter</th>
+                                    <th>Username Dokter</th>
                                     <th>Jam</th>
                                     <th>Tanggal</th>
                                     <th></th>
@@ -80,21 +81,21 @@
 
                             
                             $(document).on("click",".submit",function(){
-                                    var idjadwal=$(this).attr("id");
-                                    
-                                    $.ajax({
-                                        type : "GET",
-                                        data : "",
-                                        url : "http://localhost/doctorcare/index.php/C_Dokter/getData",
-                                        success: function(result){
-                                            var resultObj = JSON.parse(result);
+                                var idjadwal=$(this).attr("id");
+                                
+                                $.ajax({
+                                    type : "GET",
+                                    data : "",
+                                    url : "http://localhost/doctorcare/index.php/C_Dokter/getData",
+                                    success: function(result){
+                                        var resultObj = JSON.parse(result);
 
-                                            $("[name='idjadwal']").val(resultObj.idjadwal);
-                                            $("[name='Username_Dokter']").val(resultObj.Username_Dokter);
-                                            $("[name='jam']").val(resultObj.jam);
-                                            $("[name='Tanggal']").val(resultObj.Tanggal);
-                                        }
-                                    });    
+                                        $("[name='idjadwal']").val(resultObj.idjadwal);
+                                        $("[name='Username_Dokter']").val(resultObj.Username_Dokter);
+                                        $("[name='jam']").val(resultObj.jam);
+                                        $("[name='Tanggal']").val(resultObj.Tanggal);
+                                    }
+                                });    
                             });
                             
 
@@ -113,18 +114,16 @@
 
                                         dataHandler.append(newRow);
                                     })
-                                    
                                 }
                             });
-
                         </script>
                     </div>
                 </div>
             </div>
-        </div>
+        </div> 
     </div> 
     <?php 
-        $this->load->view('template/back'); 
-        $this->load->view('template/footer');?>
+        $this->load->view('template/back');
+        $this->load->view('template/footer'); ?>
 </body>
 </html>

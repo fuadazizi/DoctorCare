@@ -15,11 +15,15 @@
     <title>Tambah Jadwal Temu</title>
 </head>
 <body>
-    <?php $this->load->view('template/navbar');?>
+    <div style="position: relative; top: 110px;"> 
+        <?php 
+            $this->load->view('template/navbar');
+        ?>
+    </div>
     <div class="container">
         <div class="row mt-3">
             <div class="col">
-                <div class="card">
+                <div class="card" style="position: relative; top: 90px;">
                     <div class="card-header text-center">
                         Form Tambah Jadwal Kosong
                     </div>
@@ -51,10 +55,9 @@
         </div>
     </div>
 </div> 
-
     <?php 
         $this->load->view('template/back'); 
-        $this->load->view('template/footer');?>
-
+        $this->load->view('template/footer');
+    ?>
 </body>
 </html>

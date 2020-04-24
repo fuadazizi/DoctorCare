@@ -14,7 +14,9 @@
     <title> Ubah Jadwal Temu</title>
 </head>
 <body>
-    <div class="container">
+    <?php $this->load->view('template/navbar'); ?>
+    <h1 class="text-center" style="margin: 10px;"> Lihat Jadwal Kosong </h1>
+    <div class="container" >
         <div class="row mt-3">
             <div class="col md-6">
                 <div class="card">
