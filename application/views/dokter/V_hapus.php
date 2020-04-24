@@ -54,11 +54,11 @@
                         crossorigin="anonymous"></script>
 
                         <script type="text/javascript">
+                            
                             loadData();    
 
                             $(document).on("click",".hapus",function(){
                                 var idjadwal=$(this).attr("id");
-
                                 $.ajax({
                                     type : "POST",
                                     data : "idjadwal="+idjadwal,
@@ -68,7 +68,8 @@
                                         $("#error").html(resultObj.message);
                                         loadData();
                                     }
-                                }); 
+                                });
+                            });
                            
                             
 
@@ -86,7 +87,7 @@
                                     $.each(resultObj,function(key,val){
 
                                         var newRow= $("<tr>");
-                                        newRow.html("<td>"+val.Username_Dokter+"</td><td>"+val.jam+"</td><td>"+val.Tanggal+"</td><td><button class='hapus' id='"+val.idjadwal+"'>Hapus Jadwal</button>");
+                                        newRow.html("<td>"+val.Username_Dokter+"</td><td>"+val.jam+"</td><td>"+val.Tanggal+"</td><td><button class='hapus' id='"+val.idjadwal+"'>Hapus Data</button></td>");
 
                                         dataHandler.append(newRow);
                                     })
