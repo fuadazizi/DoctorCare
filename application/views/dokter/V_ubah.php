@@ -65,9 +65,6 @@
                         crossorigin="anonymous"></script>
 
                         <script type="text/javascript">
-
-                           
-
                             function uj(){
                                 var jam = $("[name='jam']").val();
                                 var Tanggal = $("[name='Tanggal']").val();

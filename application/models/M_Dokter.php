@@ -7,6 +7,9 @@ class M_Dokter extends CI_model
 	public function getAllJadwalKosong()
 	{
 		//use query builder to get data table "jadwal_kosong"
+		$this->db->select('idjadwal', 'Username_Dokter', 'nama', 'jam','tanggal');
+		$this->db->from('jadwal_kosong');
+		$this->db->join('dokter', 'jadwal_kosong.Username_Dokter = dokter.username', 'inner');
 		return $this->db->get('jadwal_kosong')->result_array();
 	}
 

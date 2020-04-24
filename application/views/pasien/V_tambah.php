@@ -18,11 +18,15 @@
     </script> 
 </head>
 <body>
-    <?php $this->load->view('template/navbar');?>
+    <div style="position: relative; top: 110px;"> 
+        <?php 
+            $this->load->view('template/navbar');
+        ?>
+    </div>
     <div class="container">
         <div class="row mt-3">
             <div class="col">
-                <div class="card">
+                <div class="card" style="position: relative; top: 90px;">
                     <div class="card-header text-center">
                         Form Tambah Jadwal Temu
                     </div>
@@ -30,22 +34,31 @@
                         <form action="" method="post">
                             <div class="form-group">
                                 <label for="nama">Username_Pasien</label>
-                                <input type="text" class="form-control" id="Username_Pasien" name="Username_Pasien" disabled>
+                                <input type="text" class="form-control" id="Username_Pasien" name="Username_Pasien" disabled value= "<?php echo $this->session->userdata('session_username');?>">
                                 <small class="form-text text-danger"><?= form_error('Username_Pasien') ?>.</small>
-                                <script type="text/javascript">
-                                    $(document).ready(function(e) {
-                                        var username = <?php echo $this->session->userdata('session_nama');?>;
-                                        document.getElementById("USername_Pasien").value = "username";
-                                    });
-                                </script>
                             </div>
+
+                            <div class="form-group">
+                                <label for="jadwal">Jadwal kosong tersedia</label>
+                                <select id="jadwal" name="jadwal"> asdasdsa
+                                    <?php 
+                                        foreach ($jadwalkosong as $data) { ?>
+                                            <option value = "<?=$data['idjadwal']?>">
+                                            <?= $data['nama']."-".$data['Tanggal']."-".$data['jam']; ?>
+                                            </option>
+                                        <?php } ?>
+                                    ?>
+                                </select>
+                                <small class="form-text text-danger"><?= form_error('jadwal') ?>.</small>
+                            </div>
+
                             <div class="form-group">
                                 <label for="nim">Username_Dokter</label>
-                                <input type="text" class="form-control" id="Username_Dokter" name="Username_Dokter">
+                                <input type="text" class="form-control" id="Username_Dokter" name="Username_Dokter"disabled value= "<?php echo $this->session->userdata('session_username');?>">
                                 <small class="form-text text-danger"><?= form_error('Username_Dokter') ?>.</small>
                             </div>
                             <div class="form-group">
-                                <label for="text">Jam</label>
+                                <label for="text"> Waktu </label>
                                 <input type="text" class="form-control" id="jam" name="jam">
                                 <small class="form-text text-danger"><?= form_error('jam') ?>.</small>
                             </div>

@@ -6,6 +6,7 @@ class C_Pasien extends CI_Controller
 		parent::__construct();
 		//load model "M_Pasien"
 		$this->load->model('M_Pasien');
+		$this->load->model('M_Dokter');
 		//load library form validation
 		$this->load->library('form_validation');
 	}
@@ -30,6 +31,7 @@ class C_Pasien extends CI_Controller
 	public function V_tambah()
 	{
 		$data['judul'] = 'Form Tambah Jadwal Temu';
+		$data['jadwalkosong'] = $this->M_Dokter->getAllJadwalKosong();
 		//from library form_validation, set rules for Usernama_Pasien, Username_Dokter, email = required
 		$this->form_validation->set_rules('Username Pasien','warning','required');
 		$this->form_validation->set_rules('Username Dokter','warning','required');
@@ -49,7 +51,7 @@ class C_Pasien extends CI_Controller
 		//back to controller C_Pasien }
 	}
 
-	public function V_hapus($id)
+	public function V_hapus()
 	{
 		$data['jadwaltemu'] = $this->M_Pasien->getAllJadwalTemu();
 		$this->load->view('Pasien/V_hapus', $data);
@@ -60,7 +62,7 @@ class C_Pasien extends CI_Controller
 		//back to controller C_Pasien
 	}
 
-	public function V_ubah($id)
+	public function V_ubah()
 	{
 		$id = $this->session->userdata['session_username'];
 		$data['judul'] = 'Form Ubah Jadwal Temu';

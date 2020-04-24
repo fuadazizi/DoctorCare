@@ -40,15 +40,16 @@
 	<title> Selamat Datang di Doctor Care </title>
 </head>
 <body>
-	<?php $this->load->view('template/navbar');?>
-	<div>
-        <div id="header">
-            <h2 style="margin: 0px 0px 40px 90px; padding: 10px;"> Selamat datang, <?php echo $this->session->userdata('session_nama');?> </h2>
-            <p style="margin: 0px 0px 40px 100px;"> Anda masuk sebagai pasien 
-            <br> Semoga hari anda menyenangkan </p>
-        </div>
-        <?php $this->load->view('template/slider'); ?>
+	<div style="height: 120vh;">
 
+        <div style="position: relative; top: 89px;"> 
+        <?php 
+            $data['person'] = "dokter";
+            $this->load->view('template/welcomebar',$data);
+            $this->load->view('template/slider'); 
+            $this->load->view('template/navbar');
+        ?>
+        </div>
         <div class="card-deck" id="group">
             <?php foreach ($jadwaltemu as $jt) : ?>
                 <?php endforeach ?>
@@ -60,9 +61,7 @@
                 </div>
             </div> </a>
 
-            <?php foreach ($jadwaltemu as $jt) : ?>
-                <?php endforeach ?>
-            <a href="<?= site_url('C_Pasien/V_ubah/'); ?><?= $jt['id'] ?>"> <div class="card bg-dark text-black" id="pict">
+            <a href="<?= site_url('C_Pasien/V_ubah/');?>"> <div class="card bg-dark text-black" id="pict">
                 <img src="<?= base_url(); ?>/assets/pic/doctor-edit.jpg" class="card-img" alt="..." >
                 <div class="card-img-overlay">
                     <h4 class="card-title">Edit jadwal dengan dokter</h4>
@@ -70,8 +69,6 @@
                 </div>
             </div> </a>
 
-            <?php foreach ($jadwaltemu as $jt) : ?>
-                <?php endforeach ?>
             <a href="<?= site_url('C_Pasien/V_LihatJadwalTemu/'); ?>"> <div class="card bg-dark text-black" id="pict">
                 <img src="<?= base_url(); ?>/assets/pic/doctor-lihat.jpeg" class="card-img" alt="..." >
                 <div class="card-img-overlay">
@@ -80,7 +77,7 @@
                 </div>
             </div> </a>
 
-            <a href="<?= site_url('C_Pasien/V_hapus/'); ?><?= $jt['id'] ?>"> <div class="card bg-dark text-black" id="pict">
+            <a href="<?= site_url('C_Pasien/V_hapus/'); ?>"> <div class="card bg-dark text-black" id="pict">
                 <img src="<?= base_url(); ?>/assets/pic/doctor-delete.jpg" class="card-img" alt="..." >
                 <div class="card-img-overlay">
                     <h4 class="card-title">Hapus jadwal dengan dokter</h4>
