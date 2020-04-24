@@ -45,7 +45,7 @@ class M_Pasien extends CI_model
 	public function ubahJadwalTemu($id)
 	{
 		$data = [
-			"Username_Pasien" => $this->session->userdata('session_name'),
+			"Username_Pasien" => $this->session->userdata('session_username'),
 			"Username_Dokter" => $this->input->post('Username_Dokter', true),
 			"jam" => $this->input->post('jam', true),
 			"Tanggal" => $this->input->post('Tanggal', true),
