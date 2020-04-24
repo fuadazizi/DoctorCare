@@ -9,17 +9,8 @@ class M_Pasien extends CI_model
 	}
 	public function tambahJadwalTemu()
 	{
-		/*$temp = $this->input->post('jadwal'),true);
-		$jam = substr($temp, 0,9); //mengambil data jam
-		$Tanggal = substr($temp,17,21); //mengambil data tanggal
-
-		$i = strlen($temp)-2;
-		while (substr($temp, $i,$i-1) != "(") {
-			$i=$i-1;
-		}
-		$uname_dokter = substr($temp, $i+1,strlen($temp)-2)*/
 		$data = [
-			"Username_Pasien" => $this->session->userdata('session_nama'),
+			"Username_Pasien" => $this->session->userdata('session_username'),
 			"Username_Dokter" => $this->input->post('username', true),
 			"jam" => $this->input->post('jam', true),
 			"Tanggal" => $this->input->post('Tanggal', true),
