@@ -28,6 +28,11 @@
 	<!-- MDB core JavaScript -->
 	<script type="text/javascript" src="<?= base_url(); ?>assets/MDBootstrap/js/mdb.min.js"></script> 
 
+	<script src="<?php echo base_url('assets/jquery/jquery-3.5.0.min.js') ;?>"></script>
+    <script src="<?php echo base_url('assets/bootstrap/js/bootstrap.min.js') ;?>"></script>
+    <script src="<?php echo base_url('assets/datatables/js/jquery.dataTables.min.js') ;?>"></script>
+    <script src="<?php echo base_url('assets/datatables/js/dataTables.bootstrap.js') ;?>"></script>
+
 	<style type="text/css">
 		h4{
 			text-align: center;

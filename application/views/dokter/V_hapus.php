@@ -35,10 +35,9 @@
     <title> Ubah Jadwal Temu</title>
 </head>
 <body>
-    <?php $this->load->view('template/navbar'); ?>
     <div class="container" style="position: relative; top: 130px;">
     <h1 class="text-center" style="margin: 10px;"> Hapus Jadwal </h1>
-    <div class="container"  style="margin-top: 100px; margin-bottom: 40px;">
+    <div class="container"  style="margin-top: 60px; margin-bottom: 150px;">
         <div class="row mt-3">
             <div class="col md-6">
                 <div class="card">
@@ -46,13 +45,13 @@
                         Form Hapus Jadwal Kosong
                     </div>
                     <div class="card-body">
-                        <table>
-                            <thead>
+                        <table class="table mt-5">
+                            <thead class="thead-dark">
                                 <tr>
-                                    <th>Username Dokter</th>
-                                    <th>Jam</th>
-                                    <th>Tanggal</th>
-                                    <th></th>
+                                    <th class="text-center">Username Dokter</th>
+                                    <th class="text-center">Jam</th>
+                                    <th class="text-center">Tanggal</th>
+                                    <th class="text-center">Action</th>
                                 </tr>
                             </thead>
                             <tbody id="here">
@@ -108,7 +107,7 @@
                                     $.each(resultObj,function(key,val){
 
                                         var newRow= $("<tr>");
-                                        newRow.html("<td>"+val.Username_Dokter+"</td><td>"+val.jam+"</td><td>"+val.Tanggal+"</td><td><button class='hapus' id='"+val.idjadwal+"'>Hapus Data</button></td>");
+                                        newRow.html("<td class=\"text-center\">"+val.Username_Dokter+"</td><td class=\"text-center\">"+val.jam+"</td><td class=\"text-center\">"+val.Tanggal+"</td><td class=\"text-center\"><button class='hapus' id='"+val.idjadwal+"'>Hapus Data</button></td>");
 
                                         dataHandler.append(newRow);
                                     })
@@ -120,8 +119,10 @@
                 </div>
             </div>
         </div> 
-    </div> 
+    </div>
+    </div>
     <?php 
+        $this->load->view('template/navbar');
         $this->load->view('template/back');
         $this->load->view('template/footer'); ?>
 </body>

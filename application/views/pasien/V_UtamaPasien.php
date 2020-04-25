@@ -28,6 +28,11 @@
     <!-- MDB core JavaScript -->
     <script type="text/javascript" src="<?= base_url(); ?>assets/MDBootstrap/js/mdb.min.js"></script> 
 
+    <script src="<?php echo base_url('assets/jquery/jquery-3.5.0.min.js') ;?>"></script>
+    <script src="<?php echo base_url('assets/bootstrap/js/bootstrap.min.js') ;?>"></script>
+    <script src="<?php echo base_url('assets/datatables/js/jquery.dataTables.min.js') ;?>"></script>
+    <script src="<?php echo base_url('assets/datatables/js/dataTables.bootstrap.js') ;?>"></script>
+
 	<style type="text/css">
 		h4{
 			text-align: center;
@@ -59,14 +64,12 @@
 
         #docicon{
             width: 5%;
-            
         }
 
         #viewdoc{
             position: fixed;
-            right: 400px;
-            top:15px;
-            width: 20%;
+            right: 300px;
+            top:23px;
         }
 
 	</style>
@@ -85,8 +88,10 @@
         ?>
         </div>
 
+        <!-- buat lihat daftar dokter -->
         <div id="viewdoc">
-            <button class="btn btn-default btn-sm" style=""> <img src="<?= base_url(); ?>/assets/pic/doctor-siluet.png" id="docicon"> Lihat Tim dokter kami </button>
+            <button type="button" class="btn btn-outline-info waves-effect btn-sm" onclick="showdoc()"> Lihat Tim dokter kami </button>
+
         </div>
 
         <div class="card-deck" id="group">
@@ -122,7 +127,75 @@
                 </div>
             </div> </a>
         </div>
-    </div>
+    </div>  
+
     <?php $this->load->view('template/footer') ?>
+
+    <!----------------------------ngatur Modals-------------------------------->
+     
+    <script type="text/javascript">
+        function showdoc() {
+            $('#ListDokter').modal('show');
+        }
+    </script>
+
+    <!-----------------Full Height Modal Right ----------------------------------->
+
+    <div class="modal fade right" id="ListDokter" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+      aria-hidden="true">
+
+      <!-- Add class .modal-full-height and then add class .modal-right (or other classes from list above) to set a position to the modal -->
+      <div class="modal-dialog modal-full-height modal-right" role="document" style="width: 1000px;">
+
+        <div class="modal-content">
+          <div class="modal-header" style="background-color: #f6fdde;">
+            <h4 class="modal-title w-100" id="myModalLabel" style="color: black; text-align: center;">Tim Dokter kami</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <?php 
+                $this->load->model('dokter_model');
+                $dokterList = $this->dokter_model->get_all_dokter();
+            ?>
+            <table class="table mt-5" style="width: 100%;">
+                <colgroup>
+                   <col span="1" style="width: 20%;">
+                   <col span="1" style="width: 20%;">
+                   <col span="1" style="width: 20%;">
+                   <col span="1" style="width: 20%;">
+                   <col span="1" style="width: 20%;">
+                </colgroup>
+                <thead class="thead-dark">
+                    <tr>
+                        <th class="text-center" scope="col">Nama Dokter</th>
+                        <th class="text-center" scope="col">Alamat</th>
+                        <th class="text-center" scope="col">Spesialis</th>
+                        <th class="text-center" scope="col">Alamat Email</th>
+                        <th class="text-center" scope="col">No. Telepon</th>
+                    </tr>
+                </thead>
+                <tbody>
+                   <tr><?php foreach ($dokterList as $dl) { ?>
+                        <td class="text-center"><?= $dl->nama; ?></td>
+                        <td class="text-center"><?= $dl->alamat; ?></td>
+                        <td class="text-center"><?= $dl->spesialis; ?></td>
+                        <td class="text-center"><?= $dl->email; ?></td>
+                        <td class="text-center"><?= $dl->telp; ?></td>
+                    </tr>
+                    <?php
+                        }    //endforeach
+                    ?> 
+                </tbody>
+            </table>
+          </div>
+          <div class="modal-footer justify-content-center">
+            <button type="button" class="btn btn-indigo" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+<!-- Full Height Modal Right -->
 </body>
 </html>
