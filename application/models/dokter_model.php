@@ -1,7 +1,8 @@
 <?php
 class dokter_model extends CI_Model{
  
-    function dokter_data(){
+    function dokter_data($username){
+    	$this->db->where('username', $username);
         $hasil=$this->db->get('dokter');
         return $hasil->result();
     }
@@ -41,6 +42,7 @@ class dokter_model extends CI_Model{
         $this->db->set('telp', $telp);
         $this->db->set('username', $username);
         $this->db->set('password', $password);
+        $this->db->where('username', $username);
         $this->db->where('username',$username);
         $result=$this->db->update('dokter');
         return $result;

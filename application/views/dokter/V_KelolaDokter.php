@@ -233,10 +233,6 @@
               </div>
             </div>
             </form>
-    <?php 
-        $this->load->view('template/navbar'); 
-        $this->load->view('template/back');
-        $this->load->view('template/footer'); ?>
         <!--END MODAL DELETE-->
  
 <script type="text/javascript" src="<?php echo base_url().'assets/jquery/jquery-3.5.0.min.js'?>"></script>
