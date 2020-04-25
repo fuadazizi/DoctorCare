@@ -56,8 +56,6 @@ class pasien_model extends CI_Model {
         $alamat=$this->input->post('alamat');
         $email=$this->input->post('email');
         $telp=$this->input->post('telp');
-        $username=$this->input->post('username');
-        $password=$this->input->post('password');
         
  
         $this->db->set('nama', $nama);
@@ -65,9 +63,7 @@ class pasien_model extends CI_Model {
         $this->db->set('alamat', $alamat);
         $this->db->set('email', $email);
         $this->db->set('telp', $telp);
-        $this->db->set('username', $username);
-        $this->db->set('password', $password);
-        $this->db->where('username',$username);	
+        $this->db->where('username',$this->session->userdata('session_username'));	
         $result=$this->db->update('pasien');
         return $result;
     }

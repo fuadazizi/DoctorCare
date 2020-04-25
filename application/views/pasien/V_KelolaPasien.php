@@ -34,34 +34,16 @@
 </head>
 <body>
 
-	<div class="container">
-		<center><h1>Kelola Akun Pasien</h1></center>
+	<div class="container" style="height: 120vh;">
+		<center><h1> Kelola Akun Pasien</h1></center>
 		<br> <br>
 		<img src="<?= base_url(); ?>/assets/datatables/images/pasien1.jpg">
 		<br> <br> <br>
 		<h3>Akun Pasien</h3>
 
-		<button class="btn btn-success" onclick="add_pasien()"><i class="glyphicon glyphicon-plus"></i>Lengkapi Data</button>
+		<button class="btn btn-success" onclick="show_edit()"><i class="glyphicon glyphicon-plus"></i>Lengkapi Data</button>
 		<br>
 		<br> 
-
-		<table class="table table-striped" id="mydata">
-                <thead>
-                    <tr>
-                        <th>Nama</th>
-                        <th>Jenis Kelamin</th>
-                        <th>Alamat</th>
-                        <th>Email</th>
-                        <th>Telepon</th>
-                        <th>Username</th>
-                        <th>Password</th>
-                        <th style="text-align: right;">Actions</th>
-                    </tr>
-                </thead>
-                <tbody id="show_data">
-                     
-                </tbody>
-            </table>
 
 		<table id="table_id" class="table table-stripped table-bordered">
 
@@ -118,9 +100,10 @@
 			</tr>-->
 
 		</table>
- 
+ 	<button type="button" class="btn btn-outline-danger" onclick="show_delete()"> HAPUS AKUN ANDA </button>
 	</div>
 	<?php 
+		$this->load->view('template/navbar');
 		$this->load->view('template/back');
 		$this->load->view('template/footer');
 	?>
@@ -238,14 +221,15 @@
                         <div class="form-group row">
                             <label class="col-md-2 col-form-label">Nama</label>
                             <div class="col-md-10">
-                              <input type="text" name="nama_edit" id="nama_edit" class="form-control" placeholder="Nama Lengkap" readonly>
+                              <input type="text" name="nama_edit" id="nama_edit" class="form-control" placeholder="Nama Lengkap" value="<?php echo $this->session->userdata('session_nama'); ?>">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-md-2 col-form-label">Jenis Kelamin</label>
-                            <div class="col-md-10">
-                              <input type="text" name="jeniskelamin_edit" id="jeniskelamin_edit" class="form-control" placeholder="ex: laki-laki">
-                            </div>
+                            <input type="radio" id="male" name="jeniskelamin" value="male">
+							<label for="male">Laki-Laki</label><br>
+							<input type="radio" id="female" name="jeniskelamin" value="female">
+							<label for="female">Perempuan</label><br>
                         </div>
                         <div class="form-group row">
                             <label class="col-md-2 col-form-label">Alamat</label>
@@ -263,18 +247,6 @@
                             <label class="col-md-2 col-form-label">Telepon</label>
                             <div class="col-md-10">
                               <input type="text" name="telp_edit" id="telp_edit" class="form-control" placeholder="ex: 089999999999">
-                            </div>
-                        </div>
-                         <div class="form-group row">
-                            <label class="col-md-2 col-form-label">Username</label>
-                            <div class="col-md-10">
-                              <input type="text" name="username_edit" id="username_edit" class="form-control" placeholder="username">
-                            </div>
-                        </div>
-                         <div class="form-group row">
-                            <label class="col-md-2 col-form-label">Password</label>
-                            <div class="col-md-10">
-                              <input type="text" name="password_edit" id="password_edit" class="form-control" placeholder="Password">
                             </div>
                         </div>
 
@@ -320,13 +292,22 @@
 <script type="text/javascript" src="<?php echo base_url().'assets/datatables/js/dataTables.bootstrap4.js'?>"></script>
  
 <script type="text/javascript">
+	function show_edit() {
+        $('#Modal_Edit').modal('show');
+    }
+
+    function show_delete() {
+    	$('#Modal_Delete').modal('show');
+    }
     $(document).ready(function(){
+
+
         show_pasien(); //call function show all product
          
         $('#mydata').dataTable();
           
         //function show all product
-        function show_pasien(){
+        /*function show_pasien(){
             $.ajax({
                 type  : 'ajax',
                 url   : '<?php echo site_url('pasien/akun_data')?>',
@@ -355,7 +336,7 @@
                 }
  
             });
-        }
+        }*/
  
         //Save product
         $('#btn_save').on('click',function(){
@@ -416,21 +397,17 @@
             var alamat       = $('#alamat_edit').val();
             var email        = $('#email_edit').val();
             var telp         = $('#telp_edit').val();
-            var username     = $('#username_edit').val();
-            var password     = $('#password_edit').val();
             $.ajax({
                 type : "POST",
                 url  : "<?php echo site_url('pasien/update')?>",
                 dataType : "JSON",
-                data : {nama:nama , jeniskelamin:jeniskelamin, alamat:alamat, email:email, telp:telp, username:username, password:password},
+                data : {nama:nama , jeniskelamin:jeniskelamin, alamat:alamat, email:email, telp:telp},
                 success: function(data){
                     $('[name="nama_edit"]').val("");
                     $('[name="jeniskelamin_edit"]').val("");
                     $('[name="alamat_edit"]').val("");
                     $('[name="email_edit"]').val("");
                     $('[name="telp_edit"]').val("");
-                    $('[name="username_edit"]').val("");
-                    $('[name="password_edit"]').val("");
                     $('#Modal_Edit').modal('hide');
                     show_pasien();
                 }
@@ -448,7 +425,7 @@
  
         //delete record to database
          $('#btn_delete').on('click',function(){
-            var username = $('#username_delete').val();
+            var username = <?php echo $this->session->userdata('session_username');?>;
             $.ajax({
                 type : "POST",
                 url  : "<?php echo site_url('pasien/delete')?>",
