@@ -49,18 +49,25 @@ class C_Dokter extends CI_Controller
 	public function doUpdateData(){
 		include 'connect.php';
 
-		$result['message']="tes";
-
-		$idjadwal=$_POST["idjadwal"];
+		$result['message']="";
+		$idjadwal=$_POST['idjadwal'];
 		$jam=$_POST['jam'];
 		$Tanggal=$_POST['Tanggal'];
+
+		$data = [
+			'idjadwal'=>$idjadwal,
+			'Username_Dokter'=>$this->session->userdata('session_username'),
+			'jam'=>$jam,
+			'Tanggal'=>$Tanggal,
+		];
 
 		if($jam==""){
 			$result["mesagge"]="Jam must be filled!";
 		}else if($Tanggal=""){
 			$result["message"]="Tanggal must be filled!";
 		}else{
-			$queryResult=mysqli_query($connect,"UPDATE jadwal_kosong SET jam='".$jam."',Tanggal='".$Tanggal."' WHERE idjadwal=".$idjadwal);
+			$queryResult=$this->load->M_Dokter->ubahJadwalKosong($data);
+			//mysqli_query($connect,"UPDATE jadwal_kosong SET jam='".$jam."',Tanggal='".$Tanggal."' WHERE idjadwal=".$idjadwal);
 			if($queryResult){
 				$result["message"]="SUCCESS!";
 			}else{

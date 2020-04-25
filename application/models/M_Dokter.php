@@ -40,16 +40,23 @@ class M_Dokter extends CI_model
 		$this->db->from('jadwal_kosong')->where('Username_Dokter',$id)->get()->result_array();
 	}
 
-	public function ubahJadwalKosong($id)
+	public function ubahJadwalKosong($data)
 	{
-		$data = [
+		$query = "UPDATE jadwal_kosong SET 
+									Username_Dokter = '".$data['Username_Dokter'].",
+									jam = '".$data['jam']."',
+									Tanggal = '".$data['Tanggal']."'
+				  WHERE idjadwal = ".$data['idjadwal'];
+		return $this->db->query($query);
+
+		/*$data = [
 			"Username_Dokter" => $this->input->post('Username_Dokter', true),
 			"jam" => $this->input->post('jam', true),
 			"Tanggal" => $this->input->post('Tanggal', true)
 		];
 		//use query builder class to update data jadwal_kosong based on id
 		$this->db->where('Username_Dokter',$id);
-		$this->db->update('jadwal_kosong',$data);
+		$this->db->update('jadwal_kosong',$data);*/
 	}
 	public function cariJadwalKosong()
 	{

@@ -24,27 +24,20 @@ class C_Pasien extends CI_Controller
 
 	public function V_LihatJadwalTemu()
 	{
-		$data['jadwaltemu'] = $this->M_Pasien->getAllJadwalTemu();
+		$data['jadwaltemu'] = $this->M_Pasien->JadwalTemu_list();
 		$this->load->view('Pasien/V_LihatJadwalTemu', $data);
 	}
 	
 	public function V_tambah()
 	{
-		//from library form_validation, set rules for Usernama_Pasien, Username_Dokter, email = required
 		$this->form_validation->set_rules('Penyakit','warning','required');
-		//conditon in form_validation, if user input form = false, then load page "tambah" again
 		if ($this->form_validation->run() == false){
 			$this->load->view('pasien/V_tambah');
 		}else{
 			$this->M_Pasien->tambahJadwalTemu();
 			$this->session->set_flashdata('flash','added success');
 			$this->V_LihatJadwalTemu();
-			//$this->index();
 		}
-		//else, when successed {
-		//call method "tambahDataPasien" in M_Pasien
-		//use flashdata to to show alert "added success"
-		//back to controller C_Pasien }
 	}
 
 	public function V_hapus()
@@ -60,24 +53,21 @@ class C_Pasien extends CI_Controller
 
 	public function V_ubah()
 	{
-		//from library form_validation, set rules for Username_Pasien, Usernama_Dokter, jam = required
-		$this->form_validation->set_rules('Username Pasien','warning','required');
-		$this->form_validation->set_rules('Username Dokter','warning','required');
-		$this->form_validation->set_rules('jam','warning','required');
-		//conditon in form_validation, if user input form = false, then load page "ubah" again
+		$this->form_validation->set_rules('Penyakit','warning','required');
 		if ($this->form_validation->run() == false){
-			$this->load->view('Pasien/V_ubah');
+			$this->load->view('pasien/V_ubah');
 		}else{
 			$this->M_Pasien->ubahJadwalTemu();
-			$this->session->set_flashdata('flash','data changed successfully');
+			$this->session->set_flashdata('flash','added success');
 			$this->V_LihatJadwalTemu();
-			//$this->index();
 		}
-		//else, when successed {
-		//call method "ubahDataPasien" in M_Pasien
-		//use flashdata to to show alert "data changed successfully"
-		//back to controller C_Pasien }
 	}
+
+	public function update(){
+		$data=$this->M_Pasien->ubahJadwalTemu();
+        echo json_encode($data);
+	}
+
 	public function getJadwalKosong(){
 		include 'connect.php';
 		$id=$this->session->userdata('session_nama');
@@ -103,11 +93,12 @@ class C_Pasien extends CI_Controller
 
 	public function getJadwalTemu() {
 		include 'connect.php';
-    	$queryResult = mysqli_query($connect,"SELECT * FROM jadwaltemu join dokter on dokter.username = jadwaltemu.Username_Dokter");
+    	$queryResult = mysqli_query($connect,"SELECT id,Username_Dokter,jam, Tanggal, Penyakit, nama FROM jadwaltemu join dokter on dokter.username = jadwaltemu.Username_Dokter");
 		$result 	 = array();
 		while($fethData=$queryResult->fetch_assoc()){
 			$result[]=$fethData;
 		}
+		//$result = $this->M_Pasien->JadwalTemu_list();
 		echo json_encode($result);
 	}
 
@@ -116,7 +107,7 @@ class C_Pasien extends CI_Controller
 
 		$id =$_POST["id"];
 		$result = array();
-		$queryResult = mysqli_query($connect,"SELECT * FROM jadwaltemu join dokter on dokter.username = jadwaltemu.Username_Dokter WHERE id=".$id);
+		$queryResult = mysqli_query($connect,"SELECT id,Username_Dokter,jam, Tanggal, Penyakit, nama FROM jadwaltemu join dokter on dokter.username = jadwaltemu.Username_Dokter WHERE id=".$id);
 		$fetchData = $queryResult->fetch_assoc();
 
 		$result=$fetchData;

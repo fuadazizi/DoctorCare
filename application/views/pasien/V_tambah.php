@@ -37,8 +37,7 @@
     <script src= "https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"> </script> 
 </head>
 <body>
-    <div style="position: relative; top: 110px;"> 
-    </div>
+    
     <div class="container">
         <div class="row mt-3">
             <div class="col">
@@ -63,14 +62,12 @@
                             </table>
 
                             <div class="form-group">
-                                <label for="nama">Username Pasien </label>
-                                <input type="text" class="form-control" id="Username_Pasien" name="Username_Pasien" disabled value= "<?php echo $this->session->userdata('session_username');?>">
+                                <label for="nama"> Nama Pasien </label>
+                                <input type="text" class="form-control" id="Username_Pasien" name="Username_Pasien" disabled value= "<?php echo $this->session->userdata('session_nama');?>">
                             </div>
                             <div class="form-group">
                                 <label for="nama"> Nama Dokter </label>
                                 <input type="text" class="form-control" id="nama" name="nama" disabled="">
-                                <label for="nama"> Username Dokter </label>
-                                <input type="text" class="form-control" id="username" name="username">
                             </div>
                             <div class="form-group">
                                 <label for="nama"> Jam </label>
@@ -81,33 +78,6 @@
                                 <input type="date" class="form-control" id="Tanggal" name="Tanggal">
                             </div>
 
-                            <!--<div class="form-group">
-                                <label for="nim">Pilih Dokter</label>
-                                <select class= "form-control" id="Nama_Dokter" name="Nama_Dokter">
-                                    <?php 
-                                        foreach ($jadwalkosong as $data) { ?>
-                                            <option name = "<?=$data['idjadwal']?>">
-                                            <?= $data['Username_Dokter']; ?>
-                                            </option>
-                                        <?php } ?>
-                                    ?>
-                                </select>
-                                <small class="form-text text-danger"><?= form_error('Username_Dokter') ?>.</small>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="jadwal">Jadwal kosong tersedia </label> <br>
-                                <select class= "form-control" id="Jadwal_Kosong" name="Jadwal_Kosong">
-                                    <?php 
-                                        foreach ($jadwalkosong as $data) { ?>
-                                            <option name = "<?=$data['idjadwal']?>">
-                                            <?= $data['tanggal']." pukul ".$data['jam']. " oleh dr. ".$data['nama'];  ?>
-                                            </option>
-                                        <?php } ?>
-                                    ?>
-                                </select>
-                                <small class="form-text text-danger"><?= form_error('jadwal') ?>.</small>
-                            </div>-->
                             <div class="form-group">
                                 <label for="text">Penyakit</label>
                                 <input type="text" class="form-control" id="Penyakit" name="Penyakit">
@@ -142,7 +112,6 @@
             });    
         });
         
-
         function loadData(){
             var dataHandler = $("#here");
             dataHandler.html("");

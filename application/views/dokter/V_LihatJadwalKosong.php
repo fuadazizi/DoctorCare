@@ -45,7 +45,6 @@
     <title>Jadwal Kosong</title>
 </head>
 <body>
-    <?php $this->load->view('template/navbar'); ?>
     <h1 class="text-center" style="margin: 10px;"> Lihat Jadwal Kosong </h1>
     <div id="view">
         <?php 
@@ -69,12 +68,12 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr><?php foreach ($jadwal_kosong as $jt) {
+                        <tr><?php foreach ($jadwal_kosong as $jk) {
                                 //echo $this->session->userdata('session_username');
-                            if ($jt['Username_Dokter'] == $this->session->userdata('session_username')) { ?>
-                                <td class="text-center"><?= $jt['nama']; ?></td>
-                                <td class="text-center"><?= $jt['jam']; ?></td>
-                                <td class="text-center"><?= $jt['Tanggal']; ?></td>
+                            if ($jk['Username_Dokter'] == $this->session->userdata('session_username')) { ?>
+                                <td class="text-center"><?= $jk['nama']; ?></td>
+                                <td class="text-center"><?= $jk['jam']; ?></td>
+                                <td class="text-center"><?= $jk['Tanggal']; ?></td>
                         </tr>
                         <?php
                                 } // endif
@@ -87,6 +86,7 @@
             ?>
     </div>
     <?php 
+        $this->load->view('template/navbar'); 
         $this->load->view('template/back');
         $this->load->view('template/footer');?>
 </body>

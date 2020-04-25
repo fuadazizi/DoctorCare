@@ -94,11 +94,12 @@
                                 var idjadwal = $("[name=idjadwal]").val();
                                 var jam = $("[name='jam']").val();
                                 var Tanggal = $("[name='Tanggal']").val();
-                                console.log(Tangga); 
+                                //console.log(Tangga); 
                                 $.ajax({
                                     type : "POST",
-                                    data : "idjadwal="+idjadwal+"&jam="+jam+"&Tanggal="+Tanggal,
                                     url : "http://localhost/doctorcare/index.php/C_Dokter/doUpdateData",
+                                    //datatype : "JSON",
+                                    data : "idjadwal="+idjadwal+"&jam="+jam+"&Tanggal="+Tanggal,
                                     success: function(result){
                                         var resultObj = JSON.parse(result);
                                         $("#error").html(resultObj.message);

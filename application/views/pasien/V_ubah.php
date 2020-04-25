@@ -32,17 +32,17 @@
     <!-- MDB core JavaScript -->
     <script type="text/javascript" src="<?= base_url(); ?>assets/MDBootstrap/js/mdb.min.js"></script> 
 
-    <script src= "https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"> </script> 
+    <title>Tambah Jadwal Temu</title>
 
-    <title> Ubah Jadwal Temu</title>
+    <script src= "https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"> </script> 
 </head>
 <body>
-    <div class="container" style="margin-top: 140px; margin-bottom: 70px;">
+    <div class="container">
         <div class="row mt-3">
-            <div class="col md-6">
-                <div class="card">
-                    <div class="card-header text-center" >
-                        Form Ubah Jadwal Temu
+            <div class="col">
+                <div class="card" style="position: relative; top: 90px;">
+                    <div class="card-header text-center">
+                        Form Tambah Jadwal Temu
                     </div>
                     <div class="card-body">
                         <form action="" method="post">
@@ -57,36 +57,36 @@
                                     </tr>
                                 </thead>
                                 <tbody id="here">
-
+                                    
                                 </tbody>
                             </table>
-                            <input type="hidden" name="id" id="id">
                             <div class="form-group">
-                                <label for="nama">Username_Pasien</label>
-                                <input type="text" class="form-control" id="Username_Pasien" name="Username_Pasien" disabled value= "<?php echo $this->session->userdata('session_username');?>">
-                                <small class="form-text text-danger"><?= form_error('Username_Pasien') ?>.</small>
+                                <input type="text" class="form-control" id="id" name="id" hidden="">
                             </div>
                             <div class="form-group">
-                                <label for="text">Username_Dokter</label>
-                                <input type="text" class="form-control" id="Username_Dokter" name="Username_Dokter" disabled>
-                                <small class="form-text text-danger"><?= form_error('Username_Dokter') ?>.</small>
+                                <label for="nama"> Nama Pasien </label>
+                                <input type="text" class="form-control" id="Username_Pasien" name="Username_Pasien" disabled value= "<?php echo $this->session->userdata('session_nama');?>">
                             </div>
                             <div class="form-group">
-                                <label for="text">Jam</label>
+                                <label for="nama"> Nama Dokter </label>
+                                <input type="text" class="form-control" id="nama" name="nama" disabled="">
+                                <input type="text" class="form-control" id="Username_Dokter" name="Username_Dokter" hidden="">
+                            </div>
+                            <div class="form-group">
+                                <label for="nama"> Jam </label>
                                 <input type="time" class="form-control" id="jam" name="jam">
-                                <small class="form-text text-danger"><?= form_error('jam') ?>.</small>
                             </div>
                             <div class="form-group">
-                                <label for="text">Tanggal</label>
+                                <label for="text"> Tanggal </label>
                                 <input type="date" class="form-control" id="Tanggal" name="Tanggal">
-                                <small class="form-text text-danger"><?= form_error('Tanggal') ?>.</small>
                             </div>
+
                             <div class="form-group">
                                 <label for="text">Penyakit</label>
                                 <input type="text" class="form-control" id="Penyakit" name="Penyakit">
                                 <small class="form-text text-danger"><?= form_error('Penyakit') ?>.</small>
                             </div>
-                            <button type="submit" name="tambah" class="btn btn-primary float-right">Ubah Data</button>
+                            <button type="submit" name="ubah" class="btn btn-primary float-right">Tambah Data</button>
                         </form>
                     </div>
                 </div>
@@ -94,10 +94,6 @@
         </div>
     </div> 
 
-    <script
-        src="https://code.jquery.com/jquery-3.5.0.min.js"
-        integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ="
-        crossorigin="anonymous"></script>
     <script type="text/javascript">
         loadData();
         
@@ -111,15 +107,14 @@
                 success: function(result){
                     var resultObj = JSON.parse(result);
                     $("[name='id']").val(resultObj.id);
-                    $("[name='Username_Pasien']").val(resultObj.Username_Pasien);
-                    $("[name='Username_Dokter']").val(resultObj.Username_Dokter);
+                    $("[name='nama']").val(resultObj.nama);
+                    $("[name='username']").val(resultObj.Username_Dokter);
                     $("[name='jam']").val(resultObj.jam);
                     $("[name='Tanggal']").val(resultObj.Tanggal);
-                    $("[name='Penyakit']").val(resultObj.Penyakit);
+                    $("[name='Penyakit").val(resultObj.Penyakit);
                 }
             });    
-        });
-        
+        }); 
 
         function loadData(){
             var dataHandler = $("#here");
@@ -141,6 +136,8 @@
             }
             });
         }
+
+
     </script>
 
     <?php 

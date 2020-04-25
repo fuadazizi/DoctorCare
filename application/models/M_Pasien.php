@@ -5,7 +5,6 @@ class M_Pasien extends CI_model
 	{
 		//use query builder to get data table "jadwaltemu"
 		return $this->db->get('jadwaltemu')->result_array();
-
 	}
 	public function tambahJadwalTemu()
 	{
@@ -16,8 +15,6 @@ class M_Pasien extends CI_model
 			"Tanggal" => $this->input->post('Tanggal', true),
 			"Penyakit" => $this->input->post('Penyakit', true),
 		];
-
-		//use query builder to insert $data to table "jadwaltemu"
 		$this->db->insert('jadwaltemu',$data);
 	}
 	public function hapusJadwalTemu($id)
@@ -37,19 +34,18 @@ class M_Pasien extends CI_model
 	{
 		$data = [
 			"id" => $this->input->post('id',true),
+			"Username_Pasien" => $this->session->userdata('session_username'),
+			"Username_Dokter" => $this->input->post('Username_Dokter'),
 			"jam" => $this->input->post('jam', true),
 			"Tanggal" => $this->input->post('Tanggal', true),
 			"Penyakit" => $this->input->post('Penyakit', true),
 		];
-		//use query builder class to update data jadwaltemu based on id
-		/*$query = "UPDATE jadwaltemu SET 
-									jam = '$data['jam']',
-									Tanggal = '$data['Tanggal']',
-									Penyakit = '$data['Penyakit']',
-				  WHERE id = $data['id']";	
-		return $this->db->query($query)->result_array();*/
-		$this->db->where('id','55');
-		$this->db->update('jadwaltemu',$data);
+		$query = "UPDATE jadwaltemu SET 
+									jam = '".$data['jam']."',
+									Tanggal = '".$data['Tanggal']."',
+									Penyakit = '".$data['Penyakit']."'
+				  WHERE id = ".$data['id'];
+		return $this->db->query($query);
 	}
 	public function cariJadwalTemu()
 	{
@@ -61,5 +57,12 @@ class M_Pasien extends CI_model
 		$this->db->or_like('Tanggal',$keyword);
 		return $this->db->get('jadwaltemu')->result_array();
 		//return data jadwaltemu that has been searched
+	}
+
+	public function JadwalTemu_list()
+	{
+		$result = $this->db->query("SELECT * FROM jadwaltemu join dokter on dokter.username = jadwaltemu.Username_Dokter");
+        //$result=$this->db->get('jadwaltemu');
+        return $result->result_array();
 	}
 }
