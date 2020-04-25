@@ -63,7 +63,6 @@ class login extends CI_controller {
                     $this->session->set_userdata('session_status','pasien');
                     //$this->load->view('template/header');
                     $data['jadwaltemu'] = $this->M_Pasien->getAllJadwalTemu();
-                    $data['dokterList'] = $this->dokter_model->get_all_dokter();
                     $this->load->view('pasien/V_UtamaPasien', $data);
                 }else{  // jika username dan password tidak ditemukan atau salah
                     $url=base_url();

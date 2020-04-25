@@ -53,4 +53,10 @@ class dokter_model extends CI_Model{
         return $result;
     }
      
+
+    public function get_all_dokter() {
+		$this->db->from('dokter');
+		$query = $this->db->get();
+		return $query->result();
+	}
 }
