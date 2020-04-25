@@ -93,16 +93,16 @@
                             function uj(){
                                 var idjadwal = $("[name=idjadwal]").val();
                                 var jam = $("[name='jam']").val();
-                                var Tanggal = $("[name='Tanggal']").val();
-                                //console.log(Tangga); 
+                                var Tangga = $("[name='Tanggal']").val();
+                                console.log(Tangga); 
                                 $.ajax({
                                     type : "POST",
+                                    data : "idjadwal="+idjadwal+"&jam="+jam+"&Tangga="+Tangga,
                                     url : "http://localhost/doctorcare/index.php/C_Dokter/doUpdateData",
-                                    //datatype : "JSON",
-                                    data : "idjadwal="+idjadwal+"&jam="+jam+"&Tanggal="+Tanggal,
                                     success: function(result){
                                         var resultObj = JSON.parse(result);
                                         $("#error").html(resultObj.message);
+
                                         loadData();
                                     }
                                 });
@@ -118,7 +118,6 @@
                                     url : "http://localhost/doctorcare/index.php/C_Dokter/updateData",
                                     success: function(result){
                                         var resultObj = JSON.parse(result);
-
                                         $("[name='idjadwal']").val(resultObj.idjadwal);
                                         $("[name='jam']").val(resultObj.jam);
                                         $("[name='Tanggal']").val(resultObj.Tanggal);
@@ -141,7 +140,7 @@
                                     $.each(resultObj,function(key,val){
 
                                         var newRow= $("<tr>");
-                                        newRow.html("<td>"+val.nama+"</td><td>"+val.jam+"</td><td>"+val.Tanggal+"</td><td><button class='select' id='"+val.idjadwal+"'>Select</button></td>");
+                                        newRow.html("<td>"+val.Username_Dokter+"</td><td>"+val.jam+"</td><td>"+val.Tanggal+"</td><td><button class='select' id='"+val.idjadwal+"'>Select</button></td>");
 
                                         dataHandler.append(newRow);
                                     })

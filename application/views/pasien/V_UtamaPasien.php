@@ -57,6 +57,18 @@
             width: 90%;
 		}
 
+        #docicon{
+            width: 5%;
+            
+        }
+
+        #viewdoc{
+            position: fixed;
+            right: 400px;
+            top:15px;
+            width: 20%;
+        }
+
 	</style>
 
 	<title> Selamat Datang di Doctor Care </title>
@@ -72,6 +84,11 @@
             $this->load->view('template/navbar');
         ?>
         </div>
+
+        <div id="viewdoc">
+            <button class="btn btn-default btn-sm" style=""> <img src="<?= base_url(); ?>/assets/pic/doctor-siluet.png" id="docicon"> Lihat Tim dokter kami </button>
+        </div>
+
         <div class="card-deck" id="group">
             <a href="<?= site_url('C_Pasien/V_tambah/'); ?>"> <div class="card bg-dark text-black" id="pict">
                 <img src="<?= base_url(); ?>/assets/pic/doctor-buat.jpg" class="card-img" alt="..." >

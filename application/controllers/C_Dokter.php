@@ -34,49 +34,6 @@ class C_Dokter extends CI_Controller
 		echo json_encode($result);
 	}
 
-	public function updateData(){
-		include 'connect.php';
-
-		$idjadwal =$_POST["idjadwal"];
-		$result = array();
-		$queryResult = mysqli_query($connect,"SELECT * FROM jadwal_kosong WHERE idjadwal=".$idjadwal);
-		$fetchData = $queryResult->fetch_assoc();
-
-		$result=$fetchData;
-		echo json_encode($result);
-	}
-
-	public function doUpdateData(){
-		include 'connect.php';
-
-		$result['message']="";
-		$idjadwal=$_POST['idjadwal'];
-		$jam=$_POST['jam'];
-		$Tanggal=$_POST['Tanggal'];
-
-		$data = [
-			'idjadwal'=>$idjadwal,
-			'Username_Dokter'=>$this->session->userdata('session_username'),
-			'jam'=>$jam,
-			'Tanggal'=>$Tanggal,
-		];
-
-		if($jam==""){
-			$result["mesagge"]="Jam must be filled!";
-		}else if($Tanggal=""){
-			$result["message"]="Tanggal must be filled!";
-		}else{
-			$queryResult=$this->load->M_Dokter->ubahJadwalKosong($data);
-			//mysqli_query($connect,"UPDATE jadwal_kosong SET jam='".$jam."',Tanggal='".$Tanggal."' WHERE idjadwal=".$idjadwal);
-			if($queryResult){
-				$result["message"]="SUCCESS!";
-			}else{
-				$result["message"]="FAILED!";
-			}
-		}
-		echo json_encode($result);
-	}
-
 	public function ViewData(){
 		$this->load->view('Dokter/V_ubah',);
 	}
@@ -136,4 +93,59 @@ class C_Dokter extends CI_Controller
         $this->load->helper('form_helper');	
         $this->load->view('V_lihatJadwalKosong', $data);
     }
+
+    //==================buat edit jadwal
+
+    public function updateData(){
+		include 'connect.php';
+
+		$idjadwal =$_POST["idjadwal"];
+		$result = array();
+		$queryResult = mysqli_query($connect,"SELECT * FROM jadwal_kosong WHERE idjadwal=".$idjadwal);
+		$fetchData = $queryResult->fetch_assoc();
+
+		$result=$fetchData;
+		echo json_encode($result);
+	}
+
+	public function doUpdateData(){
+		include 'connect.php';
+
+		$result['message']=" ";
+
+		$idjadwal=$_POST["idjadwal"];
+		$jam=$_POST['jam'];
+		$Tangga=$_POST['Tangga'];
+
+		if($jam==""){
+			$result["mesagge"]="Jam must be filled!";
+		}else if($Tanggal=""){
+			$result["message"]="Tanggal must be filled!";
+		}else{
+
+			$queryResult=mysqli_query($connect,"UPDATE `jadwal_kosong` SET `jam` = '$jam', `Tanggal` = '$Tangga' WHERE `jadwal_kosong`.`idjadwal` = '$idjadwal';");
+			if($queryResult){
+				$result["message"]="SUCCESS!";
+			}else{
+				$result["message"]="FAILED!";
+			}
+		}
+		echo json_encode($result);
+	}
+
+    //==================buat delete jadwal
+    public function deleteData(){
+		include 'connect.php';
+
+		$result['message']=" ";
+		$idjadwal =$_POST["idjadwal"];
+		$result = array();
+		$queryResult = mysqli_query($connect,"DELETE FROM jadwal_kosong WHERE idjadwal=".$idjadwal);
+		if($queryResult){
+				$result["message"]="Data Berhasil Di Hapus!";
+			}else{
+				$result["message"]="Data Gagal Di Hapus!";
+			}
+		echo json_encode($result);
+	}
 }
