@@ -5,7 +5,7 @@ class dokter extends CI_Controller{
         $this->load->model('dokter_model');
     }
     function index(){
-        $this->load->view('dokter_view');
+        $this->load->view('dokter/V_KelolaDokter');
     }
  
     function akun_data(){
