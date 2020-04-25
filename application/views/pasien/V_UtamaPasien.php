@@ -145,7 +145,7 @@
       aria-hidden="true">
 
       <!-- Add class .modal-full-height and then add class .modal-right (or other classes from list above) to set a position to the modal -->
-      <div class="modal-dialog modal-full-height modal-right" role="document" style="width: 1000px;">
+      <div class="modal-dialog modal-full-height modal-right" role="document" style="width: 1200px;">
 
         <div class="modal-content">
           <div class="modal-header" style="background-color: #f6fdde;">

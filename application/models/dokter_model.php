@@ -1,7 +1,8 @@
 <?php
 class dokter_model extends CI_Model{
  
-    function dokter_data(){
+    function dokter_data($username){
+    	$this->db->where('username', $username);
         $hasil=$this->db->get('dokter');
         return $hasil->result();
     }
@@ -32,7 +33,6 @@ class dokter_model extends CI_Model{
         $telp=$this->input->post('telp');
         $username=$this->input->post('username');
         $password=$this->input->post('password');
-        
  
         $this->db->set('nama', $nama);
         $this->db->set('jeniskelamin', $jeniskelamin);
@@ -42,6 +42,8 @@ class dokter_model extends CI_Model{
         $this->db->set('telp', $telp);
         $this->db->set('username', $username);
         $this->db->set('password', $password);
+        $this->db->where('username', $username);
+        $this->db->where('username',$username);
         $result=$this->db->update('dokter');
         return $result;
     }
@@ -53,4 +55,10 @@ class dokter_model extends CI_Model{
         return $result;
     }
      
+
+    public function get_all_dokter() {
+		$this->db->from('dokter');
+		$query = $this->db->get();
+		return $query->result();
+	}
 }

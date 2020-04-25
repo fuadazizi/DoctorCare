@@ -8,8 +8,8 @@ class dokter extends CI_Controller{
         $this->load->view('dokter/V_KelolaDokter');
     }
  
-    function akun_data(){
-        $data=$this->dokter_model->dokter_data();
+    function akun_data($username){
+        $data=$this->dokter_model->dokter_data($username);
         echo json_encode($data);
     }
  
