@@ -28,5 +28,55 @@ class pasien_model extends CI_Model {
 		return $this->db->affeccted_rows();
 
 	}
+
+	function pasien_data(){
+        $hasil=$this->db->get('pasien');
+        return $hasil->result();
+    }
+ 
+    function save_data(){
+        $data = array(
+                'nama' => $this->input->post('nama'),
+                'jeniskelamin' => $this->input->post('jeniskelamin'),
+                'alamat' => $this->input->post('alamat'),
+                'email' => $this->input->post('email'),
+                'telp' => $this->input->post('telp'),
+                'username' => $this->input->post('username'),
+                'password' => $this->input->post('password'),
+
+            
+            );
+        $result=$this->db->insert('pasien',$data);
+        return $result;
+    }
+ 
+    function update_data(){
+        $nama=$this->input->post('nama');
+        $jeniskelamin=$this->input->post('jeniskelamin');
+        $alamat=$this->input->post('alamat');
+        $email=$this->input->post('email');
+        $telp=$this->input->post('telp');
+        $username=$this->input->post('username');
+        $password=$this->input->post('password');
+        
+ 
+        $this->db->set('nama', $nama);
+        $this->db->set('jeniskelamin', $jeniskelamin);
+        $this->db->set('alamat', $alamat);
+        $this->db->set('email', $email);
+        $this->db->set('telp', $telp);
+        $this->db->set('username', $username);
+        $this->db->set('password', $password);
+        $this->db->where('username',$username);	
+        $result=$this->db->update('pasien');
+        return $result;
+    }
+ 
+    function delete_data(){
+        $username=$this->input->post('username');
+        $this->db->where('username', $username);
+        $result=$this->db->delete('pasien');
+        return $result;
+    }
 	
 } 

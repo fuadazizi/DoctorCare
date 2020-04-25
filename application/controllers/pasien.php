@@ -48,4 +48,28 @@
  		echo json_encode(array("status" => TRUE));
  	}
 
+ 	/*function index(){
+        $this->load->view('pasien_view');
+    }*/
+ 
+    function akun_data(){
+        $data=$this->pasien_model->pasien_data();
+        echo json_encode($data);
+    }
+ 
+    function save(){
+        $data=$this->pasien_model->save_data();
+        echo json_encode($data);
+    }
+ 
+    function update(){
+        $data=$this->pasien_model->update_data();
+        echo json_encode($data);
+    }
+ 
+    function delete(){
+        $data=$this->pasien_model->delete_data();
+        echo json_encode($data);
+    }
+
 } 

@@ -139,13 +139,19 @@
         }
     </script>
 
+    <style type="text/css">
+        .modal-dialog.modal-dialog-scrollable {
+            width: 1500px;
+        }
+    </style>
+
     <!-----------------Full Height Modal Right ----------------------------------->
 
     <div class="modal fade right" id="ListDokter" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
       aria-hidden="true">
 
       <!-- Add class .modal-full-height and then add class .modal-right (or other classes from list above) to set a position to the modal -->
-      <div class="modal-dialog modal-full-height modal-right" role="document" style="width: 1200px;">
+      <div class="modal-dialog modal-dialog-scrollable mw-100 w-75" role="document">
 
         <div class="modal-content">
           <div class="modal-header" style="background-color: #f6fdde;">
