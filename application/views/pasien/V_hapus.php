@@ -35,33 +35,44 @@
     <title>Hapus Jadwal Temu</title>
 </head>
 <body>
- <table class="table mt-5">
-    <thead>
-        <tr>
-            <th class="text-center" scope="col">Username_Pasien</th>
-            <th class="text-center" scope="col">Username_Dokter</th>
-            <th class="text-center" scope="col">Jam</th>
-            <th class="text-center" scope="col">Tanggal</th>
-            <th class="text-center" scope="col">Penyakit</th>
-            <th class="text-center" scope="col">AKSI</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr><?php foreach ($jadwaltemu as $jt) : ?>
-            <td class="text-center"><?= $jt['Username_Pasien']; ?></td>
-            <td class="text-center"><?= $jt['Username_Dokter']; ?></td>
-            <td class="text-center"><?= $jt['jam']; ?></td>
-            <td class="text-center"><?= $jt['Tanggal']; ?></td>
-            <td class="text-center"><?= $jt['Penyakit']; ?></td>
-            <td class="text-center">
-                <a href="<?= base_url(); ?>C_Pasien/V_hapus/<?= $jt['id'] ?>" class="badge badge-danger float-center" onclick="return confirm('Apakah anda yakin menghapus data ini?');" ?>hapus</a>
-            </td>
-        </tr>
-        <?php endforeach ?>
-    </tbody>
-</table>
-    <?php 
+    <div style="position: relative; top: 100px;">
+        <table class="table mt-5" >
+            <thead>
+                <tr>
+                    <th class="text-center" scope="col">Username_Pasien</th>
+                    <th class="text-center" scope="col">Username_Dokter</th>
+                    <th class="text-center" scope="col">Jam</th>
+                    <th class="text-center" scope="col">Tanggal</th>
+                    <th class="text-center" scope="col">Penyakit</th>
+                    <th class="text-center" scope="col">AKSI</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><?php foreach ($jadwaltemu as $jt) : ?>
+                    <?php 
+                        $url = site_url()."/C_Pasien/doDelete/".$jt['id']; 
+                        //$_SESSION['idDel'] = $jt['id'];
+                    ?>
+                    <td class="text-center"><?= $jt['Username_Pasien']; ?></td>
+                    <td class="text-center"><?= $jt['Username_Dokter']; ?></td>
+                    <td class="text-center"><?= $jt['jam']; ?></td>
+                    <td class="text-center"><?= $jt['Tanggal']; ?></td>
+                    <td class="text-center"><?= $jt['Penyakit']; ?></td>
+                    <td class="text-center">
+                        <a href="<?= $url ?>" class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin ingin menghapus jadwal ini?')">
+                            <i class="fa fa-trash"></i>
+                        </a>
+                        
+                        <!--del('Apakah anda yakin menghapus data ini?');-->
+                    </td>
+                </tr>
+                <?php endforeach ?>
+            </tbody>
+        </table>
+        <?php 
+        $this->load->view('template/navbar');
         $this->load->view('template/back'); 
         $this->load->view('template/footer');?>
+    </div>
 </body>
 </html>

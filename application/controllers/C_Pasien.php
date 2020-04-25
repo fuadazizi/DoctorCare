@@ -45,10 +45,8 @@ class C_Pasien extends CI_Controller
 		$data['jadwaltemu'] = $this->M_Pasien->getAllJadwalTemu();
 		$this->load->view('Pasien/V_hapus', $data);
 		//call method hapusDataPasien with parameter id from M_Pasien
-		$this->M_Pasien->hapusJadwalTemu($id);
 		//use flashdata to show alert "dihapus"
 		$this->session->set_flashdata('flash','dihapus');
-		//back to controller C_Pasien
 	}
 
 	public function V_ubah()
@@ -68,6 +66,7 @@ class C_Pasien extends CI_Controller
         echo json_encode($data);
 	}
 
+	//===============untuk tambah jadwal
 	public function getJadwalKosong(){
 		include 'connect.php';
 		$id=$this->session->userdata('session_nama');
@@ -91,6 +90,7 @@ class C_Pasien extends CI_Controller
 		echo json_encode($result);
 	}
 
+	//================untuk edit jadwal
 	public function getJadwalTemu() {
 		include 'connect.php';
     	$queryResult = mysqli_query($connect,"SELECT id,Username_Dokter,jam, Tanggal, Penyakit, nama FROM jadwaltemu join dokter on dokter.username = jadwaltemu.Username_Dokter");
@@ -112,5 +112,11 @@ class C_Pasien extends CI_Controller
 
 		$result=$fetchData;
 		echo json_encode($result);
+	}
+
+	//=================untuk delete jadwal
+	public function doDelete($id){
+		$result = $this->M_Pasien->hapusJadwalTemu($id);
+		$this->V_hapus();
 	}
 }

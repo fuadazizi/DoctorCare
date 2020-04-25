@@ -68,6 +68,7 @@
                             <div class="form-group">
                                 <label for="nama"> Nama Dokter </label>
                                 <input type="text" class="form-control" id="nama" name="nama" disabled="">
+                                <input type="text" class="form-control" id="Username_Dokter" name="Username_Dokter" hidden="">
                             </div>
                             <div class="form-group">
                                 <label for="nama"> Jam </label>
@@ -105,7 +106,7 @@
                     var resultObj = JSON.parse(result);
                     $("[name='idjadwal']").val(resultObj.idjadwal);
                     $("[name='nama']").val(resultObj.nama);
-                    $("[name='username']").val(resultObj.Username_Dokter);
+                    $("[name='Username_Dokter']").val(resultObj.Username_Dokter);
                     $("[name='jam']").val(resultObj.jam);
                     $("[name='Tanggal']").val(resultObj.tanggal);
                 }

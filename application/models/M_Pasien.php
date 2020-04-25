@@ -10,7 +10,7 @@ class M_Pasien extends CI_model
 	{
 		$data = [
 			"Username_Pasien" => $this->session->userdata('session_username'),
-			"Username_Dokter" => $this->input->post('username', true),
+			"Username_Dokter" => $this->input->post('Username_Dokter', true),
 			"jam" => $this->input->post('jam', true),
 			"Tanggal" => $this->input->post('Tanggal', true),
 			"Penyakit" => $this->input->post('Penyakit', true),
@@ -22,7 +22,6 @@ class M_Pasien extends CI_model
 		//use query builder to delete data based on id 
 		$this->db->where('id',$id);
 		$this->db->delete('jadwaltemu');
-
 	}
 	public function getJadwalTemuById($id)
 	{
