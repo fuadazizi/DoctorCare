@@ -40,15 +40,11 @@
  			'nama' => $this->input->post('nama'),
  			'jeniskelamin' => $this->input->post('jeniskelamin'),
  			'alamat' => $this->input->post('alamat'),
-
  			'spesialis' => $this->input->post('spesialis'),
  			'email' => $this->input->post('email'),
  			'telp' => $this->input->post('telp'),
-			'username' => $this->input->post('username'),
- 			'password' => $this->input->post('password'),
  		);
  		$this->dokter_model->dokter_update(array('username'=> $this->input->post('username')), $data);
-
  		echo json_encode(array("status" => TRUE));
  	}
 } 

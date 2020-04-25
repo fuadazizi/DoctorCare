@@ -15,7 +15,7 @@
 		<br> <br> <br>
 		<h3>Akun Dokter</h3>
 
-		<button class="btn btn-success" onclick="add_dokter()"><i class="glyphicon glyphicon-plus"></i>Lengkapi Data</button>
+		<button class="btn btn-success" onclick="editakun()"><i class="glyphicon glyphicon-plus"></i>Lengkapi Data</button>
 		<br>
 		<br> 
 
@@ -125,8 +125,8 @@
 		var save_method;
 		var table;
 
-		function add_dokter() {
-			save_method = 'add';
+		function editakun() {
+			save_method = 'edit';
 			$('#form')[0].reset();
 			$('#modal_form').modal('show');
 		}
@@ -134,8 +134,8 @@
 		function save() {
 			var url;
 
-			if (save_method == 'add') {
-				url = '<?php echo site_url('index.php/dokter/dokter_add') ;?>';	
+			if (save_method == 'edit') {
+				url = '<?php echo site_url('index.php/dokter/dokter_update') ;?>';	
 			}else {
 				url = '<?php echo site_url('index.php/dokter/dokter_update') ;?>';
 			}
@@ -188,17 +188,21 @@
     		<div class="modal-content">
       			<div class="modal-header">
         			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        			<h4 class="modal-title">Lengkapi Data Diri</h4>
+        			<h4 class="modal-title w-100" style="text-align: center;">Edit Akun Anda</h4>
       			</div>
       			<div class="modal-body form">
-      			<form action="#" id="form" class="form-horizontal">
+      			<form action="#" id="form" class="form-horizontal" method="POST">
       				 <input type="hidden" value="" name="username">
 
  					 <div class="form-body">
 		      			<div class="form-group">
 		      				<label class="control-label col-md-3">Nama</label>
 		      				<div class="col-md-9">
+<<<<<<< Updated upstream
 		      					<input type="text" name="nama" placeholder="Nama Lengkap" class="form-control">
+=======
+		      					<input type="text" name="nama" placeholder="Nama Lengkap" class="form-control" value="<?php echo $this->session->userdata('session_nama'); ?>">
+>>>>>>> Stashed changes
 		      				</div>
 		      			</div>
 		      		</div>     
@@ -207,9 +211,9 @@
 		      			<div class="form-group">
 		      				<label class="control-label col-md-3">Jenis Kelamin</label>
 		      				<div class="col-md-9">
-		      					<input type="radio" id="male" name="jeniskelamin" value="male">
+		      					<input type="radio" id="male" name="jeniskelamin" value="male" required="">
 							    <label for="male">Pria</label>
-							    <input type="radio" id="female" name="jeniskelamin" value="female">
+							    <input type="radio" id="female" name="jeniskelamin" value="female" required="">
 							    <label for="female">Wanita</label><br>
 		      				</div>
 		      			</div>
@@ -220,7 +224,7 @@
       					<div class="form-group">
       						<label class="control-label col-md-3">Alamat</label>
       						<div class="col-md-9">
-      							<input type="text" name="alamat" placeholder="Alamat Lengkap" class="form-control">
+      							<input type="text" name="alamat" placeholder="Alamat Lengkap" class="form-control" required="">
       						</div>
       					</div>
       				</div>
@@ -230,7 +234,7 @@
       					<div class="form-group">
       						<label class="control-label col-md-3">Spesialis</label>
       						<div class="col-md-9">
-      							<input type="text" name="spesialis" placeholder="Spesialis" class="form-control">
+      							<input type="text" name="spesialis" placeholder="Spesialis" class="form-control" required="">
       						</div>
       					</div>
       				</div>
@@ -240,7 +244,7 @@
       					<div class="form-group">
       						<label class="control-label col-md-3">Email</label>
       						<div class="col-md-9">
-      							<input type="text" name="email" placeholder="Email" class="form-control">
+      							<input type="text" name="email" placeholder="Email" class="form-control" required="">
       						</div>
       					</div>
       				</div>
@@ -249,7 +253,7 @@
       					<div class="form-group">
       						<label class="control-label col-md-3">Telepon</label>
       						<div class="col-md-9">
-      							<input type="text" name="telp" placeholder="Telepon" class="form-control">
+      							<input type="text" name="telp" placeholder="Telepon" class="form-control" required="">
       						</div>
       					</div>
       				</div>
