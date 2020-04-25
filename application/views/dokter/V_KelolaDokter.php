@@ -2,26 +2,7 @@
 <html>
 <head>
 	<title>DoctorCare</title>
-	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<!-- Font Awesome -->
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-	<!-- Bootstrap core CSS -->
-	<link href="<?= base_url(); ?>assets/MDBootstrap/css/bootstrap.min.css" rel="stylesheet">
-	<!-- Material Design Bootstrap -->
-	<link href="<?= base_url(); ?>assets/MDBootstrap/css/mdb.min.css" rel="stylesheet">
-	<!-- Your custom styles (optional) -->
-	<link href="<?= base_url(); ?>assets/MDBootstrap/css/style.css" rel="stylesheet">
 
-	<script type="text/javascript" src="<?= base_url(); ?>assets/MDBootstrap/js/jquery-3.4.1.min.js"></script>
-	<!-- Bootstrap tooltips -->
-	<script type="text/javascript" src="<?= base_url(); ?>assets/MDBootstrap/js/popper.min.js"></script>
-	<!-- Bootstrap core JavaScript -->
-	<script type="text/javascript" src="<?= base_url(); ?>assets/MDBootstrap/js/bootstrap.min.js"></script>
-	<!-- MDB core JavaScript -->
-	<script type="text/javascript" src="<?= base_url(); ?>assets/MDBootstrap/js/mdb.min.js"></script> 
 	<link rel="stylesheet" href="<?php echo base_url('assets/bootstrap/css/bootstrap.min.css') ;?>">
 	<link rel="stylesheet" href="<?php echo base_url('assets/datatables/css/dataTables.bootstrap.css') ;?>">
 	<link rel="icon" href="<?= base_url(); ?>/assets/pic/favicon.png" type="image/png">
@@ -47,12 +28,12 @@
 			?>
 
 			<tr>
-				<th width="200px">Nama</th>
+				<th width="300px">Nama</th>
 				<th><?php echo $doc->nama;?></th>
-			 	<td width="100px">
-					<button class="btn btn-warning" onclick="edit_dokter(<?php echo $doc->nama; ?>)"><i class="glyphicon glyphicon-pencil"></i></button>
-					<button class="btn btn-danger"><i class="glyphicon glyphicon-remove"></i></button>
-				</td>
+				 	<td width="100px">
+						<button class="btn btn-warning" onclick="edit_dokter(<?php echo $doc->nama; ?>)"><i class="glyphicon glyphicon-pencil"></i></button>
+						<button class="btn btn-danger"><i class="glyphicon glyphicon-remove"></i></button>
+					</td>
 			</tr>
 
 			<tr>
@@ -121,13 +102,12 @@
 			</tr>
 
 		</table>
+ 
 	</div>
 	<?php 
- 		$this->load->view('template/navbar');
 		$this->load->view('template/back');
 		$this->load->view('template/footer');
 	?>
-	
 
 
 
@@ -217,7 +197,7 @@
 		      			<div class="form-group">
 		      				<label class="control-label col-md-3">Nama</label>
 		      				<div class="col-md-9">
-		      					<input type="text" name="nama" placeholder="Nama Lengkap" class="form-control" value="<?= $this->session->userdata('session_name'); ?>">
+		      					<input type="text" name="nama" placeholder="Nama Lengkap" class="form-control">
 		      				</div>
 		      			</div>
 		      		</div>     
@@ -280,5 +260,6 @@
         	</div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal  --> 
+	<?php $this->load->view('template/back') ?>
 </body>
 </html>
