@@ -7,6 +7,7 @@
 		<link rel="icon" href="<?= base_url(); ?>/assets/pic/favicon.png" type="image/png">
 		<title>Register</title>
 	</head>
+	<?php $this->session->sess_destroy(); ?>
 	<body class="body">
 		<form action="<?= site_url('register/register') ?>" method="post" id="LoginForm">
 			<h2>Register</h2>

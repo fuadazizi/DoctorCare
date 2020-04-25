@@ -7,6 +7,7 @@ class login extends CI_controller {
 		parent::__construct();
 		$this->load->model('Login_Model');
 		$this->load->model('M_Pasien');
+        $this->load->model('dokter_model');
 	}
 
 	public function index()
@@ -61,8 +62,8 @@ class login extends CI_controller {
                     $this->session->set_userdata('session_username',$data['username']);
                     $this->session->set_userdata('session_status','pasien');
                     //$this->load->view('template/header');
-                    $data['judul'] = "Selamat datang ".$data['nama'];
                     $data['jadwaltemu'] = $this->M_Pasien->getAllJadwalTemu();
+                    $data['dokterList'] = $this->dokter_model->get_all_dokter();
                     $this->load->view('pasien/V_UtamaPasien', $data);
                 }else{  // jika username dan password tidak ditemukan atau salah
                     $url=base_url();
@@ -72,6 +73,7 @@ class login extends CI_controller {
             } 
         }
     }
+
     function logout(){
         $this->session->sess_destroy();
         $url=base_url('');

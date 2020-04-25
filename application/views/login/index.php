@@ -7,6 +7,7 @@
 		<link rel="icon" href="<?= base_url(); ?>/assets/pic/favicon.png" type="image/png">
 		<title>Login</title>
 	</head>
+	<?php $this->session->sess_destroy(); ?>
 	<body class ="body">
 		<form action="<?= site_url('login/auth') ?>" method="post" id="LoginForm">
 			<h2>Login</h2>

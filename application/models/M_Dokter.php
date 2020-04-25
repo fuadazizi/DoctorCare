@@ -7,12 +7,13 @@ class M_Dokter extends CI_model
 	public function getAllJadwalKosong()
 	{
 		//use query builder to get data table "jadwal_kosong"
-		return $this->db->get('jadwal_kosong')->result_array();
+		$query = "Select idjadwal, Username_Dokter, nama, jam, tanggal from jadwal_kosong join dokter on jadwal_kosong.Username_Dokter = dokter.username";
+		return $this->db->query($query)->result_array();
 	}
 
 	public function getJadwalKosongByUsername() {
-		$username = $this->session->userdata('session_username');
-		return $this->db->from('jadwal_kosong')->where('Username_Dokter',$username)->get()->result_array();
+		$query = "Select * from jadwal_kosong join dokter on jadwal_kosong.Username_Dokter = dokter.username";
+		return $this->db->query($query)->result_array();
 	}
 
 	public function tambahJadwalKosong()
@@ -39,16 +40,23 @@ class M_Dokter extends CI_model
 		$this->db->from('jadwal_kosong')->where('Username_Dokter',$id)->get()->result_array();
 	}
 
-	public function ubahJadwalKosong($id)
+	public function ubahJadwalKosong($data)
 	{
-		$data = [
+		$query = "UPDATE jadwal_kosong SET 
+									Username_Dokter = '".$data['Username_Dokter'].",
+									jam = '".$data['jam']."',
+									Tanggal = '".$data['Tanggal']."'
+				  WHERE idjadwal = ".$data['idjadwal'];
+		return $this->db->query($query);
+
+		/*$data = [
 			"Username_Dokter" => $this->input->post('Username_Dokter', true),
 			"jam" => $this->input->post('jam', true),
 			"Tanggal" => $this->input->post('Tanggal', true)
 		];
 		//use query builder class to update data jadwal_kosong based on id
 		$this->db->where('Username_Dokter',$id);
-		$this->db->update('jadwal_kosong',$data);
+		$this->db->update('jadwal_kosong',$data);*/
 	}
 	public function cariJadwalKosong()
 	{
