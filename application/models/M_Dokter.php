@@ -2,16 +2,23 @@
 class M_Dokter extends CI_model
 {
 
+	// get data dropdown
+    
 	public function getAllJadwalKosong()
 	{
 		//use query builder to get data table "jadwal_kosong"
 		return $this->db->get('jadwal_kosong')->result_array();
-
 	}
+
+	public function getJadwalKosongByUsername() {
+		$username = $this->session->userdata('session_username');
+		return $this->db->from('jadwal_kosong')->where('Username_Dokter',$username)->get()->result_array();
+	}
+
 	public function tambahJadwalKosong()
 	{
 		$data = [
-			"Username_Dokter" => $this->input->post('Username_Dokter', true),
+			"Username_Dokter" => $this->session->userdata('session_username'),
 			"jam" => $this->input->post('jam', true),
 			"Tanggal" => $this->input->post('Tanggal', true),
 		];
@@ -29,7 +36,7 @@ class M_Dokter extends CI_model
 	public function getJadwalKosongById($id)
 	{
 		//get data jadwal_kosong based on id 
-		$this->db->where('id',$id);
+		$this->db->from('jadwal_kosong')->where('Username_Dokter',$id)->get()->result_array();
 	}
 
 	public function ubahJadwalKosong($id)
@@ -40,10 +47,10 @@ class M_Dokter extends CI_model
 			"Tanggal" => $this->input->post('Tanggal', true)
 		];
 		//use query builder class to update data jadwal_kosong based on id
-		$this->db->where('id',$id);
+		$this->db->where('Username_Dokter',$id);
 		$this->db->update('jadwal_kosong',$data);
 	}
-	public function cariDataJadwalKosong()
+	public function cariJadwalKosong()
 	{
 		$keyword = $this->input->post('keyword', true);
 		//use query builder class to search data jadwal_kosong based on keyword "Usernmae_Dokter" or "jam" or "tanggal" 

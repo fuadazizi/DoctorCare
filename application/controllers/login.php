@@ -31,13 +31,11 @@ class login extends CI_controller {
         if($this->session->userdata('session_login') == 'dokter') {
             $data=$cek_dokter->row_array();
             $this->load->view('dokter/V_UtamaDokter', $data);
-            $this->load->view('template/footer');
         } else if ($this->session->userdata('session_login') == 'pasien') {
             $data=$cek_pasien->row_array();
             $data['judul'] = "Selamat datang ".$data['nama'];
             $data['jadwaltemu'] = $this->M_Pasien->getAllJadwalTemu();
             $this->load->view('pasien/V_UtamaPasien', $data);
-            $this->load->view('template/footer');
         } else if ($this->session->userdata('session_login') == 'admin') {
 
         } else {
@@ -56,7 +54,6 @@ class login extends CI_controller {
                     $this->session->set_userdata('session_status','dokter');
                     //$this->load->view('template/header');
                     $this->load->view('dokter/V_UtamaDokter', $data);
-                    $this->load->view('template/footer');
                 }else if($cek_pasien->num_rows() > 0){ //jika login sebagai pasien
                     $data=$cek_pasien->row_array();
                     $this->session->set_userdata('session_login','pasien');
@@ -67,7 +64,6 @@ class login extends CI_controller {
                     $data['judul'] = "Selamat datang ".$data['nama'];
                     $data['jadwaltemu'] = $this->M_Pasien->getAllJadwalTemu();
                     $this->load->view('pasien/V_UtamaPasien', $data);
-                    $this->load->view('template/footer');
                 }else{  // jika username dan password tidak ditemukan atau salah
                     $url=base_url();
                     echo $this->session->set_flashdata('message','Username or Password incorrect.');

@@ -15,29 +15,37 @@
     <title>Tambah Jadwal Temu</title>
 </head>
 <body>
-    <?php $this->load->view('template/navbar');?>
+    <div style="position: relative; top: 110px;"> 
+        <?php 
+            $this->load->view('template/navbar');
+        ?>
+    </div>
     <div class="container">
         <div class="row mt-3">
             <div class="col">
-                <div class="card">
+                <div class="card" style="position: relative; top: 90px;">
                     <div class="card-header text-center">
                         Form Tambah Jadwal Kosong
                     </div>
                     <div class="card-body">
                         <form action="" method="post">
                             <div class="form-group">
-                                <label for="nim">Username_Dokter</label>
-                                <input type="text" class="form-control" id="Username_Dokter" name="Username_Dokter" disabled>
+                                <label for="nim">Nama Dokter</label>
+                                <input type="text" class="form-control" id="Username_Dokter" name="Username_Dokter" disabled value="<?php echo $this->session->userdata('session_nama');?>">
                                 <small class="form-text text-danger"><?= form_error('Username_Dokter') ?>.</small>
                             </div>
                             <div class="form-group">
                                 <label for="text">Jam</label>
-                                <input type="text" class="form-control" id="jam" name="jam">
+                                <div class="form-group">
+                                        <input type="time" class="form-control" id="jam" name="jam">
+                                </div>
                                 <small class="form-text text-danger"><?= form_error('jam') ?>.</small>
                             </div>
                             <div class="form-group">
                                 <label for="text">Tanggal</label>
-                                <input type="text" class="form-control" id="Tanggal"name="Tanggal">
+                                <div class="form-group">
+                                <input type="date" class="form-control" id="Tanggal"name="Tanggal">
+                                </div>
                                 <small class="form-text text-danger"><?= form_error('Tanggal') ?>.</small>
                             </div>
                             <button type="submit" name="tambah" class="btn btn-primary float-right">Tambah Data</button>
@@ -47,10 +55,9 @@
         </div>
     </div>
 </div> 
-
     <?php 
         $this->load->view('template/back'); 
-        $this->load->view('template/footer');?>
-
+        $this->load->view('template/footer');
+    ?>
 </body>
 </html>

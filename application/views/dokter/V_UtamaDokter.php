@@ -31,6 +31,7 @@
 
 		#group{
 			position: relative;
+			top: 150px;
 			margin: auto;
 			width: 90%;
 		}
@@ -39,15 +40,16 @@
 
 	<title> Selamat Datang di Doctor Care </title>
 </head>
-<body >
-	<?php 
-		$this->load->view('template/navbar');
-	?>
-	<div>
-		<div id="header">
-			<h2 style="margin: 0px 0px 40px 90px; padding: 10px;"> Selamat datang, <?php echo $this->session->userdata('session_username');?></h2>
-			<p style="margin: 0px 0px 40px 100px;"> Anda masuk sebagai dokter 
-			<br> Semoga hari anda menyenangkan </p>
+<body>
+	<div style="height: 120vh;">
+		
+		<div style="position: relative; top: 89px;"> 
+		<?php 
+			$data['person'] = "dokter";
+			$this->load->view('template/welcomebar',$data);
+			$this->load->view('template/slider'); 
+			$this->load->view('template/navbar');
+		?>
 		</div>
 
 		<div class="card-deck" id="group">
@@ -59,7 +61,7 @@
 				</div>
 			</div> </a>
 
-			<a href="<?= site_url('C_Dokter/V_ubah/'); ?>"> <div class="card bg-dark text-black" id="pict">
+			<a href="<?= site_url('C_Dokter/ViewData/'); ?>"> <div class="card bg-dark text-black" id="pict">
 				<img src="<?= base_url(); ?>/assets/pic/doctor-edit.jpg" class="card-img" alt="..." >
 				<div class="card-img-overlay">
 					<h4 class="card-title"> Edit jadwal kosong </h4>
@@ -84,6 +86,6 @@
 			</div> </a>
 		</div>
 	</div>
-	<?php $this->load->view('template/slider'); ?>
+	<?php $this->load->view('template/footer'); ?>
 </body>
 </html>

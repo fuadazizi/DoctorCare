@@ -1,31 +1,31 @@
 <style type="text/css">
   #carouselExampleControls{
     height: 40%;
-    width: 40%;
-    margin: 30px auto;
+    width: 100%;
   }
 
   h2{
     color:black;
     margin: 20px auto;
+    width: 90%;
   }
 </style>
 
-<h2> Artikel Hangat </h4>
+<h2> Feeds </h2>
 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active" id="item">
-      <img class="d-block w-100" src="https://media.suara.com/pictures/970x544/2020/04/08/44939-dokter-pasang-foto-pada-apd-supaya-dikenali-pasien-twitteratpaedsnursedanny.jpg" alt="First slide">
+      <img class="d-block w-100" src="https://platform24.com.au/wp-content/uploads/2018/01/Platform-24-IT-Solutions-Banner-1300x150.png" alt="First slide">
       <div class="carousel-caption d-none d-md-block">
       <h5> Belalalalalalalalala </h5>
       <p> Dokter adalah seseorang yang sangat sakti. Dengan ilmu dia bisa membantu menyelamatkan orang, tentunya dengan seizin Allah SWT. Tapi sebagai dokter tidaklah mudah, karena mereka berurusan dengan nyawa. Salah sedikit saja, mereka bisa membahayakan nyawa orang lain</p>
   </div>
     </div>
     <div class="carousel-item" id="item">
-      <img class="d-block w-100" src="https://asset.kompas.com/crops/wXWSY4eukGx-PiZTzNmAgFRZYVo=/0x398:2100x1798/750x500/data/photo/2020/03/19/5e72fef71944d.jpg" alt="Second slide">
+      <img class="d-block w-100" src="https://platform24.com.au/wp-content/uploads/2018/01/Platform-24-IT-Services-Banner-1300x150.png" alt="Second slide">
     </div>
     <div class="carousel-item" id="item">
-      <img class="d-block w-100" src="https://acehonline.co/wp-content/uploads/2020/04/Data-Covid-19-di-Indonesia-hingga-Rabu-8-April-2020.jpg" alt="Third slide">
+      <img class="d-block w-100" src="https://platform24.com.au/wp-content/uploads/2018/01/Platform-24-IT-Services-Banner-1300x150.png" alt="Third slide">
     </div>
   </div>
   <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">

@@ -60,8 +60,8 @@
                 </div>
             </div> </a>
 
-            <!--<?php foreach ($jadwaltemu as $jt) : ?>
-                <?php endforeach ?>-->
+            <?php foreach ($jadwaltemu as $jt) : ?>
+                <?php endforeach ?>
             <a href="<?= site_url('C_Pasien/V_ubah/'); ?><?= $jt['id'] ?>"> <div class="card bg-dark text-black" id="pict">
                 <img src="<?= base_url(); ?>/assets/pic/doctor-edit.jpg" class="card-img" alt="..." >
                 <div class="card-img-overlay">
@@ -70,8 +70,8 @@
                 </div>
             </div> </a>
 
-            <!--<?php foreach ($jadwaltemu as $jt) : ?>
-                <?php endforeach ?>-->
+            <?php foreach ($jadwaltemu as $jt) : ?>
+                <?php endforeach ?>
             <a href="<?= site_url('C_Pasien/V_LihatJadwalTemu/'); ?>"> <div class="card bg-dark text-black" id="pict">
                 <img src="<?= base_url(); ?>/assets/pic/doctor-lihat.jpeg" class="card-img" alt="..." >
                 <div class="card-img-overlay">
