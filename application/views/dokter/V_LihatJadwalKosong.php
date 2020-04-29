@@ -46,6 +46,7 @@
 </head>
 <body>
     <h1 class="text-center" style="margin: 10px;"> Lihat Jadwal Kosong </h1>
+    
     <div id="view">
         <?php 
             //untuk mengecek apakah dokter punya jadwal kosong

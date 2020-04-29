@@ -5,6 +5,7 @@
 		<link type="text/css" rel="stylesheet" href="<?php echo base_url('assets/css/style.css'); ?>"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 		<link rel="icon" href="<?= base_url(); ?>/assets/pic/favicon.png" type="image/png">
+		
 		<title>Login</title>
 	</head>
 	<?php $this->session->sess_destroy(); ?>

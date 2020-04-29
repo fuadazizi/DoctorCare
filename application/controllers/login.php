@@ -12,10 +12,7 @@ class login extends CI_controller {
 
 	public function index()
 	{
-		//$data['judul'] = 'Login';
-		//$this->load->view('template/header',$data);
 		$this->load->view('login/index');
-		//$this->load->view('template/footer');
 	}
 
 	function auth(){
@@ -41,7 +38,6 @@ class login extends CI_controller {
 
         } else {
             if($username=='admin' && $password=='admin'){
-                //$this->load->view('template/header');
                 $this->session->set_userdata('session_login','admin');
                 $this->load->view('admin/V_UtamaAdmin');
                 $this->load->view('template/footer'); 
@@ -53,7 +49,6 @@ class login extends CI_controller {
                     $this->session->set_userdata('session_username',$data['username']);
                     $this->session->set_userdata('session_password',$data['password']);
                     $this->session->set_userdata('session_status','dokter');
-                    //$this->load->view('template/header');
                     $this->load->view('dokter/V_UtamaDokter', $data);
                 }else if($cek_pasien->num_rows() > 0){ //jika login sebagai pasien
                     $data=$cek_pasien->row_array();

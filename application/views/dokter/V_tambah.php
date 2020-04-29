@@ -35,11 +35,13 @@
     <title>Tambah Jadwal Temu</title>
 </head>
 <body>
+
     <div style="position: relative; top: 110px;"> 
         <?php 
             $this->load->view('template/navbar');
         ?>
     </div>
+
     <div class="container">
         <div class="row mt-3">
             <div class="col">
@@ -69,12 +71,13 @@
                                 <small class="form-text text-danger"><?= form_error('Tanggal') ?>.</small>
                             </div>
                             <button type="submit" name="tambah" class="btn btn-primary float-right">Tambah Data</button>
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</div> 
+    </div> 
+    
     <?php 
         $this->load->view('template/back'); 
         $this->load->view('template/footer');

@@ -32,95 +32,92 @@
     <!-- MDB core JavaScript -->
     <script type="text/javascript" src="<?= base_url(); ?>assets/MDBootstrap/js/mdb.min.js"></script> 
     
-    <title> Ubah Jadwal Temu</title>
+    <title> Hapus Jadwal Temu </title>
 </head>
 <body>
     <div class="container" style="position: relative; top: 130px;">
-    <h1 class="text-center" style="margin: 10px;"> Hapus Jadwal </h1>
-    <div class="container"  style="margin-top: 60px; margin-bottom: 150px;">
-        <div class="row mt-3">
-            <div class="col md-6">
-                <div class="card">
-                    <div class="card-header text-center" > 
-                        Form Hapus Jadwal Kosong
-                    </div>
-                    <div class="card-body">
-                        <table class="table mt-5">
-                            <thead class="thead-dark">
-                                <tr>
-                                    <th class="text-center">Username Dokter</th>
-                                    <th class="text-center">Jam</th>
-                                    <th class="text-center">Tanggal</th>
-                                    <th class="text-center">Action</th>
+        <h2 class="text-center" style="margin: 10px;"> Hapus Jadwal </h2>
+        <div class="container"  style="margin-top: 60px; margin-bottom: 150px;">
+            <div class="row mt-3">
+                <div class="col md-6">
+                    <div class="card">
+                        <div class="card-header text-center" > 
+                            Form Hapus Jadwal Kosong
+                        </div>
+                        <div class="card-body">
+                            <table class="table mt-5">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th class="text-center">Username Dokter</th>
+                                        <th class="text-center">Jam</th>
+                                        <th class="text-center">Tanggal</th>
+                                        <th class="text-center">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="here">
+                                    
+                                </tbody>
+                            </table>
+                            <table>
+                                 <tr>
+                                    <td><input type="text" name="idjadwal" hidden></td>
                                 </tr>
-                            </thead>
-                            <tbody id="here">
-                                
-                            </tbody>
-                        </table>
-                        <table>
-                             <tr>
-                                <td><input type="text" name="idjadwal" hidden></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td id="error"></td>
-                            </tr>
-                        </table>
-                       <script
-                        src="https://code.jquery.com/jquery-3.5.0.min.js"
-                        integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ="
-                        crossorigin="anonymous"></script>
-
-                        <script type="text/javascript">
-                            
-                            loadData();    
-
-                            $(document).on("click",".hapus",function(){
-                                var idjadwal=$(this).attr("id");
-                                $.ajax({
-                                    type : "POST",
-                                    data : "idjadwal="+idjadwal,
-                                    url : "http://localhost/doctorcare/index.php/C_Dokter/deleteData",
-                                    success: function(result){
-                                        var resultObj = JSON.parse(result);
-                                        $("#error").html(resultObj.message);
-                                        loadData();
-                                    }
-                                });
-                            });
-                           
-                            
-
-                            function loadData(){
-                                var dataHandler = $("#here");
-                                dataHandler.html("");
-                                $.ajax({
-                                type : "GET",
-                                data : "",
-                                url : "http://localhost/doctorcare/index.php/C_Dokter/getData",
-                                success: function(result){
-                                    var resultObj = JSON.parse(result);
-                                    var dataHandler = $("#here");
-
-                                    $.each(resultObj,function(key,val){
-
-                                        var newRow= $("<tr>");
-                                        newRow.html("<td class=\"text-center\">"+val.Username_Dokter+"</td><td class=\"text-center\">"+val.jam+"</td><td class=\"text-center\">"+val.Tanggal+"</td><td class=\"text-center\"><button class='hapus' id='"+val.idjadwal+"'>Hapus Data</button></td>");
-
-                                        dataHandler.append(newRow);
-                                    })
-                                }
-                                });
-                            }
-                        </script>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td id="error"></td>
+                                </tr>
+                            </table>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div> 
+            </div> 
+        </div>
     </div>
-    </div>
+    <script
+        src="https://code.jquery.com/jquery-3.5.0.min.js"
+        integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ="
+        crossorigin="anonymous"></script>
+
+        <script type="text/javascript">
+            
+            loadData();
+            $(document).on("click",".hapus",function(){
+                var idjadwal=$(this).attr("id");
+                $.ajax({
+                    type : "POST",
+                    data : "idjadwal="+idjadwal,
+                    url : "http://localhost/doctorcare/index.php/C_Dokter/deleteData",
+                    success: function(result){
+                        var resultObj = JSON.parse(result);
+                        $("#error").html(resultObj.message);
+                        loadData();
+                    }
+                });
+            });
+
+            function loadData(){
+                var dataHandler = $("#here");
+                dataHandler.html("");
+                $.ajax({
+                type : "GET",
+                data : "",
+                url : "http://localhost/doctorcare/index.php/C_Dokter/getData",
+                success: function(result){
+                    var resultObj = JSON.parse(result);
+                    var dataHandler = $("#here");
+
+                    $.each(resultObj,function(key,val){
+
+                        var newRow= $("<tr>");
+                        newRow.html("<td class=\"text-center\">"+val.Username_Dokter+"</td><td class=\"text-center\">"+val.jam+"</td><td class=\"text-center\">"+val.Tanggal+"</td><td class=\"text-center\"><button class='hapus' id='"+val.idjadwal+"'>Hapus Data</button></td>");
+
+                        dataHandler.append(newRow);
+                    })
+                }
+                });
+            }
+        </script>
     <?php 
         $this->load->view('template/navbar');
         $this->load->view('template/back');

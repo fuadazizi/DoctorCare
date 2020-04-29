@@ -1,6 +1,8 @@
  <!DOCTYPE html>
  <html> 
  <head>
+    <link rel="icon" href="<?= base_url(); ?>/assets/pic/favicon.png" type="image/png">
+
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -9,7 +11,6 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
     <!-- MY CSS -->
-
     <link rel="stylesheet" href="<?= base_url(); ?>/assets/css/style.css">
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -54,7 +55,7 @@
                                 </tr>
                             </thead>
                             <tbody id="here">
-                                
+                                <!-- ISI TABEL DIPANGGIL DENGAN AJAX -->
                             </tbody>
                         </table>
                         <h2>Ubah Data</h2>
@@ -83,76 +84,81 @@
                                 <td id="error"></td>
                             </tr>
                         </table>
-                       <script
-                        src="https://code.jquery.com/jquery-3.5.0.min.js"
-                        integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ="
-                        crossorigin="anonymous"></script>
-
-                        <script type="text/javascript">
-                            loadData();
-                            function uj(){
-                                var idjadwal = $("[name=idjadwal]").val();
-                                var jam = $("[name='jam']").val();
-                                var Tangga = $("[name='Tanggal']").val();
-                                console.log(Tangga); 
-                                $.ajax({
-                                    type : "POST",
-                                    data : "idjadwal="+idjadwal+"&jam="+jam+"&Tangga="+Tangga,
-                                    url : "http://localhost/doctorcare/index.php/C_Dokter/doUpdateData",
-                                    success: function(result){
-                                        var resultObj = JSON.parse(result);
-                                        $("#error").html(resultObj.message);
-
-                                        loadData();
-                                    }
-                                });
-                             }
-
-                            
-                            $(document).on("click",".select",function(){
-                                var idjadwal=$(this).attr("id");
-                                
-                                $.ajax({
-                                    type : "POST",
-                                    data : "idjadwal="+idjadwal,
-                                    url : "http://localhost/doctorcare/index.php/C_Dokter/updateData",
-                                    success: function(result){
-                                        var resultObj = JSON.parse(result);
-                                        $("[name='idjadwal']").val(resultObj.idjadwal);
-                                        $("[name='jam']").val(resultObj.jam);
-                                        $("[name='Tanggal']").val(resultObj.Tanggal);
-                                    }
-                                });    
-                            });
-                            
-
-                            function loadData(){
-                                var dataHandler = $("#here");
-                                dataHandler.html("");
-                                $.ajax({
-                                type : "GET",
-                                data : "",
-                                url : "http://localhost/doctorcare/index.php/C_Dokter/getData",
-                                success: function(result){
-                                    var resultObj = JSON.parse(result);
-                                    var dataHandler = $("#here");
-
-                                    $.each(resultObj,function(key,val){
-
-                                        var newRow= $("<tr>");
-                                        newRow.html("<td>"+val.Username_Dokter+"</td><td>"+val.jam+"</td><td>"+val.Tanggal+"</td><td><button class='select' id='"+val.idjadwal+"'>Select</button></td>");
-
-                                        dataHandler.append(newRow);
-                                    })
-                                }
-                                });
-                            }
-                        </script>
                     </div>
                 </div>
             </div>
         </div> 
     </div> 
+
+    <script
+        src="https://code.jquery.com/jquery-3.5.0.min.js"
+        integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ="
+        crossorigin="anonymous">    
+    </script>
+
+
+    <script type="text/javascript">
+        loadData();
+        function uj(){
+            var idjadwal    = $("[name=idjadwal]").val();
+            var jam         = $("[name='jam']").val();
+            var Tanggal     = $("[name='Tanggal']").val();
+            console.log(Tanggal); 
+            $.ajax({
+                type    : "POST",
+                data    : "idjadwal="+idjadwal+"&jam="+jam+"&Tanggal="+Tanggal,
+                url     : "http://localhost/doctorcare/index.php/C_Dokter/doUpdateData",
+                success: function(result){
+                    var resultObj = JSON.parse(result);
+                    $("#error").html(resultObj.message);
+                    loadData();
+                }
+            });
+         }
+
+        
+        $(document).on("click",".select",function(){
+            var idjadwal=$(this).attr("id");
+            
+            $.ajax({
+                type    : "POST",
+                data    : "idjadwal="+idjadwal,
+                url     : "http://localhost/doctorcare/index.php/C_Dokter/fetchData",
+                success: function(result){
+                    var resultObj = JSON.parse(result);
+                    $("[name='idjadwal']").val(resultObj.idjadwal);
+                    $("[name='jam']").val(resultObj.jam);
+                    $("[name='Tanggal']").val(resultObj.Tanggal);
+                }
+            });    
+        });
+        
+
+        function loadData(){
+            var dataHandler = $("#here");
+            dataHandler.html("");
+            $.ajax({
+            type    : "GET",
+            data    : "",
+            url     : "http://localhost/doctorcare/index.php/C_Dokter/getData",
+            success: function(result){
+                var resultObj = JSON.parse(result);
+                var dataHandler = $("#here");
+
+                $.each(resultObj,function(key,val){
+
+                    var newRow= $("<tr>");
+                    newRow.html("<td>"+val.Username_Dokter+"</td>"+
+                                "<td>"+val.jam+"</td>"+
+                                "<td>"+val.Tanggal+"</td>"+
+                                "<td><button class='select' id='"+val.idjadwal+"'>Select</button></td>");
+                    dataHandler.append(newRow);
+                })
+            }
+            });
+        }
+    </script>
+
     <?php 
         $this->load->view('template/navbar'); 
         $this->load->view('template/back');
