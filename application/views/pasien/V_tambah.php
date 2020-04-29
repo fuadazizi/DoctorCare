@@ -5,6 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <link rel="icon" href="<?= base_url(); ?>/assets/pic/favicon.png" type="image/png">
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
@@ -50,10 +52,10 @@
                             <table class="table">
                                 <thead class="thead-dark">
                                     <tr>
-                                        <th>Nama Dokter</th>
-                                        <th>Jam</th>
-                                        <th>Tanggal</th>
-                                        <th></th>
+                                        <th class="text-center">Nama Dokter</th>
+                                        <th class="text-center">Jam</th>
+                                        <th class="text-center">Tanggal</th>
+                                        <th class="text-center">Pilih</th>
                                     </tr>
                                 </thead>
                                 <tbody id="here">
@@ -99,9 +101,9 @@
             var idjadwal=$(this).attr("id");
             
             $.ajax({
-                type : "POST",
-                data : "idjadwal="+idjadwal,
-                url : "http://localhost/doctorcare/index.php/C_Pasien/fetchJadwalKosong",
+                type    : "POST",
+                data    : "idjadwal="+idjadwal,
+                url     : "http://localhost/doctorcare/index.php/C_Pasien/fetchJadwalKosong",
                 success: function(result){
                     var resultObj = JSON.parse(result);
                     $("[name='idjadwal']").val(resultObj.idjadwal);
@@ -117,9 +119,9 @@
             var dataHandler = $("#here");
             dataHandler.html("");
             $.ajax({
-            type : "GET",
-            data : "",
-            url : "http://localhost/doctorcare/index.php/C_Pasien/getJadwalKosong",
+            type    : "GET",
+            data    : "",
+            url     : "http://localhost/doctorcare/index.php/C_Pasien/getJadwalKosong",
             success: function(result){
                 var resultObj = JSON.parse(result);
                 var dataHandler = $("#here");
@@ -127,7 +129,10 @@
                 $.each(resultObj,function(key,val){
 
                     var newRow= $("<tr>");
-                    newRow.html("<td>"+val.nama+"</td><td>"+val.jam+"</td><td>"+val.tanggal+"</td><td><button class='select' type = 'button' id='"+val.idjadwal+"'>Select</button></td>");
+                    newRow.html("<td class=\"text-center\">"+val.nama+"</td>"+
+                                "<td class=\"text-center\">"+val.jam+"</td>"+
+                                "<td class=\"text-center\">"+val.tanggal+"</td>"+
+                                "<td class=\"text-center\"><button class='select' type = 'button' id='"+val.idjadwal+"'>Select</button></td>");
                     dataHandler.append(newRow);
                 })
             }

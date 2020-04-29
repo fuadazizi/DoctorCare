@@ -5,6 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <link rel="icon" href="<?= base_url(); ?>/assets/pic/favicon.png" type="image/png">
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
@@ -32,7 +34,7 @@
     <!-- MDB core JavaScript -->
     <script type="text/javascript" src="<?= base_url(); ?>assets/MDBootstrap/js/mdb.min.js"></script> 
 
-    <title>Tambah Jadwal Temu</title>
+    <title>Edit Jadwal Temu</title>
 
     <script src= "https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"> </script> 
 </head>
@@ -42,7 +44,7 @@
             <div class="col">
                 <div class="card" style="position: relative; top: 90px;">
                     <div class="card-header text-center">
-                        Form Tambah Jadwal Temu
+                        Form Edit Jadwal Temu
                     </div>
                     <div class="card-body">
                         <form action="" method="post">
@@ -53,7 +55,7 @@
                                         <th>Jam</th>
                                         <th>Tanggal</th>
                                         <th>Penyakit</th>
-                                        <th></th>
+                                        <th>Pilih</th>
                                     </tr>
                                 </thead>
                                 <tbody id="here">
@@ -86,7 +88,7 @@
                                 <input type="text" class="form-control" id="Penyakit" name="Penyakit">
                                 <small class="form-text text-danger"><?= form_error('Penyakit') ?>.</small>
                             </div>
-                            <button type="submit" name="ubah" class="btn btn-primary float-right">Tambah Data</button>
+                            <button type="submit" name="ubah" class="btn btn-primary float-right">Edit Data</button>
                         </form>
                     </div>
                 </div>
@@ -101,9 +103,9 @@
             var id=$(this).attr("id");
             
             $.ajax({
-                type : "POST",
-                data : "id="+id,
-                url : "http://localhost/doctorcare/index.php/C_Pasien/fetchJadwalTemu",
+                type    : "POST",
+                data    : "id="+id,
+                url     : "http://localhost/doctorcare/index.php/C_Pasien/fetchJadwalTemu",
                 success: function(result){
                     var resultObj = JSON.parse(result);
                     $("[name='id']").val(resultObj.id);
@@ -120,9 +122,9 @@
             var dataHandler = $("#here");
             dataHandler.html("");
             $.ajax({
-            type : "GET",
-            data : "",
-            url : "http://localhost/doctorcare/index.php/C_Pasien/getJadwalTemu",
+            type    : "GET",
+            data    : "",
+            url     : "http://localhost/doctorcare/index.php/C_Pasien/getJadwalTemu",
             success: function(result){
                 var resultObj = JSON.parse(result);
                 var dataHandler = $("#here");

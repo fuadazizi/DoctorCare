@@ -91,7 +91,6 @@
         <!-- buat lihat daftar dokter -->
         <div id="viewdoc">
             <button type="button" class="btn btn-outline-info waves-effect btn-sm" onclick="showdoc()"> Lihat Tim dokter kami </button>
-
         </div>
 
         <div class="card-deck" id="group">
@@ -131,7 +130,7 @@
 
     <?php $this->load->view('template/footer') ?>
 
-    <!----------------------------ngatur Modals-------------------------------->
+    <!--------------------------------ngatur Modals-------------------------------->
      
     <script type="text/javascript">
         function showdoc() {
@@ -145,56 +144,54 @@
         }
     </style>
 
-    <!-----------------Full Height Modal Right ----------------------------------->
+    <!-----------------------Full Height Modal Right ----------------------------------->
 
-    <div class="modal fade right" id="ListDokter" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    <div class="modal fade top" id="ListDokter" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
       aria-hidden="true">
-
-      <!-- Add class .modal-full-height and then add class .modal-right (or other classes from list above) to set a position to the modal -->
-      <div class="modal-dialog modal-dialog-scrollable mw-100 w-75" role="document">
-
-        <div class="modal-content">
-          <div class="modal-header" style="background-color: #f6fdde;">
-            <h4 class="modal-title w-100" id="myModalLabel" style="color: black; text-align: center;">Tim Dokter kami</h4>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <?php 
-                $this->load->model('dokter_model');
-                $dokterList = $this->dokter_model->get_all_dokter();
-            ?>
-            <table class="table mt-5" style="width: 100%;">
-                <colgroup>
-                   <col span="1" style="width: 20%;">
-                   <col span="1" style="width: 20%;">
-                   <col span="1" style="width: 20%;">
-                   <col span="1" style="width: 20%;">
-                   <col span="1" style="width: 20%;">
-                </colgroup>
-                <thead class="thead-dark">
-                    <tr>
-                        <th class="text-center" scope="col">Nama Dokter</th>
-                        <th class="text-center" scope="col">Alamat</th>
-                        <th class="text-center" scope="col">Spesialis</th>
-                        <th class="text-center" scope="col">Alamat Email</th>
-                        <th class="text-center" scope="col">No. Telepon</th>
-                    </tr>
-                </thead>
-                <tbody>
-                   <tr><?php foreach ($dokterList as $dl) { ?>
-                        <td class="text-center"><?= $dl->nama; ?></td>
-                        <td class="text-center"><?= $dl->alamat; ?></td>
-                        <td class="text-center"><?= $dl->spesialis; ?></td>
-                        <td class="text-center"><?= $dl->email; ?></td>
-                        <td class="text-center"><?= $dl->telp; ?></td>
-                    </tr>
-                    <?php
-                        }    //endforeach
-                    ?> 
-                </tbody>
-            </table>
+        <div class="modal-dialog modal-dialog-scrollable mw-100 w-75" role="document">
+            <div class="modal-content">
+            <div class="modal-header" style="background-color: #f6fdde;">
+                <h4 class="modal-title w-100" id="myModalLabel" style="color: black; text-align: center;">Tim Dokter kami</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <?php 
+                    $this->load->model('dokter_model');
+                    $dokterList = $this->dokter_model->get_all_dokter();
+                ?>
+                <table class="table mt-5" style="width: 100%;">
+                    <colgroup>
+                       <col span="1" style="width: 20%;">
+                       <col span="1" style="width: 20%;">
+                       <col span="1" style="width: 20%;">
+                       <col span="1" style="width: 20%;">
+                       <col span="1" style="width: 20%;">
+                    </colgroup>
+                    <thead class="thead-dark">
+                        <tr>
+                            <th class="text-center" scope="col">Nama Dokter</th>
+                            <th class="text-center" scope="col">Alamat</th>
+                            <th class="text-center" scope="col">Spesialis</th>
+                            <th class="text-center" scope="col">Alamat Email</th>
+                            <th class="text-center" scope="col">No. Telepon</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($dokterList as $dl) { ?>
+                            <tr>
+                                <td class="text-center"><?= $dl->nama; ?></td>
+                                <td class="text-center"><?= $dl->alamat; ?></td>
+                                <td class="text-center"><?= $dl->spesialis; ?></td>
+                                <td class="text-center"><?= $dl->email; ?></td>
+                                <td class="text-center"><?= $dl->telp; ?></td>
+                            </tr>
+                        <?php
+                            }    //endforeach
+                        ?> 
+                    </tbody>
+                </table>
           </div>
           <div class="modal-footer justify-content-center">
             <button type="button" class="btn btn-indigo" data-dismiss="modal">Close</button>
