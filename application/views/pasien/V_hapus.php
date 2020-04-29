@@ -35,12 +35,22 @@
     <script type="text/javascript" src="<?= base_url(); ?>assets/MDBootstrap/js/mdb.min.js"></script> 
 
     <title>Hapus Jadwal Temu</title>
+
+    <style type="text/css">
+        #del{
+            position: relative;
+            top: 100px;
+            margin: auto;
+            width: 1200px;
+            height: 600px;
+        }
+    </style>
 </head>
 <body>
-    <div style="position: relative; top: 100px; margin-bottom: 150px;">
-        <h1 class="text-center" style="margin: 10px;"> Lihat Jadwal Temu </h1>  
-        <table class="table mt-5" >
-            <thead>
+    <div id="del">
+        <h1 class="text-center"> Hapus Jadwal Temu </h1>  
+        <table class="table mt-5">
+            <thead class="thead-dark">
                 <tr>
                     <th class="text-center" scope="col">Username_Pasien</th>
                     <th class="text-center" scope="col">Username_Dokter</th>
@@ -72,10 +82,10 @@
                 <?php endforeach ?>
             </tbody>
         </table>
-        <?php 
+    </div>
+    <?php 
         $this->load->view('template/navbar');
         $this->load->view('template/back'); 
         $this->load->view('template/footer');?>
-    </div>
 </body>
 </html>

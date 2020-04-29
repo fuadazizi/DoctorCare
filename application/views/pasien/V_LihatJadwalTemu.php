@@ -38,13 +38,12 @@
 
     <style type="text/css">
         #view {
-            margin: auto;
-            width: 80%;
-            height: 500px; 
-            padding:20px;
             position: relative;
             top: 90px;
-            margin-bottom: 90px;
+            margin: auto;
+            width: 80%;
+            height: 600px; 
+            padding:20px;
         }
     </style>
 </head>
