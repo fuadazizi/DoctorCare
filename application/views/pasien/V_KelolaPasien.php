@@ -425,7 +425,7 @@
  
         //delete record to database
          $('#btn_delete').on('click',function(){
-            var username = <?php echo $this->session->userdata('session_username');?>;
+            var username = $('#username_delete').val();
             $.ajax({
                 type : "POST",
                 url  : "<?php echo site_url('pasien/delete')?>",
