@@ -12,6 +12,12 @@
  		$this->load->view('pasien/V_KelolaPasien', $data);  
  	}
 
+    public function get_1pasien_data() {
+        $username = $this->sesison->userdata('session_username');
+        $result = $this->pasien_model->get_by_username($username);
+        echo json_encode($result);
+    }
+
  	public function pasien_add() {
  		$data = array(
  			'nama' => $this->input->post('nama'),
@@ -25,7 +31,6 @@
 
 		$insert = $this->pasien_model->pasien_add($data);
  		echo json_encode(array("status" => true));
-
  	}
 
  	public function ajax_edit($username) {
@@ -40,10 +45,8 @@
  			'alamat' => $this->input->post('alamat'),
  			'email' => $this->input->post('email'),
  			'telp' => $this->input->post('telp'),
-			'username' => $this->input->post('username'),
- 			'password' => $this->input->post('password'),
  		);
- 		$this->pasien_model->dokter_update(array('username'=> $this->input->post('username')), $data);
+ 		$this->pasien_model->pasien_update($data);
 
  		echo json_encode(array("status" => TRUE));
  	}
@@ -68,8 +71,8 @@
     }
  
     function delete(){
-        $data=$this->pasien_model->delete_data();
-        echo json_encode($data);
+        $result=$this->pasien_model->delete_data();
+        echo json_encode($result);
     }
 
 } 

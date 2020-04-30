@@ -17,14 +17,15 @@ class pasien_model extends CI_Model {
 	}
 
 	public function get_by_username($username) {
-		$this->db->from($this->table);
 		$this->db->where('username', $username);
 		$query = $this->db->get();
-		return $query->row();
+		return $query->result_array();
 	}
 
-	public function pasien_update($where, $data) {
-		$this->db->update($this->table, $data, $where);
+	public function pasien_update($data) {
+        $username = $this->session->userdata('session_username');
+        $this->db->where('username',$username);
+		$this->db->update($data);
 		return $this->db->affeccted_rows();
 
 	}
@@ -56,7 +57,6 @@ class pasien_model extends CI_Model {
         $alamat=$this->input->post('alamat');
         $email=$this->input->post('email');
         $telp=$this->input->post('telp');
-        
  
         $this->db->set('nama', $nama);
         $this->db->set('jeniskelamin', $jeniskelamin);
@@ -69,10 +69,10 @@ class pasien_model extends CI_Model {
     }
  
     function delete_data(){
-        $username=$this->input->post('username');
-        $this->db->where('username', $username);
-        $result=$this->db->delete('pasien');
-        return $result;
+        $username=$this->session->userdata('session_username');
+        $result = "DELETE FROM pasien where username = '".$username."';".
+                 "DELETE FROM jadwaltemu where Username_Pasien = '".$username."'";
+        return $this->db->query($result);
     }
 	
 } 

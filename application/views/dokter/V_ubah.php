@@ -146,7 +146,6 @@
                 var dataHandler = $("#here");
 
                 $.each(resultObj,function(key,val){
-
                     var newRow= $("<tr>");
                     newRow.html("<td>"+val.Username_Dokter+"</td>"+
                                 "<td>"+val.jam+"</td>"+
