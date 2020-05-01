@@ -75,7 +75,7 @@ class C_Pasien extends CI_Controller
 	public function getJadwalKosong(){
 		include 'connect.php';
 		$id=$this->session->userdata('session_nama');
-    	$queryResult = mysqli_query($connect,"SELECT idjadwal, Username_Dokter, nama, jam, tanggal from jadwal_kosong join dokter on jadwal_kosong.Username_Dokter = dokter.username");
+    	$queryResult = mysqli_query($connect,"SELECT idjadwal, Username_Dokter, nama, jam, tanggal from jadwal_kosong join dokter on jadwal_kosong.Username_Dokter = dokter.username WHERE empty = 0");
 		$result 	 = array();
 		while($fethData=$queryResult->fetch_assoc()){
 			$result[]=$fethData;

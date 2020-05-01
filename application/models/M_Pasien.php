@@ -16,10 +16,28 @@ class M_Pasien extends CI_model
 			"Penyakit" => $this->input->post('Penyakit', true),
 		];
 		$this->db->insert('jadwaltemu',$data);
+
+		$empty = [
+			"empty" => True,
+		];
+		$this->db->where('Username_Dokter',$this->input->post('Username_Dokter', true));
+		$this->db->where('jam',$this->input->post('jam', true));
+		$this->db->where('Tanggal',$this->input->post('Tanggal', true));
+		$this->db->update('jadwal_kosong',$empty);
 	}
 	public function hapusJadwalTemu($id)
 	{
 		//use query builder to delete data based on id 
+		$query=$this->db->query("SELECT * FROM jadwaltemu WHERE id='$id'");
+		$empty = [
+			"empty" => False,
+		];
+		foreach ($query->result() as $dt) {
+			$this->db->where('Username_Dokter', $dt->Username_Dokter, true);
+			$this->db->where('jam',$dt->jam, true);
+			$this->db->where('Tanggal',$dt->Tanggal, true);
+			$this->db->update('jadwal_kosong',$empty);
+		}
 		$this->db->where('id',$id);
 		$this->db->delete('jadwaltemu');
 	}
