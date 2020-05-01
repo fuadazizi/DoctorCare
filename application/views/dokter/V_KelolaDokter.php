@@ -201,6 +201,7 @@
             var nama         = $(this).data('nama');
             var jeniskelamin = $(this).data('jeniskelamin');
             var alamat       = $(this).data('alamat');
+            var spesialis    = $(this).data('spesialis');
             var email        = $(this).data('email');
             var telp         = $(this).data('telp');
             var username     = $(this).data('username');
@@ -211,6 +212,7 @@
             $('[name="nama_edit"]').val(nama);
             $('[name="jeniskelamin_edit"]').val(jeniskelamin);
             $('[name="alamat_edit"]').val(alamat);
+            $('[name="spesialis_edit"]').val(spesialis);
             $('[name="email_edit"]').val(email);
             $('[name="telp_edit"]').val(telp);
             $('[name="username_edit"]').val(username);
