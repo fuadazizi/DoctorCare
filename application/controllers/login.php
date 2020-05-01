@@ -31,7 +31,7 @@ class login extends CI_controller {
             $this->load->view('dokter/V_UtamaDokter', $data);
         } else if ($this->session->userdata('session_login') == 'pasien') {
             $data=$cek_pasien->row_array();
-            $data['judul'] = "Selamat datang ".$data['nama'];
+            //$data['judul'] = "Selamat datang ".$data['nama'];
             $data['jadwaltemu'] = $this->M_Pasien->getAllJadwalTemu();
             $this->load->view('pasien/V_UtamaPasien', $data);
         } else if ($this->session->userdata('session_login') == 'admin') {
