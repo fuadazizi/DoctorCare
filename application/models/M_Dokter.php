@@ -11,7 +11,7 @@ class M_Dokter extends CI_model
 	}
 
 	public function getJadwalKosongByUsername() {
-		$query = "Select * from jadwal_kosong join dokter on jadwal_kosong.Username_Dokter = dokter.username";
+		$query = "Select * from jadwal_kosong join dokter on jadwal_kosong.Username_Dokter = dokter.username WHERE empty = 0";
 		return $this->db->query($query)->result_array();
 	}
 

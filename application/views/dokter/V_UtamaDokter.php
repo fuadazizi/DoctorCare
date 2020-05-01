@@ -110,6 +110,14 @@
                     <p class="card-text" id="desc"> Menghapus jadwal kosong dokter yang telah dibuat </p>
                 </div>
 			</div> </a>
+
+			<a href="<?= site_url('C_Pasien/V_LihatJadwalTemu/'); ?>"> <div class="card bg-dark text-black" id="pict">
+                <img src="<?= base_url(); ?>/assets/pic/doctor-lihat.jpeg" class="card-img" alt="..." >
+                <div class="card-img-overlay">
+                    <h4 class="card-title">Lihat jadwal dengan pasien</h4>
+                    <p class="card-text" id="desc"> Lihat jadwal temu dengan dokter yang telah dibuat </p>
+                </div>
+            </div> </a>
 		</div>
 	</div>
 	<?php $this->load->view('template/footer'); ?>

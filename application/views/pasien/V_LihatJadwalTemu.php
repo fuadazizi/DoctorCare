@@ -64,24 +64,36 @@
                 <table class="table mt-5">
                     <thead class="thead-dark">
                         <tr>
-                            <th class="text-center" scope="col">Nama Dokter</th>
-                            <th class="text-center" scope="col">Jam</th>
-                            <th class="text-center" scope="col">Tanggal</th>
-                            <th class="text-center" scope="col">Penyakit</th>
-                        </tr>
+                        <?php foreach ($jadwaltemu as $jt) {
+                            if ($jt['Username_Pasien'] == $this->session->userdata('session_username')) { ?>
+                                <th class="text-center" scope="col">Nama Dokter</th>
+                            <?php
+                            } elseif ($jt['Username_Dokter'] == $this->session->userdata('session_username')) { ?>
+                                <th class="text-center" scope="col">Nama Pasien</th>
+                            <?php    
+                            }  
+                            ?>
+                                <th class="text-center" scope="col">Jam</th>
+                                <th class="text-center" scope="col">Tanggal</th>
+                                <th class="text-center" scope="col">Penyakit</th>
+                            </tr>   
                     </thead>
                     <tbody>
-                       <tr><?php foreach ($jadwaltemu as $jt) {
+                            <tr>
+                            <?php 
                             if ($jt['Username_Pasien'] == $this->session->userdata('session_username')) { ?>
-                                <td class="text-center"><?= $jt['nama']; ?></td>
-                                <td class="text-center"><?= $jt['jam']; ?></td>
-                                <td class="text-center"><?= $jt['Tanggal']; ?></td>
-                                <td class="text-center"><?= $jt['Penyakit']; ?></td>
-                        </tr>
-                        <?php
-                                } // endif
-                            }    //endforeach
+                                <td class="text-center"><?= $jt['namadokter']; ?></td>
+                            <?php
+                            } elseif ($jt['Username_Dokter'] == $this->session->userdata('session_username')) { ?>
+                                <td class="text-center"><?= $jt['namapasien']; ?></td>
+                            <?php    
+                            } 
+                        } 
                         ?> 
+                            <td class="text-center"><?= $jt['jam']; ?></td>
+                            <td class="text-center"><?= $jt['Tanggal']; ?></td>
+                            <td class="text-center"><?= $jt['Penyakit']; ?></td>
+                        </tr>
                     </tbody>
                 </table>
      <?php  } ?> <!--//endif-->
