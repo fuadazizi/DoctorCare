@@ -265,8 +265,7 @@
                     $('#Modal_Delete').modal('hide');
                     //diisi del session
                     location.reload();
-                    location.href='<?php echo base_url().'index.php/login/logout'?>'
-                    $('#Exitting_Modal').modal('show');
+                    location.href='<?php echo base_url().'index.php/login/logout'?>';
                 }
             });
             return false;
