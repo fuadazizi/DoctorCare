@@ -69,10 +69,9 @@ class pasien_model extends CI_Model {
     }
  
     function delete_data(){
-        $username=$this->session->userdata('session_username');
-        $result = "DELETE FROM pasien where username = '".$username."';".
-                 "DELETE FROM jadwaltemu where Username_Pasien = '".$username."'";
-        return $this->db->query($result);
+        $this->db->where('username',$this->session->userdata('session_username'));
+        $result=$this->db->delete('pasien');
+        return $result;
     }
 	
 } 
