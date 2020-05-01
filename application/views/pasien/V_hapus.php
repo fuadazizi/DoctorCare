@@ -52,8 +52,8 @@
         <table class="table mt-5">
             <thead class="thead-dark">
                 <tr>
-                    <th class="text-center" scope="col">Username_Pasien</th>
-                    <th class="text-center" scope="col">Username_Dokter</th>
+                    <th class="text-center" scope="col">Pasien</th>
+                    <th class="text-center" scope="col">Dokter</th>
                     <th class="text-center" scope="col">Jam</th>
                     <th class="text-center" scope="col">Tanggal</th>
                     <th class="text-center" scope="col">Penyakit</th>
@@ -66,8 +66,26 @@
                         $url = site_url()."/C_Pasien/doDelete/".$jt['id']; 
                         //$_SESSION['idDel'] = $jt['id'];
                     ?>
-                    <td class="text-center"><?= $jt['Username_Pasien']; ?></td>
-                    <td class="text-center"><?= $jt['Username_Dokter']; ?></td>
+                    <?php
+                    foreach ($pasien as $Pasien) {
+                          if ($Pasien->username == $jt['Username_Pasien']) {
+                    ?>
+                    <td class="text-center"><?php echo $Pasien->nama ;?></td>
+                    <?php
+                                 }
+                          }
+                    ?>
+
+                    <?php
+                    foreach ($dokter as $Dokter) {
+                          if ($Dokter->username == $jt['Username_Dokter']) {
+                    ?>
+                    <td class="text-center"><?php echo $Dokter->nama ;?></td>
+                    <?php
+                                 }
+                          }
+                    ?>
+
                     <td class="text-center"><?= $jt['jam']; ?></td>
                     <td class="text-center"><?= $jt['Tanggal']; ?></td>
                     <td class="text-center"><?= $jt['Penyakit']; ?></td>

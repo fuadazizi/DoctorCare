@@ -7,6 +7,9 @@ class C_Pasien extends CI_Controller
 		//load model "M_Pasien"
 		$this->load->model('M_Pasien');
 		$this->load->model('M_Dokter');
+		$this->load->model('pasien_model');
+		$this->load->model('dokter_model');
+
 		//load library form validation
 		$this->load->library('form_validation');
 	}
@@ -43,6 +46,8 @@ class C_Pasien extends CI_Controller
 	public function V_hapus()
 	{
 		$data['jadwaltemu'] = $this->M_Pasien->getAllJadwalTemu();
+		$data['pasien'] = $this->pasien_model->get_all_pasien();
+		$data['dokter'] = $this->dokter_model->get_all_dokter();
 		$this->load->view('Pasien/V_hapus', $data);
 		//call method hapusDataPasien with parameter id from M_Pasien
 		//use flashdata to show alert "dihapus"
