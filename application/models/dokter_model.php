@@ -1,9 +1,8 @@
 <?php
 class dokter_model extends CI_Model{
  
-    function dokter_data($username){
-    	$this->db->where('username', $username);
-        $hasil=$this->db->get('dokter');
+    function dokter_data(){
+    	$hasil=$this->db->get('dokter');
         return $hasil->result();
     }
  
@@ -55,10 +54,15 @@ class dokter_model extends CI_Model{
         return $result;
     }
      
-
     public function get_all_dokter() {
 		$this->db->from('dokter');
 		$query = $this->db->get();
 		return $query->result();
 	}
+
+    public function get_by_username($username) {
+        $this->db->where('username', $username);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
 }
