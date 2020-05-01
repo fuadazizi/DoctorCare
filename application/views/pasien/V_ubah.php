@@ -123,7 +123,7 @@
             var username    = $(this).attr("Username_Pasien");
             dataHandler.html("");
             $.ajax({
-            type    : "POST",
+            type    : "GET",
             data    : "username="+username,
             url     : "http://localhost/doctorcare/index.php/C_Pasien/getJadwalTemu",
             success: function(result){

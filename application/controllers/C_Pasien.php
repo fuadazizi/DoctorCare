@@ -98,7 +98,7 @@ class C_Pasien extends CI_Controller
 	//================untuk edit jadwal
 	public function getJadwalTemu() {
 		include 'connect.php';
-		$username = $_POST["username"];
+		$username = $_GET["username"];
     	$queryResult = mysqli_query($connect,"SELECT id,Username_Pasien,Username_Dokter,jam, Tanggal, Penyakit, nama FROM jadwaltemu join dokter on dokter.username = jadwaltemu.Username_Dokter WHERE Username_Pasien=".$username);
 		$result 	 = array();
 		while($fethData=$queryResult->fetch_assoc()){
