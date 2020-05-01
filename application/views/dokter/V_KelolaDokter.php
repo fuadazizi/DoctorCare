@@ -225,7 +225,7 @@
             var nama         = $('#nama_edit').val();
             var jeniskelamin = $('#jeniskelamin_edit').val();
             var alamat       = $('#alamat_edit').val();
-            var telp         = $('#spesialis_edit').val();
+            var spesialis    = $('#spesialis_edit').val();
             var email        = $('#email_edit').val();
             var telp         = $('#telp_edit').val();
             $.ajax({
