@@ -43,8 +43,7 @@ class dokter_model extends CI_Model{
     }
  
     function delete_data(){
-        $nama=$this->input->post('nama');
-        $this->db->where('nama', $nama);
+        $this->db->where('username',$this->session->userdata('session_username'));
         $result=$this->db->delete('dokter');
         return $result;
     }
