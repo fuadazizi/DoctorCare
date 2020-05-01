@@ -112,9 +112,9 @@
                       </div>
                     <div class="form-group row">
                         <label class="col-md-2 col-form-label">Jenis Kelamin</label>
-                        <input type="radio" id="male" name="jeniskelamin_edit" value="Laki-laki">
+                        <input type="radio" id="jeniskelamin_edit" name="jeniskelamin_edit" value="Laki-laki">
                         <label for="male">Laki-Laki</label><br>
-                        <input type="radio" id="female" name="jeniskelamin_edit" value="Perempuan">
+                        <input type="radio" id="jeniskelamin_edit" name="jeniskelamin_edit" value="Perempuan">
                         <label for="female">Perempuan</label><br>
                     </div>
                     <div class="form-group row">
