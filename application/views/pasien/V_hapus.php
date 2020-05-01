@@ -61,19 +61,22 @@
                 </tr>
             </thead>
             <tbody>
-                <tr><?php foreach ($jadwaltemu as $jt) : ?>
+                <tr><?php foreach ($jadwaltemu as $jt) {
+                          if ($this->session->userdata('session_username') == $jt['Username_Pasien']) {
+                    ?>
+
                     <?php 
                         $url = site_url()."/C_Pasien/doDelete/".$jt['id']; 
                         //$_SESSION['idDel'] = $jt['id'];
                     ?>
                     <?php
                     foreach ($pasien as $Pasien) {
-                          if ($Pasien->username == $jt['Username_Pasien']) {
+                        if ($Pasien->username == $jt['Username_Pasien']) {
                     ?>
                     <td class="text-center"><?php echo $Pasien->nama ;?></td>
                     <?php
-                                 }
-                          }
+                        }
+                    }
                     ?>
 
                     <?php
@@ -82,8 +85,8 @@
                     ?>
                     <td class="text-center"><?php echo $Dokter->nama ;?></td>
                     <?php
-                                 }
-                          }
+                        }
+                    }
                     ?>
 
                     <td class="text-center"><?= $jt['jam']; ?></td>
@@ -97,7 +100,10 @@
                         <!--del('Apakah anda yakin menghapus data ini?');-->
                     </td>
                 </tr>
-                <?php endforeach ?>
+                <?php
+                    }
+                }
+                ?>
             </tbody>
         </table>
     </div>
