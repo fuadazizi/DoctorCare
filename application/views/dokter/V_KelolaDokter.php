@@ -126,7 +126,7 @@
                     <div class="form-group row">
                         <label class="col-md-2 col-form-label">Spesialis</label>
                         <div class="col-md-10">
-                            <input type="text" name="alamat_edit" id="alamat_edit" class="form-control" placeholder="ex : Penyakit Jantung">
+                            <input type="text" name="spesialis_edit" id="spesialis_edit" class="form-control" placeholder="ex : Penyakit Jantung">
                         </div>
                     </div>
                     <div class="form-group row">
