@@ -42,7 +42,7 @@
             <br> <br>
             <h3>Akun Dokter</h3>
 
-            <button class="btn btn-success" onclick="show_edit()"><i class="glyphicon glyphicon-plus"></i>Edit Data</button>
+            <button type="button" type="submit" id="show_data" class="btn btn-success" onclick="show_edit()"><i class="glyphicon glyphicon-plus"></i>Edit Data</button>
             <br>
             <br> 
 
@@ -77,10 +77,7 @@
                             <th>Telepon</th>
                             <th><?php echo $Dokter->telp ;?></th>
                     </tr>
-                    <?php
-                                 }
-                          }
-                    ?>
+                    
               </tbody>
           </table>
     <center> 
@@ -120,28 +117,32 @@
                     <div class="form-group row">
                         <label class="col-md-2 col-form-label">Alamat</label>
                         <div class="col-md-10">
-                            <input type="text" name="alamat_edit" id="alamat_edit" class="form-control" placeholder="Alamat Lengkap">
+                            <input type="text" name="alamat_edit" id="alamat_edit" class="form-control" placeholder="Alamat Lengkap" value="<?php echo $Dokter->alamat ;?>">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-md-2 col-form-label">Spesialis</label>
                         <div class="col-md-10">
-                            <input type="text" name="spesialis_edit" id="spesialis_edit" class="form-control" placeholder="ex : Penyakit Jantung">
+                            <input type="text" name="spesialis_edit" id="spesialis_edit" class="form-control" placeholder="ex : Penyakit Jantung" value="<?php echo $Dokter->spesialis ;?>">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-md-2 col-form-label">Email</label>
                         <div class="col-md-10">
-                            <input type="text" name="email_edit" id="email_edit" class="form-control" placeholder="example@gmail.com">
+                            <input type="text" name="email_edit" id="email_edit" class="form-control" placeholder="ex: 089999999999" value="<?php echo $Dokter->email ;?>">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-md-2 col-form-label">Telepon</label>
                         <div class="col-md-10">
-                            <input type="text" name="telp_edit" id="telp_edit" class="form-control" placeholder="ex: 089999999999">
+                            <input type="text" name="telp_edit" id="telp_edit" class="form-control"  value="<?php echo $Dokter->telp ;?>">
                         </div>
                     </div>
 
+                    <?php
+                        }
+                    }
+                    ?>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -151,6 +152,8 @@
             </div>
         </div>
     </form>
+
+                    
     <!--END MODAL EDIT-->
 
     <!--MODAL DELETE-->
@@ -196,30 +199,6 @@
 
     $(document).ready(function(){
 
-        //get data for update record
-        $('#show_data').on('click','.item_edit',function(){
-            var nama         = $(this).data('nama');
-            var jeniskelamin = $(this).data('jeniskelamin');
-            var alamat       = $(this).data('alamat');
-            var spesialis    = $(this).data('spesialis');
-            var email        = $(this).data('email');
-            var telp         = $(this).data('telp');
-            var username     = $(this).data('username');
-            var password     = $(this).data('password');
-            
-
-            $('#Modal_Edit').modal('show');
-            $('[name="nama_edit"]').val(nama);
-            $('[name="jeniskelamin_edit"]').val(jeniskelamin);
-            $('[name="alamat_edit"]').val(alamat);
-            $('[name="spesialis_edit"]').val(spesialis);
-            $('[name="email_edit"]').val(email);
-            $('[name="telp_edit"]').val(telp);
-            $('[name="username_edit"]').val(username);
-            $('[name="password_edit"]').val(password);
-
-        });
- 
         //update record to database
          $('#btn_update').on('click',function(){
             var nama         = $('#nama_edit').val();

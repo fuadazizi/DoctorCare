@@ -120,10 +120,11 @@
 
         function loadData(){
             var dataHandler = $("#here");
+            var username    = $(this).attr("Username_Pasien");
             dataHandler.html("");
             $.ajax({
-            type    : "GET",
-            data    : "",
+            type    : "POST",
+            data    : "username="+username,
             url     : "http://localhost/doctorcare/index.php/C_Pasien/getJadwalTemu",
             success: function(result){
                 var resultObj = JSON.parse(result);

@@ -73,10 +73,7 @@
             				<th>Telepon</th>
             				<th><?php echo $Pasien->telp ;?></th>
           			</tr>
-          			<?php
-    					         }
-          				  }
-          			?>
+          			
       		  </tbody>
   		  </table>
    	<center> 
@@ -116,19 +113,19 @@
                     <div class="form-group row">
                         <label class="col-md-2 col-form-label">Alamat</label>
                         <div class="col-md-10">
-                            <input type="text" name="alamat_edit" id="alamat_edit" class="form-control" placeholder="Alamat Lengkap">
+                            <input type="text" name="alamat_edit" id="alamat_edit" class="form-control" placeholder="Alamat Lengkap" value ="<?php echo $Pasien->alamat ;?>">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-md-2 col-form-label">Email</label>
                         <div class="col-md-10">
-                            <input type="text" name="email_edit" id="email_edit" class="form-control" placeholder="example@gmail.com">
+                            <input type="text" name="email_edit" id="email_edit" class="form-control" placeholder="example@gmail.com" value ="<?php echo $Pasien->email ;?>">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-md-2 col-form-label">Telepon</label>
                         <div class="col-md-10">
-                            <input type="text" name="telp_edit" id="telp_edit" class="form-control" placeholder="ex: 089999999999">
+                            <input type="text" name="telp_edit" id="telp_edit" class="form-control" placeholder="ex: 089999999999" value ="<?php echo $Pasien->telp ;?>">
                         </div>
                     </div>
 
@@ -138,6 +135,10 @@
                         <button type="button" type="submit" id="btn_update" class="btn btn-primary">Update</button>
                     </div>
                 </div>
+                <?php
+                       }
+                    }
+                ?>
             </div>
         </div>
     </form>
@@ -217,28 +218,7 @@
             return false;
         });*/
  
-        //get data for update record
-        $('#show_data').on('click','.item_edit',function(){
-            var nama         = $(this).data('nama');
-            var jeniskelamin = $(this).data('jeniskelamin');
-            var alamat       = $(this).data('alamat');
-            var email        = $(this).data('email');
-            var telp         = $(this).data('telp');
-            var username     = $(this).data('username');
-            var password     = $(this).data('password');
-            
-
-            $('#Modal_Edit').modal('show');
-            $('[name="nama_edit"]').val(nama);
-            $('[name="jeniskelamin_edit"]').val(jeniskelamin);
-            $('[name="alamat_edit"]').val(alamat);
-            $('[name="email_edit"]').val(email);
-            $('[name="telp_edit"]').val(telp);
-            $('[name="username_edit"]').val(username);
-            $('[name="password_edit"]').val(password);
-
-        });
- 
+      
         //update record to database
          $('#btn_update').on('click',function(){
             var nama         = $('#nama_edit').val();
