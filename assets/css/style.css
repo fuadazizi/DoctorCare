@@ -24,14 +24,14 @@ body{
 
 .body{
 	min-height: 100vh;
-	background: url('http://localhost/doctorcare/assets/pic/background/bg2.jpg') no-repeat center;
+	background: url('http://localhost/doctorcare/assets/pic/background/bg-1.jpg') no-repeat center;
 }
 #LoginForm{
 	position: absolute;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%,-50%);
-	background: url('http://localhost/doctorcare/assets/pic/background/bg1.jpg') no-repeat center;
+	background: url('http://localhost/doctorcare/assets/pic/background/bg-1.jpg') no-repeat center;
 	box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
 	border-radius: 5px;
 	padding: 30px;
