@@ -58,7 +58,7 @@ class C_Dokter extends CI_Controller
 	public function getData(){
 		include 'connect.php';
 		$id=$this->session->userdata('session_username');
-    	$queryResult = mysqli_query($connect,"SELECT * FROM jadwal_kosong join dokter on (dokter.username = jadwal_kosong.Username_Dokter) WHERE Username_Dokter='$id'");
+    	$queryResult = mysqli_query($connect,"SELECT * FROM jadwal_kosong join dokter on (dokter.username = jadwal_kosong.Username_Dokter) WHERE Username_Dokter='$id' AND empty = 0");
 		$result 	 = array();
 		while($fethData=$queryResult->fetch_assoc()){
 			$result[]=$fethData;
