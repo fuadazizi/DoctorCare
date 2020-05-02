@@ -202,7 +202,7 @@
         //update record to database
          $('#btn_update').on('click',function(){
             var nama         = $('#nama_edit').val();
-            var jeniskelamin = $('#jeniskelamin_edit').val();
+            var jeniskelamin = $('input:radio[name=jeniskelamin_edit]:checked').val();
             var alamat       = $('#alamat_edit').val();
             var spesialis    = $('#spesialis_edit').val();
             var email        = $('#email_edit').val();

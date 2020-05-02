@@ -105,8 +105,8 @@
                       </div>
                     <div class="form-group row">
                         <label class="col-md-2 col-form-label">Jenis Kelamin</label>
-                        <input type="radio" id="jeniskelamin_edit" name="jeniskelamin_edit" value="Laki-laki">Laki-Laki</input><br>
-                        <input type="radio" id="jeniskelamin_edit" name="jeniskelamin_edit" value="Perempuan">Perempuan</input><br>
+                        <input type="radio" id="jeniskelamin_edit" name="jeniskelamin_edit" value="Laki-laki"/>Laki-Laki<br>
+                        <input type="radio" id="jeniskelamin_edit" name="jeniskelamin_edit" value="Perempuan"/>Perempuan<br>
                     </div>
                     <div class="form-group row">
                         <label class="col-md-2 col-form-label">Alamat</label>
@@ -220,7 +220,7 @@
         //update record to database
          $('#btn_update').on('click',function(){
             var nama         = $('#nama_edit').val();
-            var jeniskelamin = $('#jeniskelamin_edit').val();
+            var jeniskelamin = $('input:radio[name=jeniskelamin_edit]:checked').val();
             var alamat       = $('#alamat_edit').val();
             var email        = $('#email_edit').val();
             var telp         = $('#telp_edit').val();
