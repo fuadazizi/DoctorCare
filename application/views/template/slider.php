@@ -24,11 +24,15 @@
       <img class="d-block w-100" src="<?= base_url(); ?>/assets/pic/slider/slider-bg-5.png" alt="Second slide">
       <div class="carousel-caption d-none d-md-block">
         <h5> Dokter </h5>
-        <p> Dokter adalah seseorang yang sangat sakti. Dengan ilmu dia bisa membantu menyelamatkan orang, tentunya dengan seizin Allah SWT. Tapi sebagai dokter tidaklah mudah, karena mereka berurusan dengan nyawa. Salah sedikit saja, mereka bisa membahayakan nyawa orang lain</p>
+        <p> Dokter adalah seseorang yang sangat sakti. Dengan ilmu dia bisa membantu menyelamatkan orang, tentunya dengan seizin Allah SWT. Tapi sebagai dokter tidaklah mudah, karena mereka berurusan dengan nyawa. Salah sedikit saja, mereka bisa membahayakan nyawa orang lain.</p>
       </div>
     </div>
     <div class="carousel-item" id="item">
       <img class="d-block w-100" src="<?= base_url(); ?>/assets/pic/slider/slider-bg-7.jpg" alt="Third slide">
+        <div class="carousel-caption d-none d-md-block">
+        <h5> Pasien </h5>
+        <p>Pasien adalah seseorang yang menerima perawatan medis. Sering kali, pasien menderita penyakit atau cedera dan memerlukan bantuan dokter untuk memulihkannya.</p>
+      </div>
     </div>
   </div>
   <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
