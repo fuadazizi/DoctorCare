@@ -60,64 +60,63 @@
                 </div>
             <?php 
             } else { ?>
+                <h1 class="text-center" style="margin: 10px;"> Lihat Jadwal Temu </h1>
+                    <table class="table mt-5">
+                        <thead class="thead-dark">
                 <?php 
-                foreach ($jadwaltemu as $jt) {
-                    if ($jt['Username_Pasien'] == $this->session->userdata('session_username')) { ?>
-                        <h1 class="text-center" style="margin: 10px;"> Lihat Jadwal Temu </h1>
-                        <table class="table mt-5">
-                            <thead class="thead-dark">
-                                <tr>
-                                    <th class="text-center" scope="col">Nama Dokter</th>
-                                    <th class="text-center" scope="col">Jam</th>
-                                    <th class="text-center" scope="col">Tanggal</th>
-                                    <th class="text-center" scope="col">Penyakit</th>
-                                </tr>
-                    <?php
-                    } elseif ($jt['Username_Dokter'] == $this->session->userdata('session_username')) { ?>
-                        <h1 class="text-center" style="margin: 10px;"> Lihat Jadwal Temu </h1>
-                        <table class="table mt-5">
-                            <thead class="thead-dark">
-                                <tr>        
-                                    <th class="text-center" scope="col">Nama Pasien</th>
-                                    <th class="text-center" scope="col">Jam</th>
-                                    <th class="text-center" scope="col">Tanggal</th>
-                                    <th class="text-center" scope="col">Penyakit</th>
-                                </tr>
-                    <?php    
-                    } else { ?>
-                        <div style="height: 65vh">
-                            <div class="flex-center flex-column">
-                                <img style="width: 20%;" src='http://localhost/doctorcare/assets/pic/kosong.png'>
-                                <h5 class="animated fadeIn mb-3">Anda belum mengatur jadwal temu. Silahkan menambahkan jadwal temu dari halaman utama</h5>
-                            </div>
+                if ('pasien' == $this->session->userdata('session_login')) { ?>
+                            <tr>
+                                <th class="text-center" scope="col">Nama Dokter</th>
+                                <th class="text-center" scope="col">Jam</th>
+                                <th class="text-center" scope="col">Tanggal</th>
+                                <th class="text-center" scope="col">Penyakit</th>
+                            </tr>
+                <?php
+                } elseif ('dokter' == $this->session->userdata('session_login')) { ?>
+                            <tr>        
+                                <th class="text-center" scope="col">Nama Pasien</th>
+                                <th class="text-center" scope="col">Jam</th>
+                                <th class="text-center" scope="col">Tanggal</th>
+                                <th class="text-center" scope="col">Penyakit</th>
+                            </tr>
+                <?php    
+                } else { ?>
+                    <div style="height: 65vh">
+                        <div class="flex-center flex-column">
+                            <img style="width: 20%;" src='http://localhost/doctorcare/assets/pic/kosong.png'>
+                            <h5 class="animated fadeIn mb-3">Anda belum mengatur jadwal temu. Silahkan menambahkan jadwal temu dari halaman utama</h5>
                         </div>
-                    <?php 
-                    } 
-                    ?>  
-                    </thead>
+                    </div>
+                <?php 
+                } 
+                ?>  
+                        </thead>
                     <tbody>
+                <?php
+                foreach ($jadwaltemu as $jt) { 
+                    if ($jt['Username_Pasien'] == $this->session->userdata('session_username')) { ?>
                         <tr>
-                        <?php 
-                        if ($jt['Username_Pasien'] == $this->session->userdata('session_username')) { ?>
                             <td class="text-center"><?= $jt['namadokter']; ?></td>
                             <td class="text-center"><?= $jt['jam']; ?></td>
                             <td class="text-center"><?= $jt['Tanggal']; ?></td>
                             <td class="text-center"><?= $jt['Penyakit']; ?></td>
-                        <?php
-                        } elseif ($jt['Username_Dokter'] == $this->session->userdata('session_username')) { ?>
+                    <?php
+                    } elseif ($jt['Username_Dokter'] == $this->session->userdata('session_username')) { ?>
+                        <tr>    
                             <td class="text-center"><?= $jt['namapasien']; ?></td>
                             <td class="text-center"><?= $jt['jam']; ?></td>
                             <td class="text-center"><?= $jt['Tanggal']; ?></td>
                             <td class="text-center"><?= $jt['Penyakit']; ?></td>
-                        <?php    
-                        } 
-                        ?> 
-                        </tr>
-                    </tbody>
-                </table>
-                <?php    
+                    <?php    
+                    }
+                    ?> 
+
+                </tr>
+                <?php
                 } 
                 ?>
+                    </tbody>
+                </table>
      <?php  } ?> <!--//endif-->
     </div>
     <?php 
