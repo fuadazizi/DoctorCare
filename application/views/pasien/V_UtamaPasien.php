@@ -68,7 +68,7 @@
 
         #viewdoc{
             position: fixed;
-            right: 300px;
+            right: 320px;
             top:23px;
         }
 

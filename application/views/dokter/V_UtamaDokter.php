@@ -62,6 +62,12 @@
 			width: 90%;
 		}
 
+		#viewjd{
+            position: fixed;
+            right: 320px;
+            top:23px;
+        }
+
 	</style>
 
 	<title> Selamat Datang di Doctor Care </title>
@@ -77,6 +83,10 @@
 			$this->load->view('template/navbar');
 		?>
 		</div>
+
+		<div id="viewjd">
+            <button type="button" class="btn btn-outline-info waves-effect btn-sm" onclick="window.location.href='<?= site_url('C_Pasien/V_LihatJadwalTemu/'); ?>'"> Lihat Jadwal Temu Anda </button>
+        </div>
 
 		<div class="card-deck" id="group">
 			<a href="<?= site_url('C_Dokter/V_Tambah/'); ?>"> <div class="card bg-dark text-black" id="pict">
@@ -111,13 +121,13 @@
                 </div>
 			</div> </a>
 
-			<a href="<?= site_url('C_Pasien/V_LihatJadwalTemu/'); ?>"> <div class="card bg-dark text-black" id="pict">
+<!-- 			 <a href="<?= site_url('C_Pasien/V_LihatJadwalTemu/'); ?>"> <div class="card bg-dark text-black" id="pict">
                 <img src="<?= base_url(); ?>/assets/pic/doctor-lihatjadwal.jpg" class="card-img" alt="..." >
                 <div class="card-img-overlay">
                     <h4 class="card-title">Lihat jadwal dengan pasien</h4>
                     <p class="card-text" id="desc"> Lihat jadwal temu dengan dokter yang telah dibuat </p>
                 </div>
-            </div> </a>
+            </div> </a> -->
 		</div>
 	</div>
 	<?php $this->load->view('template/footer'); ?>
