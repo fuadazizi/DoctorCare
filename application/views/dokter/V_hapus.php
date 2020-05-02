@@ -35,43 +35,32 @@
     <title> Hapus Jadwal Temu </title>
 </head>
 <body>
-    <div class="container" style="position: relative; top: 130px;">
-        <h2 class="text-center" style="margin: 10px;"> Hapus Jadwal </h2>
-        <div class="container"  style="margin-top: 60px; margin-bottom: 150px;">
-            <div class="row mt-3">
-                <div class="col md-6">
-                    <div class="card">
-                        <div class="card-header text-center" > 
-                            Form Hapus Jadwal Kosong
-                        </div>
-                        <div class="card-body">
-                            <table class="table mt-5">
-                                <thead class="thead-dark">
-                                    <tr>
-                                        <th class="text-center">Username Dokter</th>
-                                        <th class="text-center">Jam</th>
-                                        <th class="text-center">Tanggal</th>
-                                        <th class="text-center">Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="here">
-                                    
-                                </tbody>
-                            </table>
-                            <table>
-                                 <tr>
-                                    <td><input type="text" name="idjadwal" hidden></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td id="error"></td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div> 
+    <div class="container" style="position: relative; top: 100px;">
+        <h2 class="text-center" style="margin: 10px;"> Hapus Jadwal Kosong</h2>
+        <div class="container"  style="margin-top: 60px; margin-bottom: 330px;">
+            <table class="table mt-5">
+                <thead class="thead-dark">
+                    <tr>
+                        <th class="text-center">Username Dokter</th>
+                        <th class="text-center">Jam</th>
+                        <th class="text-center">Tanggal</th>
+                        <th class="text-center">Action</th>
+                    </tr>
+                </thead>
+                <tbody id="here">
+                    
+                </tbody>
+            </table>
+            <table>
+                 <tr>
+                    <td><input type="text" name="idjadwal" hidden></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td id="error"></td>
+                </tr>
+            </table>
         </div>
     </div>
     <script
