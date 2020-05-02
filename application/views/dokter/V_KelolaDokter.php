@@ -111,16 +111,16 @@
                         <label class="col-md-2 col-form-label">Jenis Kelamin</label>
                         <?php 
                         if ($Dokter->jeniskelamin == 'Laki-laki'){ ?>
-                            <input type="radio" id="jeniskelamin_edit" name="jeniskelamin_edit" <?php echo 'checked="checked"' ?> value="Laki-laki">
-                            <label for="male">Laki-Laki</label><br>
-                            <input type="radio" id="jeniskelamin_edit" name="jeniskelamin_edit" value="Perempuan">
-                            <label for="female">Perempuan</label><br>
+                            <input type="radio" id="jeniskelamin_edit" name="jeniskelamin_edit" <?php echo 'checked="checked"' ?> value="Laki-laki"/>Laki-laki<br>
+                            <input type="radio" id="jeniskelamin_edit" name="jeniskelamin_edit" value="Perempuan"/>Perempuan<br>
                         <?php 
                         } else if ($Dokter->jeniskelamin == 'Perempuan'){ ?>
-                            <input type="radio" id="jeniskelamin_edit" name="jeniskelamin_edit" value="Laki-laki">
-                            <label for="male">Laki-Laki</label><br>
-                            <input type="radio" id="jeniskelamin_edit" name="jeniskelamin_edit" <?php echo 'checked="checked"' ?> value="Perempuan">
-                            <label for="female">Perempuan</label><br>
+                            <input type="radio" id="jeniskelamin_edit" name="jeniskelamin_edit" value="Laki-laki"/>Laki-Laki<br>
+                            <input type="radio" id="jeniskelamin_edit" name="jeniskelamin_edit" <?php echo 'checked="checked"' ?> value="Perempuan"/>Perempuan<br>
+                        <?php 
+                        } else { ?>
+                            <input type="radio" id="jeniskelamin_edit" name="jeniskelamin_edit" value="Laki-laki"/>Laki-Laki<br>
+                            <input type="radio" id="jeniskelamin_edit" name="jeniskelamin_edit" value="Perempuan"/>Perempuan<br>
                         <?php 
                         } ?>
                     </div>
