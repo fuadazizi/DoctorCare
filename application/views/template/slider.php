@@ -10,22 +10,25 @@
     width: 90%;
   }
 </style>
-
-<h2> Feeds </h2>
 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active" id="item">
-      <img class="d-block w-100" src="https://platform24.com.au/wp-content/uploads/2018/01/Platform-24-IT-Solutions-Banner-1300x150.png" alt="First slide">
+      <img class="d-block w-100" src="<?= base_url(); ?>/assets/pic/slider/slider-bg-6.jpg" alt="First slide">
       <div class="carousel-caption d-none d-md-block">
-      <h5> Dokter </h5>
-      <p> Dokter adalah seseorang yang sangat sakti. Dengan ilmu dia bisa membantu menyelamatkan orang, tentunya dengan seizin Allah SWT. Tapi sebagai dokter tidaklah mudah, karena mereka berurusan dengan nyawa. Salah sedikit saja, mereka bisa membahayakan nyawa orang lain</p>
-  </div>
+        <h3> Selamat datang, <?php echo $this->session->userdata('session_nama');?></h3>
+        <p > Anda masuk sebagai <?= $person ?>
+        <br> Semoga hari anda menyenangkan </p>
+      </div>
     </div>
     <div class="carousel-item" id="item">
-      <img class="d-block w-100" src="https://platform24.com.au/wp-content/uploads/2018/01/Platform-24-IT-Services-Banner-1300x150.png" alt="Second slide">
+      <img class="d-block w-100" src="<?= base_url(); ?>/assets/pic/slider/slider-bg-5.png" alt="Second slide">
+      <div class="carousel-caption d-none d-md-block">
+        <h5> Dokter </h5>
+        <p> Dokter adalah seseorang yang sangat sakti. Dengan ilmu dia bisa membantu menyelamatkan orang, tentunya dengan seizin Allah SWT. Tapi sebagai dokter tidaklah mudah, karena mereka berurusan dengan nyawa. Salah sedikit saja, mereka bisa membahayakan nyawa orang lain</p>
+      </div>
     </div>
     <div class="carousel-item" id="item">
-      <img class="d-block w-100" src="https://platform24.com.au/wp-content/uploads/2018/01/Platform-24-IT-Services-Banner-1300x150.png" alt="Third slide">
+      <img class="d-block w-100" src="<?= base_url(); ?>/assets/pic/slider/slider-bg-7.jpg" alt="Third slide">
     </div>
   </div>
   <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
