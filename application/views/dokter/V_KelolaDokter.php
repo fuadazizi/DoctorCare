@@ -109,10 +109,20 @@
                       </div>
                     <div class="form-group row">
                         <label class="col-md-2 col-form-label">Jenis Kelamin</label>
-                        <input type="radio" id="jeniskelamin_edit" name="jeniskelamin_edit" value="Laki-laki">
-                        <label for="male">Laki-Laki</label><br>
-                        <input type="radio" id="jeniskelamin_edit" name="jeniskelamin_edit" value="Perempuan">
-                        <label for="female">Perempuan</label><br>
+                        <?php 
+                        if ($Dokter->jeniskelamin == 'Laki-laki'){ ?>
+                            <input type="radio" id="jeniskelamin_edit" name="jeniskelamin_edit" <?php echo 'checked="checked"' ?> value="Laki-laki">
+                            <label for="male">Laki-Laki</label><br>
+                            <input type="radio" id="jeniskelamin_edit" name="jeniskelamin_edit" value="Perempuan">
+                            <label for="female">Perempuan</label><br>
+                        <?php 
+                        } else if ($Dokter->jeniskelamin == 'Perempuan'){ ?>
+                            <input type="radio" id="jeniskelamin_edit" name="jeniskelamin_edit" value="Laki-laki">
+                            <label for="male">Laki-Laki</label><br>
+                            <input type="radio" id="jeniskelamin_edit" name="jeniskelamin_edit" <?php echo 'checked="checked"' ?> value="Perempuan">
+                            <label for="female">Perempuan</label><br>
+                        <?php 
+                        } ?>
                     </div>
                     <div class="form-group row">
                         <label class="col-md-2 col-form-label">Alamat</label>
