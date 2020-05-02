@@ -78,8 +78,12 @@ class M_Pasien extends CI_model
 
 	public function JadwalTemu_list()
 	{
-		$result = $this->db->query("SELECT dokter.nama as namadokter, pasien.nama as namapasien, jam, Tanggal, Penyakit, Username_Pasien, Username_Dokter FROM jadwaltemu join dokter on dokter.username = jadwaltemu.Username_Dokter join pasien on pasien.username = jadwaltemu.Username_Pasien");
-        //$result=$this->db->get('jadwaltemu');
+		$result = $this->db->query("SELECT dokter.nama as namadokter, pasien.nama as namapasien, jam, Tanggal, Penyakit,
+									Username_Pasien, Username_Dokter 
+									FROM jadwaltemu 
+									join dokter on dokter.username = jadwaltemu.Username_Dokter 
+									join pasien on pasien.username = jadwaltemu.Username_Pasien
+									where Username_Pasien = '".$this->session->userdata('session_username')."'");
         return $result->result_array();
 	}
 }
