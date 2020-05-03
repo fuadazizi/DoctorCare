@@ -62,7 +62,11 @@
                                     
                                 </tbody>
                             </table>
-
+                            <div class="form-group" hidden>
+                                <label for="text">ID</label>
+                                <input type="text" class="form-control" id="idjadwal" name="idjadwal">
+                                <small class="form-text text-danger"><?= form_error('idjadwal') ?>.</small>
+                            </div>
                             <div class="form-group">
                                 <label for="nama"> Nama Pasien </label>
                                 <input type="text" class="form-control" id="Username_Pasien" name="Username_Pasien" disabled value= "<?php echo $this->session->userdata('session_nama');?>">

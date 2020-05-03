@@ -9,11 +9,12 @@ class M_Pasien extends CI_model
 	public function tambahJadwalTemu()
 	{
 		$data = [
-			"Username_Pasien" => $this->session->userdata('session_username'),
-			"Username_Dokter" => $this->input->post('Username_Dokter', true),
-			"jam" => $this->input->post('jam', true),
-			"Tanggal" => $this->input->post('Tanggal', true),
-			"Penyakit" => $this->input->post('Penyakit', true),
+			"id" 				=> $this->input->post('idjadwal'),
+			"Username_Pasien" 	=> $this->session->userdata('session_username'),
+			"Username_Dokter" 	=> $this->input->post('Username_Dokter', true),
+			"jam" 				=> $this->input->post('jam', true),
+			"Tanggal" 			=> $this->input->post('Tanggal', true),
+			"Penyakit"			=> $this->input->post('Penyakit', true),
 		];
 		$this->db->insert('jadwaltemu',$data);
 

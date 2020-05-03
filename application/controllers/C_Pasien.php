@@ -32,6 +32,7 @@ class C_Pasien extends CI_Controller
 	public function V_tambah()
 	{
 		$this->form_validation->set_rules('Penyakit','warning','required');
+		$this->form_validation->set_rules('idjadwal','warning','required');
 		if ($this->form_validation->run() == false){
 			$this->load->view('pasien/V_tambah');
 		}else{

@@ -70,6 +70,12 @@ class pasien_model extends CI_Model {
  
     function delete_data(){
         $username = $this->session->userdata('session_username');
+
+        $empty=$this->db->query("UPDATE jadwal_kosong
+                                JOIN jadwaltemu ON jadwal_kosong.Username_Dokter = jadwaltemu.Username_Dokter
+                                SET empty = FALSE
+                                WHERE idjadwal = jadwaltemu.id");
+
         $query = "DELETE pasien, jadwaltemu
                   FROM pasien, jadwaltemu
                   WHERE pasien.username=jadwaltemu.Username_Pasien
