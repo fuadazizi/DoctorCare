@@ -84,7 +84,8 @@
 		</div>
 
 		<div id="viewjd">
-            <button type="button" class="btn btn-outline-info waves-effect btn-sm" onclick="window.location.href='<?= site_url('C_Pasien/V_LihatJadwalTemu/'); ?>'"> Lihat Jadwal Temu Anda </button>
+            <!--<button type="button" class="btn btn-outline-info waves-effect btn-sm" onclick="window.location.href='<?= site_url('C_Pasien/V_LihatJadwalTemu/'); ?>'"> Lihat Jadwal Temu Anda </button>-->
+            <button type="button" class="btn btn-outline-info waves-effect btn-sm" onclick="showjadwal()"> Lihat Jadwal Temu Anda </button>
         </div>
 
 		<div class="card-deck" id="group">
@@ -122,5 +123,74 @@
 		</div>
 	</div>
 	<?php $this->load->view('template/footer'); ?>
+
+	<!--------------------------------ngatur Modals-------------------------------->
+     
+    <script type="text/javascript">
+        function showjadwal() {
+            $('#ListJadwal').modal('show');
+        }
+    </script>
+
+    <style type="text/css">
+        .modal-dialog.modal-dialog-scrollable {
+            width: 700px;
+        }
+    </style>
+
+    <!-----------------------Full Height Modal Right ----------------------------------->
+
+    <div class="modal fade top" id="ListJadwal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+      aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable mw-100 w-65" role="document">
+            <div class="modal-content">
+            <div class="modal-header" style="background-color: #f6fdde;">
+                <h4 class="modal-title w-100" id="myModalLabel" style="color: black; text-align: center;">Daftar Jadwal Temu Anda</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <?php 
+                    $this->load->model('M_Pasien');
+                    $jadwalList = $this->M_Pasien->JadwalTemu_List();
+                ?>
+                <table class="table mt-5" style="width: 100%;">
+                    <colgroup>
+                       <col span="1" style="width: 20%;">
+                       <col span="1" style="width: 20%;">
+                       <col span="1" style="width: 20%;">
+                       <col span="1" style="width: 20%;">
+                       <col span="1" style="width: 20%;">
+                    </colgroup>
+                    <thead class="thead-dark">
+                        <tr>
+                            <th class="text-center" scope="col">Nama Pasien</th>
+                            <th class="text-center" scope="col">Jam</th>
+                            <th class="text-center" scope="col">Tanggal</th>
+                            <th class="text-center" scope="col">Penyakit</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($jadwalList as $jl) { ?>
+                            <tr>
+                                <td class="text-center"><?= $jl['namapasien']; ?></td>
+                                <td class="text-center"><?= $jl['jam']; ?></td>
+                                <td class="text-center"><?= $jl['Tanggal']; ?></td>
+                                <td class="text-center"><?= $jl['Penyakit']; ?></td>
+                            </tr>
+                        <?php
+                            }    //endforeach
+                        ?> 
+                    </tbody>
+                </table>
+          </div>
+          <div class="modal-footer justify-content-center">
+            <button type="button" class="btn btn-indigo" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+	<!-- Full Height Modal Right -->
 </body>
 </html>
