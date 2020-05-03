@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.1
+-- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 24, 2020 at 11:59 AM
--- Server version: 10.4.8-MariaDB
--- PHP Version: 7.3.11
+-- Waktu pembuatan: 03 Bulan Mei 2020 pada 16.38
+-- Versi server: 10.4.11-MariaDB
+-- Versi PHP: 7.4.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,7 +25,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `dokter`
+-- Struktur dari tabel `dokter`
 --
 
 CREATE TABLE `dokter` (
@@ -40,16 +40,17 @@ CREATE TABLE `dokter` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `dokter`
+-- Dumping data untuk tabel `dokter`
 --
 
 INSERT INTO `dokter` (`nama`, `jeniskelamin`, `alamat`, `spesialis`, `email`, `telp`, `username`, `password`) VALUES
-('Narnia', '', '', '', '', '', 'narniaa', 'e10adc3949ba59abbe56e057f20f883e');
+('Indra Wahyudi', 'Laki-laki', 'Samarinda', 'Penyakit Hati', 'indrawahyudi2710@gmail.com', '081247123341', 'indra', '202cb962ac59075b964b07152d234b70'),
+('Priyoga ', 'Laki-laki', 'Bandung', 'Penyakit Hati', 'priyoga@gmail.com', '081231134223', 'yoga', '202cb962ac59075b964b07152d234b70');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `jadwaltemu`
+-- Struktur dari tabel `jadwaltemu`
 --
 
 CREATE TABLE `jadwaltemu` (
@@ -64,30 +65,29 @@ CREATE TABLE `jadwaltemu` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `jadwal_kosong`
+-- Struktur dari tabel `jadwal_kosong`
 --
 
 CREATE TABLE `jadwal_kosong` (
   `idjadwal` int(11) NOT NULL,
   `Username_Dokter` varchar(20) NOT NULL,
   `jam` varchar(5) NOT NULL,
-  `Tanggal` varchar(30) NOT NULL
+  `Tanggal` varchar(30) NOT NULL,
+  `empty` tinyint(1) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `jadwal_kosong`
+-- Dumping data untuk tabel `jadwal_kosong`
 --
 
-INSERT INTO `jadwal_kosong` (`idjadwal`, `Username_Dokter`, `jam`, `Tanggal`) VALUES
-(1, 'yoga123', '09:30', '2020-01-04'),
-(2, 'yoga123', '08:30', '2020-05-01'),
-(4, 'narniaa', '06:14', '2020-03-31'),
-(5, 'narniaa', '01:02', '2020-04-17');
+INSERT INTO `jadwal_kosong` (`idjadwal`, `Username_Dokter`, `jam`, `Tanggal`, `empty`) VALUES
+(26, 'indra', '01:00', '2020-05-04', 0),
+(27, 'yoga', '05:10', '2020-05-30', 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pasien`
+-- Struktur dari tabel `pasien`
 --
 
 CREATE TABLE `pasien` (
@@ -101,57 +101,50 @@ CREATE TABLE `pasien` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `pasien`
+-- Dumping data untuk tabel `pasien`
 --
 
 INSERT INTO `pasien` (`nama`, `jeniskelamin`, `alamat`, `email`, `telp`, `username`, `password`) VALUES
-('Fuad Azizi', '', '', '', '', 'fuadazizi', 'c33367701511b4f6020ec61ded352059'),
-('Robert Exal', '', '', '', '', 'robertex', 'e10adc3949ba59abbe56e057f20f883e'),
-('Yoga', '', '', '', '', 'yogs007', '45a73564aacc33cff0bf8bf9e72370f5');
+('Fuad Azizi', 'Laki-laki', 'Bandung', 'fuad@gmail.com', '081234567890', 'fuad', '202cb962ac59075b964b07152d234b70'),
+('Hafidz Lazuardi', 'Laki-laki', 'Paser', 'hafidz@gmail.com', '081351183481', 'hafidz', '202cb962ac59075b964b07152d234b70');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `dokter`
+-- Indeks untuk tabel `dokter`
 --
 ALTER TABLE `dokter`
   ADD PRIMARY KEY (`username`);
 
 --
--- Indexes for table `jadwaltemu`
+-- Indeks untuk tabel `jadwaltemu`
 --
 ALTER TABLE `jadwaltemu`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `jadwal_kosong`
+-- Indeks untuk tabel `jadwal_kosong`
 --
 ALTER TABLE `jadwal_kosong`
   ADD PRIMARY KEY (`idjadwal`);
 
 --
--- Indexes for table `pasien`
+-- Indeks untuk tabel `pasien`
 --
 ALTER TABLE `pasien`
   ADD PRIMARY KEY (`username`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `jadwaltemu`
---
-ALTER TABLE `jadwaltemu`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
-
---
--- AUTO_INCREMENT for table `jadwal_kosong`
+-- AUTO_INCREMENT untuk tabel `jadwal_kosong`
 --
 ALTER TABLE `jadwal_kosong`
-  MODIFY `idjadwal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `idjadwal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
