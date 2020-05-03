@@ -46,8 +46,7 @@
     <title>Jadwal Kosong</title>
 </head>
 <body>
-    <h1 class="text-center" style="margin: 10px;"> Lihat Jadwal Kosong </h1>
-    
+    <div class="container"  style="margin-top: 80px; margin-bottom: 330px;">
     <div id="view">
         <?php 
             //untuk mengecek apakah dokter punya jadwal kosong
@@ -86,9 +85,11 @@
             } //endif
             ?>
     </div>
+    </div>
     <?php 
         $this->load->view('template/navbar'); 
         $this->load->view('template/back');
-        $this->load->view('template/footer');?>
+        $this->load->view('template/footer');
+    ?>
 </body>
 </html>
