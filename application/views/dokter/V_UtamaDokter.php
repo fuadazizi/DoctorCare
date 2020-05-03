@@ -142,7 +142,7 @@
 
     <div class="modal fade top" id="ListJadwal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
       aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable mw-100 w-65" role="document">
+        <div class="modal-dialog modal-dialog-scrollable mw-100 w-75" role="document">
             <div class="modal-content">
             <div class="modal-header" style="background-color: #f6fdde;">
                 <h4 class="modal-title w-100" id="myModalLabel" style="color: black; text-align: center;">Daftar Jadwal Temu Anda</h4>
@@ -155,13 +155,13 @@
                     $this->load->model('M_Pasien');
                     $jadwalList = $this->M_Pasien->JadwalTemu_List();
                 ?>
-                <table class="table mt-5" style="width: 100%;">
+                <table class="table mt-6" style="width: 100%;">
                     <colgroup>
                        <col span="1" style="width: 20%;">
-                       <col span="1" style="width: 20%;">
-                       <col span="1" style="width: 20%;">
-                       <col span="1" style="width: 20%;">
-                       <col span="1" style="width: 20%;">
+                       <col span="1" style="width: 10%;">
+                       <col span="1" style="width: 15%;">
+                       <col span="1" style="width: 16.6%;">
+                       <col span="1" style="width: 12%;">
                     </colgroup>
                     <thead class="thead-dark">
                         <tr>
@@ -169,6 +169,8 @@
                             <th class="text-center" scope="col">Jam</th>
                             <th class="text-center" scope="col">Tanggal</th>
                             <th class="text-center" scope="col">Penyakit</th>
+                            <th class="text-center" scope="col">No. Telepon</th>
+                            <th class="text-center" scope="col">Alamat Email</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -178,6 +180,8 @@
                                 <td class="text-center"><?= $jl['jam']; ?></td>
                                 <td class="text-center"><?= $jl['Tanggal']; ?></td>
                                 <td class="text-center"><?= $jl['Penyakit']; ?></td>
+                                <td class="text-center"><?= $jl['telppasien']; ?></td>
+                                <td class="text-center"><?= $jl['emailpasien']; ?></td>
                             </tr>
                         <?php
                             }    //endforeach

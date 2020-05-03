@@ -60,24 +60,33 @@
                 </div>
             <?php 
             } else { ?>
+                <?php 
+                if ('pasien' == $this->session->userdata('session_login')) { ?>
+                        
                 <h1 class="text-center" style="margin: 10px;"> Lihat Jadwal Temu </h1>
                     <table class="table mt-5">
                         <thead class="thead-dark">
-                <?php 
-                if ('pasien' == $this->session->userdata('session_login')) { ?>
                             <tr>
                                 <th class="text-center" scope="col">Nama Dokter</th>
                                 <th class="text-center" scope="col">Jam</th>
                                 <th class="text-center" scope="col">Tanggal</th>
                                 <th class="text-center" scope="col">Penyakit</th>
+                                <th class="text-center" scope="col">No. Telepon</th>
+                                <th class="text-center" scope="col">Alamat Email</th>
                             </tr>
                 <?php
                 } elseif ('dokter' == $this->session->userdata('session_login')) { ?>
+                            
+                <h1 class="text-center" style="margin: 10px;"> Lihat Jadwal Temu </h1>
+                    <table class="table mt-5">
+                        <thead class="thead-dark">
                             <tr>        
                                 <th class="text-center" scope="col">Nama Pasien</th>
                                 <th class="text-center" scope="col">Jam</th>
                                 <th class="text-center" scope="col">Tanggal</th>
                                 <th class="text-center" scope="col">Penyakit</th>
+                                <th class="text-center" scope="col">No. Telepon</th>
+                                <th class="text-center" scope="col">Alamat Email</th>
                             </tr>
                 <?php    
                 } else { ?>
@@ -100,6 +109,8 @@
                             <td class="text-center"><?= $jt['jam']; ?></td>
                             <td class="text-center"><?= $jt['Tanggal']; ?></td>
                             <td class="text-center"><?= $jt['Penyakit']; ?></td>
+                            <td class="text-center"><?= $jt['telpdokter']; ?></td>
+                            <td class="text-center"><?= $jt['emaildokter']; ?></td>
                     <?php
                     } elseif ($jt['Username_Dokter'] == $this->session->userdata('session_username')) { ?>
                         <tr>    
@@ -107,6 +118,8 @@
                             <td class="text-center"><?= $jt['jam']; ?></td>
                             <td class="text-center"><?= $jt['Tanggal']; ?></td>
                             <td class="text-center"><?= $jt['Penyakit']; ?></td>
+                            <td class="text-center"><?= $jt['telppasien']; ?></td>
+                            <td class="text-center"><?= $jt['emailpasien']; ?></td>
                     <?php    
                     }
                     ?> 
