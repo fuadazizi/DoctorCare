@@ -180,7 +180,7 @@
                     <div class="modal-body">
                         <center> <strong>Apakah anda yakin ingin menghapus akun?</strong>
                         <p> Tindakan ini tidak akan bisa dibatalkan </br> 
-                        Anda juga akan menghapus seluruh jadwal temu yang sudah anda buat </p> </center>
+                        Anda juga akan menghapus seluruh jadwal temu dan jadwal kosong yang sudah anda buat </p> </center>
                     </div>
                     <div class="modal-footer">
                         <input type="hidden" name="username_delete" id="username_delete" class="form-control">

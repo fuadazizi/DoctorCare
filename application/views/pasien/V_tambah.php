@@ -74,11 +74,11 @@
                             </div>
                             <div class="form-group">
                                 <label for="nama"> Jam </label>
-                                <input type="time" class="form-control" id="jam" name="jam">
+                                <input type="time" class="form-control" id="jam" name="jam" readonly>
                             </div>
                             <div class="form-group">
                                 <label for="text"> Tanggal </label>
-                                <input type="date" class="form-control" id="Tanggal" name="Tanggal">
+                                <input type="date" class="form-control" id="Tanggal" name="Tanggal" readonly>
                             </div>
 
                             <div class="form-group">

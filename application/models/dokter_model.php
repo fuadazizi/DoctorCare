@@ -16,8 +16,6 @@ class dokter_model extends CI_Model{
                 'telp' => $this->input->post('telp'),
                 'username' => $this->input->post('username'),
                 'password' => $this->input->post('password'),
-
-            
             );
         $result=$this->db->insert('dokter',$data);
         return $result;
@@ -41,11 +39,20 @@ class dokter_model extends CI_Model{
         $result=$this->db->update('dokter');
         return $result;
     }
- 
+
     function delete_data(){
-        $this->db->where('username',$this->session->userdata('session_username'));
-        $result=$this->db->delete('dokter');
-        return $result;
+        $username = $this->session->userdata('session_username');
+        $query = "DELETE dokter,jadwal_kosong, jadwaltemu
+                  FROM dokter, jadwal_kosong, jadwaltemu
+                  WHERE dokter.username=jadwaltemu.Username_Dokter
+                  AND dokter.username=jadwal_kosong.Username_Dokter
+                  AND dokter.username= ?";
+        return $this->db->query($query, array($username));
+        /*$this->db->where('dokter.username=jadwaltemu.Username_Dokter');
+        $this->db->where('dokter.username=jadwal_kosong.Username_Dokter');
+        $this->db->where('dokter.username',$this->session->userdata('session_username'));
+        $result=$this->db->delete(array('dokter','jadwaltemu','jadwal_kosong'));
+        return $result;*/
     }
      
     public function get_all_dokter() {
