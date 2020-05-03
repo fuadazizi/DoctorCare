@@ -48,11 +48,6 @@ class dokter_model extends CI_Model{
                   AND dokter.username=jadwal_kosong.Username_Dokter
                   AND dokter.username= ?";
         return $this->db->query($query, array($username));
-        /*$this->db->where('dokter.username=jadwaltemu.Username_Dokter');
-        $this->db->where('dokter.username=jadwal_kosong.Username_Dokter');
-        $this->db->where('dokter.username',$this->session->userdata('session_username'));
-        $result=$this->db->delete(array('dokter','jadwaltemu','jadwal_kosong'));
-        return $result;*/
     }
      
     public function get_all_dokter() {

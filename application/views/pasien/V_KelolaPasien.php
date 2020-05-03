@@ -195,39 +195,7 @@
     	$('#Modal_Delete').modal('show');
     }
 
-    $(document).ready(function(){
-        //$('#mydata').dataTable();
- 
-        //Save product
-        /*$('#btn_save').on('click',function(){
-            var nama         = $('#nama').val();
-            var jeniskelamin = $('#jeniskelamin').val();
-            var alamat       = $('#alamat').val();
-            var email        = $('#email').val();
-            var telp         = $('#telp').val();
-            var username     = $('#username').val();
-            var password     = $('#password').val();
-
-            $.ajax({
-                type : "POST",
-                url  : "<?php echo site_url('pasien/save')?>",
-                dataType : "JSON",
-                data : {nama:nama , jeniskelamin:jeniskelamin, alamat:alamat, email:email, telp:telp, username:username, password:password},
-                success: function(data){
-                    $('[name="nama"]').val("");
-                    $('[name="jeniskelamin"]').val("");
-                    $('[name="alamat"]').val("");
-                    $('[name="email"]').val("");
-                    $('[name="telp"]').val("");
-                    $('[name="username"]').val("");
-                    $('[name="password"]').val("");
-                    $('#Modal_Add').modal('hide');
-                    show_pasien();
-                }
-            });
-            return false;
-        });*/
- 
+    $(document).ready(function(){ 
       
         //update record to database
          $('#btn_update').on('click',function(){

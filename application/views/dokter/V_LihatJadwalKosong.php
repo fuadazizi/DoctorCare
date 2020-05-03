@@ -70,7 +70,6 @@
                     </thead>
                     <tbody>
                         <tr><?php foreach ($jadwal_kosong as $jk) {
-                                //echo $this->session->userdata('session_username');
                             if ($jk['Username_Dokter'] == $this->session->userdata('session_username')) { ?>
                                 <td class="text-center"><?= $jk['nama']; ?></td>
                                 <td class="text-center"><?= $jk['jam']; ?></td>

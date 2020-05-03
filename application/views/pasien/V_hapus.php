@@ -67,7 +67,6 @@
 
                     <?php 
                         $url = site_url()."/C_Pasien/doDelete/".$jt['id']; 
-                        //$_SESSION['idDel'] = $jt['id'];
                     ?>
                     <?php
                     foreach ($pasien as $Pasien) {

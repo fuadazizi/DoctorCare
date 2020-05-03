@@ -75,9 +75,6 @@ class pasien_model extends CI_Model {
                   WHERE pasien.username=jadwaltemu.Username_Pasien
                   AND pasien.username= ?";
         return $this->db->query($query, array($username));
-        /*$this->db->where('username',$this->session->userdata('session_username'));
-        $result=$this->db->delete('pasien');
-        return $result;*/
     }
 	
 } 

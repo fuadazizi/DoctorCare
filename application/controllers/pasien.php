@@ -51,10 +51,6 @@
  		echo json_encode(array("status" => TRUE));
  	}
 
- 	/*function index(){
-        $this->load->view('pasien_view');
-    }*/
- 
     function akun_data(){
         $data=$this->pasien_model->pasien_data();
         echo json_encode($data);

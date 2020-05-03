@@ -9,8 +9,6 @@ class C_Pasien extends CI_Controller
 		$this->load->model('M_Dokter');
 		$this->load->model('pasien_model');
 		$this->load->model('dokter_model');
-
-		//load library form validation
 		$this->load->library('form_validation');
 	}
 	public function index()
@@ -104,7 +102,6 @@ class C_Pasien extends CI_Controller
 		while($fethData=$queryResult->fetch_assoc()){
 			$result[]=$fethData;
 		}
-		//$result = $this->M_Pasien->JadwalTemu_list();
 		echo json_encode($result);
 	}
 

@@ -82,7 +82,6 @@
         <div style="position: relative; top: 89px;"> 
         <?php 
             $data['person'] = "pasien";
-            //$this->load->view('template/welcomebar',$data);
             $this->load->view('template/slider', $data); 
             $this->load->view('template/navbar');
         ?>
