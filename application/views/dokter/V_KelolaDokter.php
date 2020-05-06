@@ -139,13 +139,13 @@
                     <div class="form-group row">
                         <label class="col-md-2 col-form-label">Email</label>
                         <div class="col-md-10">
-                            <input type="text" name="email_edit" id="email_edit" class="form-control" placeholder="ex: 089999999999" value="<?php echo $Dokter->email ;?>">
+                            <input type="text" name="email_edit" id="email_edit" class="form-control" placeholder="ex: example@gmail.com" value="<?php echo $Dokter->email ;?>">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-md-2 col-form-label">Telepon</label>
                         <div class="col-md-10">
-                            <input type="text" name="telp_edit" id="telp_edit" class="form-control"  value="<?php echo $Dokter->telp ;?>">
+                            <input type="text" name="telp_edit" id="telp_edit" class="form-control" placeholder="ex: 089999999999"value="<?php echo $Dokter->telp ;?>">
                         </div>
                     </div>
 
@@ -256,6 +256,7 @@
                     location.reload();
                     location.href='<?php echo base_url().'index.php/login/logout'?>';
                 }
+                
             });
             return false;
         });

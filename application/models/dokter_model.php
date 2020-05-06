@@ -40,13 +40,39 @@ class dokter_model extends CI_Model{
         return $result;
     }
 
+/*    function getjadwaltemuwhereusername($username){
+        return $query=$this->db->query("SELECT * FROM jadwaltemu WHERE Username_Dokter='$username'");
+    }
+
+    function getjadwalkosongwhereusername($username){
+        return $query=$this->db->query("SELECT * FROM jadwal_kosong WHERE Username_Dokter='$username'");
+    }*/
+
     function delete_data(){
         $username = $this->session->userdata('session_username');
-        $query = "DELETE dokter,jadwal_kosong, jadwaltemu
-                  FROM dokter, jadwal_kosong, jadwaltemu
-                  WHERE dokter.username=jadwaltemu.Username_Dokter
-                  AND dokter.username=jadwal_kosong.Username_Dokter
-                  AND dokter.username= ?";
+  /*      $cek_jadwaltemu = $this->getjadwaltemuwhereusername($username);
+        $cek_jadwalkosong = $this->getjadwalkosongwhereusername($username);
+        if(array_filter($cek_jadwaltemu) AND array_filter($cek_jadwalkosong)){
+            $query = "DELETE dokter,jadwal_kosong, jadwaltemu
+                      FROM dokter, jadwal_kosong, jadwaltemu
+                      WHERE dokter.username=jadwaltemu.Username_Dokter
+                      AND dokter.username=jadwal_kosong.Username_Dokter
+                      AND dokter.username= ?";
+        } elseif(!array_filter($cek_jadwaltemu) AND array_filter($cek_jadwalkosong)) {
+            $query = "DELETE dokter,jadwal_kosong
+                      FROM dokter, jadwal_kosong
+                      WHERE dokter.username=jadwal_kosong.Username_Dokter
+                      AND dokter.username= ?";
+        } else {
+            $query = "DELETE FROM dokter
+                      WHERE username= ?";
+        }*/
+
+        $query = "DELETE FROM jadwal_kosong WHERE Username_Dokter= ?";
+        $this->db->query($query, array($username));
+        $query = "DELETE FROM jadwaltemu WHERE Username_Dokter= ?";
+        $this->db->query($query, array($username));
+        $query = "DELETE FROM dokter WHERE username= ?";
         return $this->db->query($query, array($username));
     }
      

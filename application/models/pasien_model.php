@@ -76,10 +76,9 @@ class pasien_model extends CI_Model {
                                 SET empty = FALSE
                                 WHERE idjadwal = jadwaltemu.id");
 
-        $query = "DELETE pasien, jadwaltemu
-                  FROM pasien, jadwaltemu
-                  WHERE pasien.username=jadwaltemu.Username_Pasien
-                  AND pasien.username= ?";
+        $query = "DELETE FROM pasien WHERE username= ?";
+        $this->db->query($query, array($username));
+        $query = "DELETE FROM jadwaltemu WHERE Username_Pasien= ?";
         return $this->db->query($query, array($username));
     }
 	
