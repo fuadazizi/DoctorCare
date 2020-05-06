@@ -4,7 +4,6 @@ class C_Pasien extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
-		//load model "M_Pasien"
 		$this->load->model('M_Pasien');
 		$this->load->model('M_Dokter');
 		$this->load->model('pasien_model');
@@ -15,9 +14,6 @@ class C_Pasien extends CI_Controller
 	{
 		$data['judul'] = 'Selamat datang Pasien';
 		$data['jadwaltemu'] = $this->M_Pasien->getAllJadwalTemu();
-		if ($this->input->post('keyword')) {
-			$data['mahasiswa'] = $this->M_Pasien->cariJadwalTemu();
-		}
 		$this->load->view('template/navbar', $data);
 		$this->load->view('pasien/V_UtamaPasien', $data);
 		$this->load->view('template/footer');
@@ -48,8 +44,6 @@ class C_Pasien extends CI_Controller
 		$data['pasien'] = $this->pasien_model->get_all_pasien();
 		$data['dokter'] = $this->dokter_model->get_all_dokter();
 		$this->load->view('Pasien/V_hapus', $data);
-		//call method hapusDataPasien with parameter id from M_Pasien
-		//use flashdata to show alert "dihapus"
 		$this->session->set_flashdata('flash','dihapus');
 	}
 
