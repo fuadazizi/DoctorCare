@@ -41,11 +41,23 @@
                                 <small class="form-text text-danger"><?= form_error('jam') ?>.</small>
                             </div>
                             <div class="form-group">
+<<<<<<< Updated upstream
                                 <label for="text">Tanggal</label>
                                 <input type="text" class="form-control" id="Tanggal" name="Tanggal">
                                 <small class="form-text text-danger"><?= form_error('Tanggal') ?>.</small>
                             </div>
                             <div class="form-group">
+=======
+                                <label for="nama"> Jam </label>
+                                <input type="time" class="form-control" id="jam" name="jam" readonly="">
+                            </div>
+                            <div class="form-group">
+                                <label for="text"> Tanggal </label>
+                                <input type="date" class="form-control" id="Tanggal" name="Tanggal" readonly="">
+                            </div>
+
+                            <div class="form-group">
+>>>>>>> Stashed changes
                                 <label for="text">Penyakit</label>
                                 <input type="text" class="form-control" id="Penyakit" name="Penyakit">
                                 <small class="form-text text-danger"><?= form_error('Penyakit') ?>.</small>
