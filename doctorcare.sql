@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 4.9.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 03 Bulan Mei 2020 pada 16.38
--- Versi server: 10.4.11-MariaDB
--- Versi PHP: 7.4.2
+-- Generation Time: May 07, 2020 at 05:24 AM
+-- Server version: 10.4.8-MariaDB
+-- PHP Version: 7.3.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,7 +25,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `dokter`
+-- Table structure for table `dokter`
 --
 
 CREATE TABLE `dokter` (
@@ -40,54 +40,62 @@ CREATE TABLE `dokter` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `dokter`
+-- Dumping data for table `dokter`
 --
 
 INSERT INTO `dokter` (`nama`, `jeniskelamin`, `alamat`, `spesialis`, `email`, `telp`, `username`, `password`) VALUES
-('Indra Wahyudi', 'Laki-laki', 'Samarinda', 'Penyakit Hati', 'indrawahyudi2710@gmail.com', '081247123341', 'indra', '202cb962ac59075b964b07152d234b70'),
-('Priyoga ', 'Laki-laki', 'Bandung', 'Penyakit Hati', 'priyoga@gmail.com', '081231134223', 'yoga', '202cb962ac59075b964b07152d234b70');
+('Prayoga S A', 'Laki-laki', 'Bandung', 'Organ dalam', 'prayosa@gmail.com', '08898987662', 'prayosa', 'e10adc3949ba59abbe56e057f20f883e');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `jadwaltemu`
+-- Table structure for table `jadwaltemu`
 --
 
 CREATE TABLE `jadwaltemu` (
   `id` int(10) NOT NULL,
   `Username_Pasien` varchar(30) NOT NULL,
   `Username_Dokter` varchar(30) NOT NULL,
-  `jam` varchar(15) NOT NULL,
-  `Tanggal` varchar(30) NOT NULL,
+  `jam` time NOT NULL,
+  `Tanggal` date NOT NULL,
   `Penyakit` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `jadwaltemu`
+--
+
+INSERT INTO `jadwaltemu` (`id`, `Username_Pasien`, `Username_Dokter`, `jam`, `Tanggal`, `Penyakit`) VALUES
+(25, 'fuadazizi', 'doktera', '01:00:00', '2020-05-13', 'Hidup'),
+(26, 'jamila', 'prayosa', '00:00:00', '2020-05-08', 'Hati');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `jadwal_kosong`
+-- Table structure for table `jadwal_kosong`
 --
 
 CREATE TABLE `jadwal_kosong` (
   `idjadwal` int(11) NOT NULL,
   `Username_Dokter` varchar(20) NOT NULL,
-  `jam` varchar(5) NOT NULL,
-  `Tanggal` varchar(30) NOT NULL,
+  `jam` time NOT NULL,
+  `Tanggal` date NOT NULL,
   `empty` tinyint(1) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `jadwal_kosong`
+-- Dumping data for table `jadwal_kosong`
 --
 
 INSERT INTO `jadwal_kosong` (`idjadwal`, `Username_Dokter`, `jam`, `Tanggal`, `empty`) VALUES
-(26, 'indra', '01:00', '2020-05-04', 0),
-(27, 'yoga', '05:10', '2020-05-30', 0);
+(24, 'doktera', '13:01:00', '2020-05-05', 1),
+(25, 'doktera', '01:00:00', '2020-05-13', 1),
+(26, 'prayosa', '00:00:00', '2020-05-08', 1);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pasien`
+-- Table structure for table `pasien`
 --
 
 CREATE TABLE `pasien` (
@@ -101,50 +109,50 @@ CREATE TABLE `pasien` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `pasien`
+-- Dumping data for table `pasien`
 --
 
 INSERT INTO `pasien` (`nama`, `jeniskelamin`, `alamat`, `email`, `telp`, `username`, `password`) VALUES
-('Fuad Azizi', 'Laki-laki', 'Bandung', 'fuad@gmail.com', '081234567890', 'fuad', '202cb962ac59075b964b07152d234b70'),
-('Hafidz Lazuardi', 'Laki-laki', 'Paser', 'hafidz@gmail.com', '081351183481', 'hafidz', '202cb962ac59075b964b07152d234b70');
+('Fuad Azizi', 'Laki-laki', 'Bandung', 'fuadazizi@gmail.com', '087284939142', 'fuadazizi', 'e10adc3949ba59abbe56e057f20f883e'),
+('Jamila Wati', 'Perempuan', 'Jakarta', 'jamilaw@gmail.com', '089887777777', 'jamila', 'e10adc3949ba59abbe56e057f20f883e');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `dokter`
+-- Indexes for table `dokter`
 --
 ALTER TABLE `dokter`
   ADD PRIMARY KEY (`username`);
 
 --
--- Indeks untuk tabel `jadwaltemu`
+-- Indexes for table `jadwaltemu`
 --
 ALTER TABLE `jadwaltemu`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `jadwal_kosong`
+-- Indexes for table `jadwal_kosong`
 --
 ALTER TABLE `jadwal_kosong`
   ADD PRIMARY KEY (`idjadwal`);
 
 --
--- Indeks untuk tabel `pasien`
+-- Indexes for table `pasien`
 --
 ALTER TABLE `pasien`
   ADD PRIMARY KEY (`username`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `jadwal_kosong`
+-- AUTO_INCREMENT for table `jadwal_kosong`
 --
 ALTER TABLE `jadwal_kosong`
-  MODIFY `idjadwal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `idjadwal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
